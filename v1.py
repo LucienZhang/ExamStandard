@@ -319,11 +319,14 @@ def func(result):
 
 
 def main():
-    idx = "sample_" + sys.argv[1]
-    res = func(samples[idx])
-    print("\n最终结果:\n")
-    for z in res:
-        print(z)
+    try:
+        idx = "sample_" + sys.argv[1]
+        res = func(samples[idx])
+        print("\n最终结果:\n")
+        for z in res:
+            print(z)
+    except IndexError:
+        print("按此格式运行:\npython v2.py <n> //n为样本标号(0-99)")
 
 
 if __name__ == "__main__":

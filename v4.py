@@ -5,14 +5,18 @@ from itertools import product
 # v4.py 分成多个 stack (ppo_stack, ir_stack, exam_stack等)
 
 
-def _build_product_param(*test_stacks):
+# 该函数用来构造 itertools.product 所需的参数
+# 正确参数举例: [["$obj&肾", "%obj&肝脏"], ["$item&大小$exam_result&正常"]]
+# 错误参数举例: [["$obj&肾", "%obj&肝脏"], [], [], ["$item&大小$exam_result&正常"]]
+def _build_product_param(*stacks):
     ans = []
-    for test_stack in test_stacks:
-        if len(test_stack) > 0:
-            ans.append(test_stack)
+    for stackOne in stacks:
+        if len(stackOne) > 0:
+            ans.append(stackOne)
     return ans
 
 
+# 示例seg
 x = [
     [0, 1, 'symptom_obj', '胸廓'],
     [2, 3, 'symptom_pos', '两侧'],
@@ -21,24 +25,23 @@ x = [
     [6, 7, 'exam_result', '清楚']
 ]
 
+# 初始化参数
 pos_or_obj_or_part = ["symptom_pos", "symptom_obj", "object_part"]
 
-ppos = []
-ppo_stack = []
+ppos, ppo_stack = [], []
 
-items = []
-ir = []
+items, ir = [], []
 
-exam_stack = []
+exam_stack, treatment_stack, medical_events = [], [], []
 
-treatment_stack = []
-medical_events = []
-
+# res_x 存储一个seg (seg也就是x) 内所有拼接好的结果
 res_x = []
 
+
+# 主函数
 for i in range(len(x)):
     tag = x[i][2]
-    value = "$" + x[i][2] + "&" + x[i][3] + "***"
+    value = "$" + x[i][2] + "&" + x[i][3]
 
     if tag == "symptom_pos":
         ppos.append([value])
@@ -60,7 +63,12 @@ for i in range(len(x)):
     elif tag == "exam_item":
         items.append(value)
     elif tag == "exam_result":
-        # 和 item 拼接, 并放入ir (item_result简写)
+        # 遇到 exam_result, 一般做3件事:
+        # a 把自己和items中的项拼接, 然后放入ir列表中
+        # 剩下的2件事是: b 把拼好的输出写入 res_x; c 并且在适当时候清空有关变量值
+        # 但是b和c在处理时, 分为情况1和情况2, 下面有具体解释
+
+        # step_a: 和 item 拼接, 并放入ir (ir 是 item_result简写)
         if len(items) > 0:
             ir.extend([j + value for j in items])
         else:

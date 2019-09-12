@@ -139,8 +139,11 @@ a = [
 
 
 if __name__ == "__main__":
-    idx = "sample_" + sys.argv[1]
-    res = exam_standard(samples[idx])
-    print("\n最终:\n")
-    for r in res:
-        print(r)
+    try:
+        idx = "sample_" + sys.argv[1]
+        res = exam_standard(samples[idx])
+        print("\n最终:\n")
+        for r in res:
+            print(r)
+    except IndexError:
+        print("按此格式运行:\npython v2.py <n> //n为样本标号(0-99)")
