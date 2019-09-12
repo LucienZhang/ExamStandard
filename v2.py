@@ -1,37 +1,16 @@
 from itertools import product
-import sys
 from copy import deepcopy
 from utils import *
-from data.samples import samples_2
+from data.samples import samples
+
 
 """
-一 从 json 文件获取一整段 targets;
-二 将 targets 根据 seg 分成几个 segment
-三 定义最终输出 res = []
-四 对每一个 segment(也就是x), 做以下处理:
-
-1 初始化定义变量
-stack = []
-res_x = []  # 每一个x所有结构化的结果，存在res_x中
-pos, obj, part = []
-idx_pos, idx_obj, idx_part = None, None, None
-items, results, decorations = [], [], []
-ir, reversed_ir, deco_desc = [], [], []
-lesion = None
-ll = []  # ll是 lesion_lesion_desc的简写
-times = []
-treatment, treatment_desc = [], []
-
-2 从每段segment开头开始遍历
-A. 若tag为pos:
-    a. 将自己放入 pos
-    b. 看后一项x[i+1], 若不为pos, 则将pos 放入 stack ,并清空pos
-B. 若tag为obj:
-    a. 将自己放入 obj
-    b. 看后一项, 若不为obj, 则将 obj 放入 stack, 并清空 obj
-C. 若tag为part:
-    a. 将自己放入 obj
-    b. 看后一项, 若不为obj, 则将 obj 放入 stack, 并清空 obj
+stack 结构和v1不同.
+stack_v1 = [['关节'], ['囊', '周围软组织'], ['无'], ['明显肿胀']]
+stack_v2 = [['symptom_pos', ['双']],
+            ['symptom_obj', ['膝关节部']],
+            ['object_part', ['诸骨']],
+            ['exam_result', ['骨质密度未见异常', '形态未见异常']]]
 """
 
 
@@ -160,7 +139,7 @@ a = [
 
 if __name__ == "__main__":
     idx = "sample_" + sys.argv[1]
-    res = exam_standard(samples_2[idx])
+    res = exam_standard(samples[idx])
     print("\n最终:\n")
     for r in res:
         print(r)
