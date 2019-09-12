@@ -28,13 +28,16 @@ x = [
 # 初始化参数
 pos_or_obj_or_part = ["symptom_pos", "symptom_obj", "object_part"]
 
+# ppos解释: ppo是指 pos_part_obj的简写, s是指复数
 ppos, ppo_stack = [], []
 
+# items存放遇到的 exam_item, ir是 exam_item_exam_result简写, 存放拼好的ir,比如"大小+正常"
 items, ir = [], []
 
+# 用来其他标签
 exam_stack, treatment_stack, medical_events = [], [], []
 
-# res_x 存储一个seg (seg也就是x) 内所有拼接好的结果
+# res_x: 存储一个seg (seg也就是x) 内所有拼接好的结果
 res_x = []
 
 
@@ -47,17 +50,22 @@ for i in range(len(x)):
         ppos.append([value])
 
     elif tag == "symptom_obj":
+        # 若ppos列表为空, 则直接放入
         if len(ppos) == 0:
             ppos.append(value)
             if x[i + 1][2] not in pos_or_obj_or_part:
                 ppo_stack.append(value)
+
+        # 若ppos不为空, 则:
+        # 1 如果ppos中目前没有 obj, 那么直接放入(因为不需要和其他obj进行比较关系（并列，从属，等）)
+        # 2 如果ppos中已经有 obj, 那么在这里调用 处理2个obj之间关系的函数,或者逻辑(TODO)
         else:
             if tag not in [j[j.index("$") + 1:j.index("&")] for j in ppos]:
                 ppos.append(x[i][2:])
             else:
                 # 这里做两个obj之间的关系判断, 目前先直接拼一起
                 # 例子: ppo_stack = ["$obj&肾"]
-                # 加入新的后: []
+                # 加入新obj后: ["$obj&肾", "$obj&肝脏"]
                 pass
 
     elif tag == "exam_item":
