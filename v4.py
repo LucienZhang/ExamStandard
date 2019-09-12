@@ -3,6 +3,7 @@ import sys
 import getopt
 from utils import split_target
 from data.v4_test_data import v4_test_data, type_map
+from data.obj_rel_map import obj_rel_map
 
 
 # 之前将所有标签放入一个统一 stack
@@ -27,10 +28,31 @@ def _check_obj_relationship(self_obj, other_objs):
     :param other_objs: ppo中已经存在的所有objs  = ['额', "肾", "肝脏"]
     :return: 1并列, 2从属
     """
-
+    # 默认设置大部分是并列, 如 "肾" 与 "肝脏"
     rel = 1
-    # TODO 判断关系
+
+    for obj in obj_rel_map:
+        if obj["name"] == self_obj:
+            for other in other_objs:
+                # "脑池" 与 "脑沟"
+                if other in obj["rel"]["1"]:
+                    rel = 1
+                # "气管" 与 "支气管"
+                elif other in obj["rel"]["2"]:
+                    rel = 2
+            break
+
     return rel
+
+
+# 从 "symptom_obj&肝脏" 中切出并返回 "symptom_obj" 部分
+def _slice_sub_string(s, start_idx="$", end_idx="&"):
+    if end_idx is not None:
+        res = s[s.index(start_idx)+1:s.index(end_idx)]
+    else:
+        res = s[s.index(start_idx)+1:]
+
+    return res
 
 
 # 主函数
@@ -66,7 +88,24 @@ def exam_standard(origin_targets):
             value = "$" + x[i][2] + "&" + x[i][3]
 
             if tag == "symptom_pos":
-                ppos.append([value])
+                if len(ppos) == 0:
+                    ppos.append([value])
+                else:
+                    # obj + (pos) 情况
+                    if _slice_sub_string(ppos[-1][0]) == "symptom_obj":
+                        # obj + (pos) + obj
+                        if x[i+1][2] == "symptom_obj":
+                            ppos.pop(-1)
+                            ppos.append([value])
+
+                        # obj + (pos) + part, 鼻咽顶 + 后部 + 软组织
+                        elif x[i+1][2] == "object_part":
+                            ppos.append([value])
+
+                        # obj + (pos) + 大小正常
+                        else:
+                            ppos.append([value])
+                            # TODO 0912 18:00
 
             elif tag == "symptom_obj":
                 # 遇到obj,做2件事
@@ -81,7 +120,7 @@ def exam_standard(origin_targets):
                 # 1 如果ppos中目前没有 obj, 那么直接放入(因为不需要和其他obj进行比较关系（并列，从属，等）)
                 # 2 如果ppos中已经有 obj, 那么在这里调用 处理2个obj之间关系的函数,或者逻辑(TODO)
                 else:
-                    if tag not in [j[0][j[0].index("$") + 1:j[0].index("&")] for j in ppos]:
+                    if tag not in [_slice_sub_string(j[0]) for j in ppos]:
                         ppos.append([value])
 
                     # _check_obj_relationship 判断关系, 1并列 2从属
@@ -91,11 +130,13 @@ def exam_standard(origin_targets):
                     else:
                         objs_in_ppos = []
                         for ppo in ppos:
-                            if ppo[0][ppo[0].index("$")+1:ppo[0].index("&")] == "symptom_obj":
+                            if _slice_sub_string(ppo[0]) == "symptom_obj":
                                 tmp_obj = ppo
-                                objs_in_ppos.extend([k[k.index("&")+1:] for k in ppo])
+                                objs_in_ppos.extend([_slice_sub_string(k, "&", None) for k in ppo])
                         if _check_obj_relationship(self_obj=x[i][3], other_objs=objs_in_ppos) == 1:
                             tmp_obj.append(value)
+                        elif _check_obj_relationship(self_obj=x[i][3], other_objs=objs_in_ppos) == 2:
+                            ppos.append([value])
 
                 # TODO 制定具体的拼接规则
 
@@ -180,6 +221,7 @@ def exam_standard(origin_targets):
 
 
 def main():
+    # 脚本参数
     opts, args = getopt.getopt(sys.argv[1:], "-h-t:-d:", ["type=", "data="])
     for opt_name, opt_value in opts:
         if opt_name in ("-t", "--type"):
@@ -193,7 +235,12 @@ def main():
                         ''')
             sys.exit()
 
+    # 输出
     output_list = exam_standard(v4_test_data[type_map[datatype-1]][idx])
+
+    for j in v4_test_data[type_map[datatype-1]][idx]:
+        print(j)
+
     print("最终结果:\n")
     for resOne in output_list:
         print(resOne)
