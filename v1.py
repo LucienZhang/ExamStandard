@@ -5,15 +5,14 @@ from copy import deepcopy
 from data.samples import samples
 
 
-# 将target列表, 按照vector_seg分成一段一段的seg
-# 对每段seg进行处理
-
+# v1.py 每个seg中, 统一放入一个 stack 进行拼接
+# stack_v1 = [['关节'], ['囊', '周围软组织'], ['无'], ['明显肿胀']]
 
 def build_res_x(stack, res_x, print_info=True):
     # 复制一个stack
     tmp_stack = deepcopy(stack)
     print("原始stack: ", tmp_stack)
-    # 先将 tmp_stack 中的空列表剔除掉, 防止笛卡尔积product时失败(因为0乘以任何数都为0)
+    # 先将 tmp_stack 中的空列表剔除掉, 防止product时失败(0乘以任何数都为0)
     while [] in tmp_stack:
         for each in tmp_stack:
             if len(each) == 0:
@@ -320,10 +319,6 @@ def func(result):
 
 
 def main():
-    # data = load_file("/users/hk/test/normalization/data/goldset_93.json")
-    # targets = [i["target"] for i in data]
-    # n = sys.argv[1]
-    # res = func_v8(targets[int(n)])
     idx = "sample_" + sys.argv[1]
     res = func(samples[idx])
     print("\n最终结果:\n")

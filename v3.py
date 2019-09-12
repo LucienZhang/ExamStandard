@@ -2,6 +2,36 @@ from itertools import product
 from copy import deepcopy
 
 
+# v3 根据100个样本统计结果, 定义多种情况
+
+# ppos定义:
+# 是指一段连续的(长度可能1，也可能大于1)，全部是 pos, obj, 或者obj_part 的一段列表， 从seg中提取获得
+# 如:
+# [44, 45, 'symptom_obj', '关节']
+# [46, 46, 'object_part', '囊']
+# [48, 49, 'symptom_pos', '周围']
+# [50, 52, 'object_part', '软组织']
+# [53, 53, 'entity_neg', '无']
+# [54, 55, 'symptom_deco', '明显']
+# [56, 57, 'symptom_desc', '肿胀'],
+# [58, 58, "object_part", "硬组织"],
+# [59, 60, 'symptom_deco', '异常']
+# [61, 63, 'symptom_desc', '密度影']
+
+# 这段seg中, 有2个ppos, 分别是:
+# ppos_1 = [
+# [44, 45, 'symptom_obj', '关节']
+# [46, 46, 'object_part', '囊']
+# [48, 49, 'symptom_pos', '周围']
+# [50, 52, 'object_part', '软组织']
+# ]
+
+# ppos_2 = [
+# [58, 58, "object_part", "硬组织"]
+# ]
+
+
+# 该函数用来判断当前ppo属于哪种情况
 def check_ppo_situation(ppo_list):
     """
     pos: 1
@@ -47,6 +77,7 @@ def check_ppo_situation(ppo_list):
     return sit
 
 
+# 根据ppos情况, 在以下函数中定义具体每种子情况的处理方式
 def handle_ppos(segment, ppos, situation):
     ppos_tag = [j[2] for j in ppos]
     ppos_value = [j[3] for j in ppos]
@@ -94,13 +125,17 @@ def handle_ppos(segment, ppos, situation):
             pass
     elif situation == 5:
         print("情况%d" % situation)
+        pass
     elif situation == 4:
         print("情况%d" % situation)
+        pass
     elif situation == 4:
         print("情况%d" % situation)
+        pass
     return res
 
 
+# 将结果存入res_x
 def build_res_x(x, res_x, stack, current_ppo_count, ppos_idx, print_info=True):
     # cs: copied_stack 简写
     cs = deepcopy(stack)
