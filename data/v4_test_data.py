@@ -95,6 +95,7 @@ v4_test_data = {
             [86, 86, 'symptom_obj', '肾'],
             [87, 88, 'exam_item', '大小'],
             [89, 90, 'exam_result', '正常'],
+            [99, 99, 'vector_seg', '，']
         ]
     }
 

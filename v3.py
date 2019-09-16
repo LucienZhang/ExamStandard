@@ -79,19 +79,34 @@ def check_ppo_situation(ppo_list):
 
 # 根据ppos情况, 在以下函数中定义具体每种子情况的处理方式
 def handle_ppos(segment, ppos, situation):
+    """
+
+    :param segment:
+    :param ppos:
+    :param situation: 这个参数就是check_ppo_situation函数返回的 sit 值
+    :return: 拼好的ppo组合, 如:
+    res = [(['symptom_pos', '右'], ['symptom_obj', '肾']), (['symptom_pos', '右'], ['symptom_obj', '肝脏'])]
+    """
+
     ppos_tag = [j[2] for j in ppos]
     ppos_value = [j[3] for j in ppos]
     current_sit = None
     res = []
 
+    # 1 只有pos
     if situation == 1:
         # 样本36
         for ppo in ppos:
             res.append(ppo)
+
+    # 2 只有 obj (1个 / 多个)
     elif situation == 2:
+        # 先判断属于哪种子情况
         sit_2_dict = {
             1: [
-                ["symptom_obj"],
+                ["symptom_obj"]
+            ],
+            2: [
                 ["symptom_obj", "symptom_obj"],
                 ["symptom_obj", "symptom_obj", "symptom_obj"],
                 ["symptom_obj", "symptom_obj", "symptom_obj", "symptom_obj"]
@@ -100,8 +115,15 @@ def handle_ppos(segment, ppos, situation):
         for k, v in sit_2_dict.items():
             if ppos_tag in v:
                 current_sit = k
+
+        # 根据子情况处理
         if current_sit == 1:
-            res = [i[2:] for j in ppos]
+            res = ppos[2:]
+        elif current_sit == 2:
+            # TODO 判断obj之间关系
+            res = [j[2:] for j in ppos]
+
+    # 3 只有 obj_part
     elif situation == 3:
         print("情况%d" % situation)
     elif situation == 4:
@@ -139,9 +161,9 @@ def handle_ppos(segment, ppos, situation):
 def build_res_x(x, res_x, stack, current_ppo_count, ppos_idx, print_info=True):
     # cs: copied_stack 简写
     cs = deepcopy(stack)
-    print("原stack: ", cs)
-    print("ppo_index: ", ppos_idx)
-    print("当前ppo_count: ", current_ppo_count)
+    #print("原stack: ", cs)
+    #print("ppo_index: ", ppos_idx)
+    #print("当前ppo_count: ", current_ppo_count)
     # 1 看看有几个 ppos
     if len(ppos_idx) == 1:  # obj + [] 直接拼, 不用考虑隔开的情况
         # 先去空列表
@@ -150,7 +172,7 @@ def build_res_x(x, res_x, stack, current_ppo_count, ppos_idx, print_info=True):
                 if len(each) == 0:
                     cs.pop(cs.index(each))
             if [] not in cs:
-                print("复制的剔除[]后的stack: ", cs)
+                #print("复制的剔除[]后的stack: ", cs)
                 break
         # 再将 cs 中的唯一一个 ppos 排列组合
         new_ppos = []
@@ -158,8 +180,8 @@ def build_res_x(x, res_x, stack, current_ppo_count, ppos_idx, print_info=True):
             tmp = ["$"+k[0]+k[1] for k in list(j)]
             new_ppos.append("".join(tmp))
         cs[ppos_idx[1]] = new_ppos
-        print("合并ppos后的cs: ", cs)
-        print("没动的原始stack: ", stack)
+        #print("合并ppos后的cs: ", cs)
+        #print("没动的原始stack: ", stack)
 
         # 最后对cs排列组合
         tmp_list = product(*cs)
@@ -184,6 +206,7 @@ if __name__ == "__main__":
         [17, 18, 'exam_result', '增大'],
         #[13, 13, 'symptom_pos', '双侧'],
         #[14, 14, 'symptom_obj', '大脑'],
+        [14, 14, 'object_part', '某部分'],
         [15, 16, 'exam_item', '大小'],
         # [15, 16, 'exam_item', '形态'],
         [17, 18, 'exam_result', '正常']
@@ -247,7 +270,7 @@ if __name__ == "__main__":
         elif tag == "exam_item":
             items.append("$" + x[i][2] + x[i][3])
         elif tag == "exam_result":
-            print("当前ppos_count: ", ppos_count)
+            #print("当前ppos_count: ", ppos_count)
             if len(items) > 0:
                 ir.extend([j + "$" + x[i][2] + x[i][3] for j in items])
             elif len(items) == 0:

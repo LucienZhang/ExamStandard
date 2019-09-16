@@ -57,7 +57,6 @@ def _slice_sub_string(s, start_idx="$", end_idx="&"):
 
 # 主函数
 def exam_standard(origin_targets):
-
     # 分割为多个segments
     segments = split_target(origin_targets)
 
@@ -81,7 +80,6 @@ def exam_standard(origin_targets):
 
         # res_x: 存储一个seg (seg也就是x) 内所有拼接好的结果
         res_x = []
-
         # 每个seg中处理结构化拼接
         for i in range(len(x)):
             tag = x[i][2]
@@ -89,12 +87,16 @@ def exam_standard(origin_targets):
 
             if tag == "symptom_pos":
                 if len(ppos) == 0:
+                    # pos + xxx 情况
                     ppos.append([value])
                 else:
                     # obj + (pos) 情况
                     if _slice_sub_string(ppos[-1][0]) == "symptom_obj":
-                        # obj + (pos) + obj
+                        # objA + (pos) + objB
+                        # TODO 目前分组: objA + (pos + objB)，之后看是否有情况是 (A+pos)+B
                         if x[i+1][2] == "symptom_obj":
+                            print("objA + (pos) + objB")
+                            ppo_stack.extend(["".join(m) for m in list(product(*ppos))])
                             ppos.pop(-1)
                             ppos.append([value])
 
