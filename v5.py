@@ -222,7 +222,7 @@ def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
 
                         elif k[3] == "盲肠":
                             ppo_stack.append("".join([_connect_tag_and_value(k) for k in ppos]))
-
+                            # TODO 0916, 已经看到excel第49行
     elif sit == 5:
         print("异常情况,当前ppos:")
         for ppo in ppos:
