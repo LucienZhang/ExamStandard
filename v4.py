@@ -118,7 +118,7 @@ def exam_standard(origin_targets):
 
                 # 若ppos不为空, 则:
                 # 1 如果ppos中目前没有 obj, 那么直接放入(因为不需要和其他obj进行比较关系（并列，从属，等）)
-                # 2 如果ppos中已经有 obj, 那么在这里调用 处理2个obj之间关系的函数,或者逻辑(TODO)
+                # 2 如果ppos中已经有 obj, 那么在这里调用 处理2个obj之间关系的函数,或者逻辑
                 else:
                     if tag not in [_slice_sub_string(j[0]) for j in ppos]:
                         ppos.append([value])
