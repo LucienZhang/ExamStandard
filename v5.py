@@ -184,6 +184,50 @@ def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
             if [j[2] for j in ppos] == ["symptom_pos", "symptom_obj", "symptom_pos"]:
                 ppo_stack.append("".join([_connect_tag_and_value(k) for k in ppos]))
 
+            # 样本2 双侧p + 额o + 颞o + 顶枕叶o + 脑沟内o
+            if "symptom_pos" not in [j[2] for j in ppos[1:]]:
+                tmp_list = list(product(*[[ppos[0]], ppos[1:]]))
+                for tmp in tmp_list:
+                    ppo_stack.append("".join([_connect_tag_and_value(k) for k in tmp]))
+
+    # obj + pos + part
+    elif sit == 4:
+        # 开头是 obj
+        if ppos[0][2] == "symptom_obj":
+            # 样本11 鼻咽顶o + 后部pos + 软组织part
+            if [j[2] for j in ppos] == ["symptom_obj", "symptom_pos", "object_part"]:
+                ppo_stack.append("".join([_connect_tag_and_value(k) for k in ppos]))
+
+            # 该情况有2个样本45, 91, 需要2种不同拼法
+            # 造成该问题的原因，可能是45的2个pos分的没有太大必要，可以吧"下方周围"标为一个pos
+            # 还有一个因素,45的2个pos之间没有顿号，或者"和"，"及"等提示性连接词;
+            # 但是91样本的2个pos之间有一个关键词"及"
+            # 样本45 盲肠o + 下方pos + 周围pos + 腹膜part 建议先拼成"盲肠+下方+周围+腹膜"
+            # 样本91 鼻咽腔o + 顶部pos + 后上壁pos + 软组织part
+            # TODO 若要系统分辨，可能后续标注时, 需要将这种"和"，"及"等关键词都标出
+            if [j[2] for j in ppos] == ["symptom_obj", "symptom_pos", "symptom_pos", "object_part"]:
+                for k in ppos:
+                    if k[2] == "symptom_obj":
+                        if k[3] == "鼻咽腔":
+                            tmp_1 = list(product(*[ppos[1:3], [ppos[-1]]]))
+                            tmp_2 = []
+                            for tmp in tmp_1:
+                                tmp_2.append("".join([_connect_tag_and_value(k) for k in tmp]))
+
+                            tmp_3 = [_connect_tag_and_value(ppos[0])]
+                            tmp_final = list(product(*[tmp_3, tmp_2]))
+
+                            for tmp in tmp_final:
+                                ppo_stack.append("".join([k for k in tmp]))
+
+                        elif k[3] == "盲肠":
+                            ppo_stack.append("".join([_connect_tag_and_value(k) for k in ppos]))
+
+    elif sit == 5:
+        print("异常情况,当前ppos:")
+        for ppo in ppos:
+            print(ppo)
+
     return ppo_stack
 
 
@@ -344,7 +388,8 @@ def exam_standard(origin_targets):
                                 elif ppos[-1][2] == "symptom_pos":
                                     # 将ppos[-1] "内"移除，再将自己"中下部"放入ppos
                                     # ppos = ["右", "叶", "中下部"]
-                                    pass
+                                    ppos.pop()
+                                    ppos.append(x[i])
 
                                 elif ppos[-1][2] == "object_part":
                                     # 没有遇到
