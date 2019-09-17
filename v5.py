@@ -22,6 +22,11 @@ def _connect_tag_and_value(t):
     return "$" + t[2] + "&" + t[3]
 
 
+# 列表排序用
+def _get_sort_key(elem):
+    return elem[0]
+
+
 # 该函数用来判断2个obj之间关系
 def _check_obj_relationship(self_obj, other_obj, object_relation_map=obj_rel_map):
     """
@@ -633,6 +638,14 @@ def exam_standard(origin_targets):
 
         # res_x: 存储一个seg (seg也就是x) 内所有拼接好的结果
         res_x = []
+
+        # lesion: 病灶; lesion_desc_list: 存储病灶描述的列表
+        lesion_desc_list = []
+        for j in x:
+            if j[2] == "lesion":
+                lesion = j
+                break
+
         # 每个seg中处理结构化拼接
         for i in range(len(x)):
             tag = x[i][2]
@@ -834,10 +847,35 @@ def exam_standard(origin_targets):
             elif tag == "reversed_exam_result":
                 results.append(x[i])
 
+            elif tag == "lesion_desc":
+                if lesion is not None:
+                    # 按lesion 和 lesion_desc 出现先后顺序排序，构造 ll_stack
+                    ll_stack = []
+                    tmp_ll_stack = [lesion, x[i]]
+                    tmp_ll_stack.sort(key=_get_sort_key)
+                    ll_stack = ["".join([_connect_tag_and_value(tmp) for tmp in tmp_ll_stack])]
+
+                    # 构造ppo_stack
+                    ppo_stack = _build_ppo_stack(ppos=ppos, ppo_stack=ppo_stack)
+
+                    # 构造结构化结果
+                    product_params = _build_product_param(exam_stack, ppo_stack, ll_stack)
+                    prod_res = list(product(*product_params))
+
+                    # 结果存入res_x
+                    res_x.extend(["".join(j) for j in prod_res])
+
             elif tag == "exam_result":
                 # step 1 把自己和items中的项拼接, 然后放入ir列表中 (不用考虑entity_neg)
                 if len(items) > 0:
-                    ir.extend([_connect_tag_and_value(j) + _connect_tag_and_value(x[i]) for j in items])
+                    if lesion is not None:
+                        ir.extend(
+                            [_connect_tag_and_value(lesion) +
+                             _connect_tag_and_value(j) +
+                             _connect_tag_and_value(x[i]) for j in items]
+                        )
+                    else:
+                        ir.extend([_connect_tag_and_value(j) + _connect_tag_and_value(x[i]) for j in items])
                 else:
                     ir.append(_connect_tag_and_value(x[i]))
 
@@ -954,9 +992,19 @@ def exam_standard(origin_targets):
             elif tag == "reversed_exam_item":
                 # step 1 把自己和 results 中的项拼接, 然后放入 reversed_ir 列表中 (不用考虑entity_neg)
                 if len(results) > 0:
-                    reversed_ir.extend([_connect_tag_and_value(j) + _connect_tag_and_value(x[i]) for j in results])
+                    if lesion is not None:
+                        reversed_ir.extend(
+                            [_connect_tag_and_value(lesion) +
+                             _connect_tag_and_value(j) +
+                             _connect_tag_and_value(x[i]) for j in results]
+                        )
+                    else:
+                        reversed_ir.extend([_connect_tag_and_value(j) + _connect_tag_and_value(x[i]) for j in results])
                 else:
-                    reversed_ir.append(_connect_tag_and_value(x[i]))
+                    if lesion is not None:
+                        reversed_ir.append(_connect_tag_and_value(lesion) + _connect_tag_and_value(x[i]))
+                    else:
+                        reversed_ir.append(_connect_tag_and_value(x[i]))
 
                 # step 2 将 ppos 中的项, 按照不同情况拼接后，放入ppo_stack中
                 ppo_stack = _build_ppo_stack(ppos=ppos, ppo_stack=ppo_stack)

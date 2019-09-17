@@ -678,6 +678,24 @@ samples = {
         [89, 90, 'exam_result', '正常'],
         [91, 92, 'vector_seg', '。'],
     ],
+    # 测试lesion
+    57: [
+        [0, 2, 'symptom_obj', '腹腔内'],
+        [5, 6, 'lesion_desc', '数个'],
+        [7, 10, 'lesion', '低回声区'],
+        # [12, 15, 'lesion_desc', '其中一个'],
+        [16, 17, 'exam_item', '大小'],
+        [18, 31, 'exam_result', '约1.36cm×0.39cm'],
+        [33, 34, 'exam_item', '边界'],
+        [35, 36, 'exam_result', '清晰'],
+        [38, 39, 'exam_item', '形态'],
+        [40, 41, 'exam_result', '规则'],
+        # [43, 46, 'exam', 'CDFI'],
+        [48, 51, 'reversed_exam_result', '其内可见'],
+        [52, 55, 'reversed_exam_item', '血流信号'],
+        [56, 56, 'vector_seg', '。'],
+    ],
+
     # 以下是part开头的情况
 
     # 100出现2种ppos的情况: part+pos+obj; part+pos+obj+part.
