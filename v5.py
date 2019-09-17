@@ -815,12 +815,14 @@ def exam_standard(origin_targets):
                 ppos.append(x[i])
 
             elif tag == "exam":
+                exam = x[i]
                 exam_stack = [_connect_tag_and_value(x[i])]
 
             elif tag == "entity_neg":
                 entity_neg = x[i]
 
             elif tag == "medical_events":
+                medical_events = x[i]
                 medical_events_stack.append(_connect_tag_and_value(x[i]))
 
             elif tag == "exam_item":
@@ -848,9 +850,10 @@ def exam_standard(origin_targets):
                 # [4, 5, 'exam_result', '正常'],
                 # [4, 5, 'exam_result', '清楚']
                 if i == len(x) - 1:
-                    print("ppos: ", ppos)
-                    print("ppo_stack: ", ppo_stack)
-                    print("\n")
+
+                    # 根据每一个标签的索引, 比如[293, 293, 'symptom_obj', '肾'] 中的 293, 对以下各项进行先后排序:
+                    # items, ppos, treatment_stack, exam_stack
+
                     # 将各个stack放入 itertools.product 函数所需的参数中
                     product_params = _build_product_param(exam_stack, ppo_stack, ir)
 
@@ -913,9 +916,6 @@ def exam_standard(origin_targets):
                 # [83, 84, 'entity_neg', '未见'],
                 # [85, 86, 'symptom_desc', '扩张']
                 if i == len(x) - 1:
-                    print("ppos: ", ppos)
-                    print("ppo_stack: ", ppo_stack)
-                    print("\n")
                     # 将各个stack放入 itertools.product 函数所需的参数中
                     product_params = _build_product_param(ppo_stack, deco_desc)
 
@@ -966,9 +966,6 @@ def exam_standard(origin_targets):
                 # [22, 27, 'reversed_exam_result', '未见明显异常'],
                 # [28, 30, 'reversed_exam_item', '信号影']
                 if i == len(x) - 1:
-                    print("ppos: ", ppos)
-                    print("ppo_stack: ", ppo_stack)
-                    print("\n")
                     # 将各个stack放入 itertools.product 函数所需的参数中
                     product_params = _build_product_param(medical_events_stack, ppo_stack, reversed_ir)
 
@@ -1012,6 +1009,6 @@ def exam_standard(origin_targets):
 if __name__ == "__main__":
     sample = samples[int(sys.argv[1])]
     ans = exam_standard(sample)
-    print("最终结果:\n")
+    print("\n")
     for r in ans:
         print(r)
