@@ -6,7 +6,7 @@ from data.v6_test_data import samples
 
 """
 # v6相对与v5的更新:
-# 1 加入了 lesion 和 lesion_desc 的输出 (line 933 左右);
+# 1 加入了 lesion 和 lesion_desc 的输出 (line 980 左右);
 # 2 废弃了 _build_product_params 函数, 使用新的 _build_sorted_product_params 函数构造itertools.product所需的参数.
 # 2.1 _build_sorted_product_params 支持根据每种stack的索引，排序后进行排列组合(比如exam出现在ppos前后，可以有不同的排序效果)
 
@@ -43,14 +43,16 @@ def _build_sorted_product_params(*args, **stacks):
     stack_map = {
         "exam_stack": ["exam"],
         "ppo_stack": ["symptom_pos", "symptom_obj", "object_part"],
-        "ir": ["exam_item"],
+        # 因为有可能items=[], 所以ir中加入"exam_result"也作为排序依据之一, 避免items为空, 导致无法排序的情况
+        "ir": ["exam_item", "exam_result"],
         "deco_desc": ["symptom_desc"],
         "reversed_ir": ["reversed_exam_result"],
         "lesion_stack": ["lesion"],
         "ll_stack": ["lesion_desc"],
         "medical_events_stack": ["medical_events"],
         "time_stack": ["time"],
-        "entity_neg_stack": ["entity_neg"]
+        "entity_neg_stack": ["entity_neg"],
+        "treatment_stack": ["treatment"]
     }
 
     tmp1 = []
@@ -80,6 +82,23 @@ def _build_sorted_product_params(*args, **stacks):
             if stack_name == list(each_stack.values())[0]:
                 res.append({int(list(each_stack.keys())[0]): stack_value})
     # print("res:\n%s\n" % res)
+
+    # 由于 lesion 之前出现的 item/resul 不需要拼lesion, 所以在这里将出现在 item/result 之后的 lesion 从结果中剔除掉
+    tmp_lesion_idx, tmp_ir_idx = None, None
+    ir_tags = ["exam_item", "exam_result", "symptom_deco",
+               "symptom_desc", "reversed_exam_result", "reversed_exam_item"]
+
+    for idx in range(len(res)):
+        rv = list(res[idx].values())[0][0]
+        rv_tag = rv[rv.index("$")+1:rv.index("&")]
+        if rv_tag == "lesion":
+            tmp_lesion_idx = idx
+        elif rv_tag in ir_tags:
+            tmp_ir_idx = idx
+
+    if tmp_ir_idx is not None and tmp_lesion_idx is not None:
+        if tmp_ir_idx < tmp_lesion_idx:
+            res.pop(tmp_lesion_idx)
 
     res.sort(key=_get_sort_key)
     sorted_product_params = [list(r.values())[0] for r in res]
@@ -721,6 +740,7 @@ def exam_standard(origin_targets):
         # 用来其他标签
         treatment_stack = []
         medical_events, medical_events_stack = [], []
+        treatment, treatment_stack = [], []  # 样本12中出现过 [54, 57, 'treatment', '静脉注射']
 
         # exam = [[28, 31, 'exam', 'CDFI']], exam_stack = ["$exam&CDFI"]
         exam, exam_stack = [], []
@@ -968,11 +988,31 @@ def exam_standard(origin_targets):
                 medical_events = [x[i]]
                 medical_events_stack = [_connect_tag_and_value(x[i])]
 
+            elif tag == "treatment":
+                treatment = [x[i]]
+                treatment_stack = [_connect_tag_and_value(x[i])]
+
             elif tag == "exam_item":
                 items.append(x[i])
 
             elif tag == "symptom_deco":
-                decorations.append(x[i])
+                # [0, 1, 'symptom_obj', '腹部'],
+                # [2, 5, 'exam', '立位平片'],
+                # [7, 7, 'vector_seg', '：'],
+                # [8, 12, 'symptom_obj', '腹部肠管内'],
+                # [13, 14, 'symptom_deco', '少量'],
+                # [15, 16, 'symptom_desc', '积气'],
+                # [18, 27, 'symptom_deco', '以左上腹部结肠内稍多'],
+                # [29, 30, 'entity_neg', '未见'],
+                # [31, 32, 'symptom_deco', '明显'],
+                # [33, 34, 'symptom_desc', '扩张'],
+                # [36, 39, 'symptom_desc', '液气平面'],
+                # [40, 40, 'vector_seg', '，'],
+                # 样本7, 若遇到 "以左上腹部结肠内稍多", 不写入decorations
+                if i != 0:
+                    if i < len(x) - 1:
+                        if x[i+1][2] in ["symptom_deco", "symptom_desc"]:
+                            decorations.append(x[i])
 
             elif tag == "reversed_exam_result":
                 results.append(x[i])
@@ -1022,13 +1062,20 @@ def exam_standard(origin_targets):
                 # [4, 5, 'exam_result', '清楚']
                 if i == len(x) - 1:
                     # 将各个stack放入 itertools.product 函数所需的参数中
-                    product_params = _build_sorted_product_params(exam, ppos, items, lesion, medical_events, time,
+                    # 考虑到有可能items为空(样本8), 使用自己的索引作为排序依据，而不再用items:
+                    # [33, 33, 'vector_seg', '，'],
+                    # [40, 41, 'exam', '骨龄'],
+                    # [42, 47, 'exam_result', '约为6.5岁'],
+                    # [48, 48, 'vector_seg', '。'],
+                    product_params = _build_sorted_product_params(exam, ppos, [x[i]], lesion,
+                                                                  medical_events, time, treatment,
                                                                   exam_stack=exam_stack,
                                                                   ppo_stack=ppo_stack,
                                                                   ir=ir,
-                                                                  lesion=lesion_stack,
+                                                                  lesion_stack=lesion_stack,
                                                                   medical_events_stack=medical_events_stack,
-                                                                  time_stack=time_stack)
+                                                                  time_stack=time_stack,
+                                                                  treatment_stack=treatment_stack)
                     # product_params = _build_product_param(exam_stack, ppo_stack, ir)
 
                     # itertools.product
@@ -1051,13 +1098,15 @@ def exam_standard(origin_targets):
                 elif i < len(x) - 1:
                     if x[i + 1][2] != tag:
                         # 将各个stack放入 itertools.product 函数所需的参数中
-                        product_params = _build_sorted_product_params(exam, ppos, items, lesion, medical_events, time,
+                        product_params = _build_sorted_product_params(exam, ppos, items, lesion,
+                                                                      medical_events, time, treatment,
                                                                       exam_stack=exam_stack,
                                                                       ppo_stack=ppo_stack,
                                                                       ir=ir,
                                                                       lesion_stack=lesion_stack,
                                                                       medical_events_stack=medical_events_stack,
-                                                                      time_stack=time_stack)
+                                                                      time_stack=time_stack,
+                                                                      treatment_stack=treatment_stack)
                         # 以下旧版本函数已不再用
                         # product_params = _build_product_param(ppo_stack, ir)
 
@@ -1071,6 +1120,8 @@ def exam_standard(origin_targets):
                     ppo_stack = []
 
             elif tag == "symptom_desc":
+                # 注意: symptom_desc是描述symptom的, 和lesion可以看作平行，所以遇到该标签, 可以不用考虑 lesion.
+
                 # step 1 把自己和 decorations 中的项拼接, 然后放入deco_desc列表中
                 if len(decorations) > 0:
                     deco_desc.extend([_connect_tag_and_value(j) +
@@ -1092,11 +1143,12 @@ def exam_standard(origin_targets):
                     # 将各个stack放入 itertools.product 函数所需的参数中
                     # 注意, 由于较多时候,decorations都可能是空的，所以排序不用decOrations,而使用[x[i]]
                     # desc 中需要考虑 entity_neg
-                    product_params = _build_sorted_product_params(exam, ppos, [x[i]], entity_neg,
+                    product_params = _build_sorted_product_params(exam, ppos, [x[i]], entity_neg, time,
                                                                   exam_stack=exam_stack,
                                                                   ppo_stack=ppo_stack,
                                                                   deco_desc=deco_desc,
-                                                                  entity_neg_stack=entity_neg_stack)
+                                                                  entity_neg_stack=entity_neg_stack,
+                                                                  time_stack=time_stack)
                     # 旧函数不再用
                     # product_params = _build_product_param(ppo_stack, deco_desc)
 
@@ -1122,11 +1174,12 @@ def exam_standard(origin_targets):
                         # 将各个stack放入 itertools.product 函数所需的参数中
                         # 注意, 由于较多时候,decorations都可能是空的，所以排序不用decOrations,而使用[x[i]]
                         # desc 中需要考虑 entity_neg
-                        product_params = _build_sorted_product_params(exam, ppos, [x[i]], entity_neg,
+                        product_params = _build_sorted_product_params(exam, ppos, [x[i]], entity_neg, time,
                                                                       exam_stack=exam_stack,
                                                                       ppo_stack=ppo_stack,
                                                                       deco_desc=deco_desc,
-                                                                      entity_neg_stack=entity_neg_stack)
+                                                                      entity_neg_stack=entity_neg_stack,
+                                                                      time_stack=time_stack)
                         # 旧函数不再用
                         # product_params = _build_product_param(ppo_stack, deco_desc)
 
@@ -1138,7 +1191,18 @@ def exam_standard(origin_targets):
 
                         # 清空 items, ir, ppo_stack 和 entity_neg
                         decorations, deco_desc, ppo_stack = [], [], []
-                        entity_neg = None
+
+                        # [20, 21, 'symptom_obj', '椎体'],
+                        # [22, 23, 'exam_item', '形态'],
+                        # [24, 25, 'exam_result', '正常'],
+                        # [27, 28, 'entity_neg', '未见'],
+                        # [29, 32, 'symptom_desc', '骨质破坏'],
+                        # [34, 35, 'symptom_deco', '明显'],
+                        # [36, 39, 'symptom_desc', '骨质增生'],
+                        # [40, 40, 'vector_seg', '。'],
+                        # 样本4. 以上示例中，遇到"骨质破坏"时不清除entity_neg,因为瞎 main的"骨质增生"也需要拼接"未见".
+                        if x[i + 1][2] != "symptom_deco":
+                            entity_neg = []
 
             elif tag == "reversed_exam_item":
                 # step 1 把自己和 results 中的项拼接, 然后放入 reversed_ir 列表中 (不用考虑entity_neg)
