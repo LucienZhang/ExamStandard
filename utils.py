@@ -32,7 +32,7 @@ def split_target(origin_target):
     for i in range(len(origin_target)):
         if origin_target[i][2] == "vector_seg":
 
-            # 特殊情况, 当遇到 "左手腕" + "正位片" + vector_seg 时，这种seg不分割
+            # 特殊情况1 , 当遇到 "左手腕" + "正位片" + vector_seg 时，这种seg不分割
             # [6, 6, 'symptom_pos', '左'],
             # [7, 7, 'symptom_obj', '手'],
             # [9, 9, 'symptom_obj', '腕'],
@@ -46,13 +46,23 @@ def split_target(origin_target):
             # [40, 41, 'exam', '骨龄'],
             # [42, 47, 'exam_result', '约为6.5岁'],
             # [48, 48, 'vector_seg', '。'],
-            if i >= 2:
+
+            # 样本1 特殊情况2 遇到 "餐后扫查"时, 这种seg不分割
+            # [2, 2, 'vector_seg', '，'],
+            # [3, 6, 'exam', '餐后扫查'],
+            # [7, 7, 'vector_seg', '，'],
+
+            if i >= 1:
                 if origin_target[i-1][2] == "exam":
-                    if origin_target[i-2][2] == "symptom_obj":
+                    if i >= 2:
+                        if origin_target[i-2][2] == "symptom_obj" or origin_target[i-2][2] == "vector_seg":
+                            continue
+                    else:
                         continue
 
             # 其他情况正常分割
-            idx.append(i)
+            if i != 0:
+                idx.append(i)
 
     res = []
     for j in range(len(idx) - 1):
@@ -61,6 +71,7 @@ def split_target(origin_target):
         for m in k:
             if m[2] == "vector_seg":
                 k.pop(k.index(m))
+
     return res
 
 
