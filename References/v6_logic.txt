@@ -1,0 +1,124 @@
+第二部分 处理流程
+
+1. 获取初始json数据 "goldset_93.json"
+
+2. 调用 utils.load_data函数，获取初始标注的输入 targets:
+[0, 2, 'symptom_obj', '鼻咽顶'],
+[3, 4, 'object_part', '后壁'],
+[5, 7, 'object_part', '软组织'],
+[8, 8, 'exam_item', '影'],
+[9, 10, 'exam_result', '增厚'],
+[12, 15, 'exam_result', '向下突出'],
+[16, 16, 'vector_seg', '，'],
+[17, 18, 'symptom_deco', '局部'],
+[19, 20, 'symptom_obj', '气道'],
+[21, 23, 'symptom_desc', '变狭窄'],
+[24, 24, 'vector_seg', '。'],
+[25, 26, 'object_part', '邻近'],
+[27, 27, 'object_part', '诸'],
+[28, 28, 'symptom_obj', '骨'],
+[29, 30, 'entity_neg', '未见'],
+[31, 32, 'symptom_deco', '明显'],
+[33, 36, 'symptom_desc', '骨质异常'],
+[37, 37, 'vector_seg', '。']
+
+2 调用 utils.split_targets, 将以上一整块 targets, 分割成多个 seg, 存在 segments中:
+segments = [
+    [
+        [0, 2, 'symptom_obj', '鼻咽顶'],
+        [3, 4, 'object_part', '后壁'],
+        [5, 7, 'object_part', '软组织'],
+        [8, 8, 'exam_item', '影'],
+        [9, 10, 'exam_result', '增厚'],
+        [12, 15, 'exam_result', '向下突出']
+    ],
+    [
+        [17, 18, 'symptom_deco', '局部'],
+        [19, 20, 'symptom_obj', '气道'],
+        [21, 23, 'symptom_desc', '变狭窄']
+    ],
+    [
+        [25, 26, 'object_part', '邻近'],
+        [27, 27, 'object_part', '诸'],
+        [28, 28, 'symptom_obj', '骨'],
+        [29, 30, 'entity_neg', '未见'],
+        [31, 32, 'symptom_deco', '明显'],
+        [33, 36, 'symptom_desc', '骨质异常']
+    ]
+]
+
+3 在对segments 中的每一个 x 进行遍历前, 先初始化相关的变量.
+所需变量的列表，以及解释，可以参考 References/v6_params_explanation.txt
+
+4 对每一个 x 进行遍历 (v6.py中 for i in x: 处)
+
+5 在遍历 x 时, 处理主流程大概如下:
+a. 将不同类型的项，做了一个大概分类，大概为:
+<1> "pos/part/object"类型
+<2> "exam_item/ exam_result/ reversed_item/ reversed_result/ symptom_deco/ symptom_desc" 类型
+<3> "lesion/ lesion_desc" 类型
+<4> "exam" 类型
+<5> 其他类型, 如 "time", "entity_neg", "treatment", "medical_events" 等.
+
+b. 将不同类型的项, 根据不同的规则, 拼接，并且存储到其对应的的 stack 中 (ppo_stack, ir, exam_stack 等)
+<1> ppo 对应 ppos/ ppo_stack
+<2> exam_item/exam_result 对应 items/ir
+<3> reversed_exam_result/reversed_exam_item 对应 results/reversed_ir
+<4> symptom_deco/symptom_desc 对应 decorations/deco_desc
+<5> exam 对应 exam/exam_stack
+<6> lesion 对应 lesion/lesion_stack
+<7> lesion_desc 对应 lesion/ll_stack
+等等
+注意: 以上 stack中, 很多都是可以为空的(比如某个seg中没有lesion，某个seg中没有exam, 等等, 这个很常见).
+
+结果示例:
+ppo_stack = ["$symptom_pos&左侧$symptom_obj&肾", "$symptom_pos&左侧$symptom_obj&肝脏"]
+ir = ["$exam_item&大小$symptom_obj&正常", "$exam_item&形态$symptom_obj&正常"]
+exam_stack = ["$exam&CDFI"]
+lesion_stack = []
+ll_stack = []
+
+c. 将以上这些 stack, 通过 _build_sorted_product_params 函数进行排序.
+
+d. _build_sorted_product_params 返回的结果将作为 itertools.product函数的参数
+
+e. itertools.prodcut函数对参数中的项进行排列组合, 返回的结果为最终要存入res_x 中的结构化结果.
+
+注意：
+<1> 排序的依据是每项的索引, 例如:
+[89, 91, 'exam_result', '稍延迟'] 这一项的索引是 89.
+<2> ppos 的索引按照列表中最后一项的索引计算, 运行示例:
+[107, 108, 'symptom_obj', '膀胱'],
+[109, 112, 'symptom_desc', '充盈良好'],
+[114, 114, 'object_part', '壁'],
+[115, 115, 'entity_neg', '不'],
+[116, 117, 'symptom_desc', '光滑'],
+[118, 118, 'vector_seg', '。']
+
+step1 遇到 "膀胱" 时, ppos = [[107, 108, 'symptom_obj', '膀胱']], ppo_stack索引是107; ppo_stack = ["$symptom_obj&膀胱"]
+step2 遇到 "充盈良好" 时, [109, 112, 'symptom_desc', '充盈良好'] 的索引是 109. deco_desc = ["$symptom_desc&充盈良好"]
+step3 先后顺序就是 107<109, 膀胱先，充盈良好在后;
+step4 调用 _build_sorted_product_params, 传入 ppos, ppo_stack 等参数
+step4 函数结果 product_params = [["$symptom_obj&膀胱"], ["$symptom_desc&充盈良好"]]
+step5 调用 itertools.product(*args), 其中 args = product_params
+step6 拼出的结果就是 "$symptom_obj&膀胱$symptom_desc&充盈良好", 会存入 res_x 中
+
+step7 遇到 "壁", ppos = [[107, 108, 'symptom_obj', '膀胱'], [114, 114, 'object_part', '壁']], 索引114;
+step8 遇到 "不", 索引115; entity_neg_stack = ["$entity_neg&不"]
+step9 遇到 "光滑", [116, 117, 'symptom_desc', '光滑'] 索引是 116; deco_desc = ["$symptom_desc&光滑"]
+step10 调用 _build_sorted_product_params, 传入 ppos, ppo_stack, entity_neg_stack 等参数.
+step9 114 < 115 < 116, "壁" 先于 "不" 先于 "光滑"
+step10 函数结果 product_params = [["$symptom_obj&膀胱$object_part壁"],["$entity_neg&不"], ["$symptom_desc&光滑"]];
+step11 调用 itertools.product(*product_params)
+step12 结果 "$symptom_obj&膀胱$object_part&壁$entity_neg&不$symptom_desc&光滑", 存入 res_x 中
+END
+
+<3> 对于主体部分(obj/pos/part)的处理, 通过定义 ppos 和 ppo_stack 2个变量, 分别处理"放入、移除"和"排列、拼接"2个部分。
+ppos 用来处理在遇到一个 p/p/o时，是否放入、移除的操作；
+ppo_stack 是根据ppos, 以及ppos的具体情况，对pos, obj和part进行拼接、排列组合.
+
+这个处理方式主要考虑：
+一是目前可用;
+二是即便后续出现某个拼接出现问题，可以较快速的根据obj/pos/part的结构特点来定位问题，以及需要优化的代码位置;
+三是针对某种情况修改代码后，对其他情况影响可以降到最低;
+四是后续可以对其中某2个，或者某几个情况，尝试找出共同点，进行合并，最终迭代合并成一个尽量统一的情况.

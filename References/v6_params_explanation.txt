@@ -1,0 +1,124 @@
+第一部分 参数解释
+
+1 items
+a. 名称: many_exam_items 的简写
+b. 作用: 在遇到一个 exam_result 之前, 会把将要和下一个到来的 exam_result 拼接的所有 exam_item, 暂时存在这个 items 列表中;
+当真的遇到 exam_result 后, 将item里的每一项，与exam_result拼接, 放入 ir 中.
+c. 示例: items = [[159, 160, 'exam_item', '大小'], [162, 163, 'exam_item', '形态']]
+
+2 ir
+a. 名称: item_and_result 的简写
+b. 用途: 存储 items 和 当前 exam_result 拼接的结果
+c. 示例: 如果 items = [[159, 160, 'exam_item', '大小'], [162, 163, 'exam_item', '形态']],
+exam_result = [164, 165, 'exam_result', '正常'],
+那么:
+ir = ["$exam_item&大小$exam_result&正常", "$exam_item&形态$exam_result&正常"]
+
+3 results
+a. 名称: many_reversed_exam_results 的简写
+b. 作用: 和 items 相似
+c. 示例: result = [[122, 125, 'reversed_exam_result', '未见异常']]
+
+4. reversed_ir
+和 ir 相似
+
+5 decorations:
+a. 名称: many_symptom_decos 的简写
+b. 作用: 和 items, results 相同, 在 symptom_desc 来之前, 临时存储遇到的 symptom_deco
+c. 示例: decorations = [[33, 34, 'symptom_deco', '明显']]
+
+6 deco_desc
+a. 名称: symptom_deco and symptom_desc 的简写
+b. 作用: 遇到 symptom_desc时, 将 decorations 中每一项和当前 desc拼接, 将拼好的结果存入 deco_desc.
+c. 示例: 如果 decorations = [[33, 34, 'symptom_deco', '明显']], 当前 esymptom_desc = [35, 36, 'symptom_desc', '肿块'],
+那么:
+deco_desc = ["$symptom_deco&明显symptom_desc&肿块"]
+
+7 ppos
+a. 名称: many pos and part and object 的简写
+b. 作用: <1> 每当遇到一连串（可能只是1个，也可能几个） symptom_pos/object_part/symptom_object时, 则根据情况, 将其放入 ppos 中;
+        <2> 一系列ppos全部放入完成后，会将ppos中的项，按照一定规则拼接，拼接后会放入 ppo_stack 中.
+c. 示例:
+<1> 若遇到以下seg
+[8, 9, 'symptom_obj', '肠气'],
+[10, 13, 'symptom_desc', '干扰明显'],
+[15, 16, 'exam_item', '图像'],
+[17, 20, 'exam_result', '质量欠佳'],
+[21, 21, 'vector_seg', '：']
+则 ppos = [[8, 9, 'symptom_obj', '肠气']]
+
+<2> 若遇到以下 seg:
+[24, 25, 'symptom_obj', '腹腔'],
+[26, 29, 'object_part', '可显示处'],
+[30, 32, 'entity_neg', '未探及'],
+[33, 34, 'symptom_deco', '明显'],
+[35, 36, 'symptom_desc', '肿块'],
+[38, 38, 'entity_neg', '无'],
+[39, 40, 'symptom_desc', '回声'],
+[41, 41, 'vector_seg', '。']
+则 ppos = [[24, 25, 'symptom_obj', '腹腔'], [26, 29, 'object_part', '可显示处']]
+
+8 ppo_stack
+a. 名称: 存储 pos/part/object 拼接好的结果的列表
+b. 根据 _check_ppo_situation 和 _build_ppo_stack_by_ppo_situation 函数，将ppos中结果处理到 ppo_stack 中
+c. 示例:
+<1> 若 ppos = [[24, 25, 'symptom_obj', '腹腔'], [26, 29, 'object_part', '可显示处']],
+那么:
+ppo_stack = ["$symptom_obj&腹腔$object_part可显示处"]
+
+<2> 若 ppos = [
+[4, 4, 'symptom_pos', '双'],
+[5, 6, 'symptom_obj', '肾区'],
+[8, 8, 'symptom_pos', '双'],
+[9, 11, 'symptom_obj', '输尿管'],
+[12, 13, 'object_part', '径路'],
+[15, 17, 'symptom_obj', '膀胱区']
+],
+那么:
+ppo_stack = [
+"$symptom_pos&双$symptom_obj&肾区",
+"$symptom_pos&双$symptom_obj&输尿管$object_part&径路",
+"$symptom_obj&膀胱区"
+]
+
+9 exam 和 exam_stack
+a. 名称: exam 存储 exam值; exam_stack 存储拼接好的值
+B. 作用: <1> exam 用来在 _build_sorted_product_params 函数中根据索引排序, 是函数中*args参数的其中一个;
+        <2> exam_stack 用来拼接最后放入 res_x 的结构化输出
+c. 示例: 若遇到 [26, 28, 'exam', 'IVP'], 则:
+exam = [[26, 28, 'exam', 'IVP']], 其中 26 作为排序用的索引
+exam_stack = ["$exam&IVP"]
+
+10 一共3组:
+<1> medical_events 和 medical_events_stack;
+<2> time 和 time_stack;
+<3> entity_neg 和 entity_neg_stack.
+以上3组, 都与 exam/ exam_stack 类似, 前者 (xx) 用来排序， 后者(xx_stack) 用来拼最后的结构化输出
+
+11 lesion, ll_stack 和 lesion_stack
+a. 名称: <1> lesion: 与标签里的 lesion 同名;
+        <2> lesion_stack: 单独放置 lesion值的stack;
+        <3> ll_stack: ll是 lesion_lesion_desc的简写, 用来放置 lesion 和 lesion_desc 拼一起的结果.
+b. 作用: <1> lesion: 遇到 lesion 时存储它的值, 且用来在 _build_sorted_product_params 函数中排序;
+        <2> lesion_stack: 拼接最后的结构化输出.
+        <3> ll_stack: 是遇到 lesion_desc 时, 将 lesion 和自己拼一起, 放在 ll_stack 中用来拼接最终的结构化结果. 为了区别 lesion_stack.
+c. 示例: 若遇到 [17, 21, 'lesion', '异常信号影'], 则:
+lesion = [[17, 21, 'lesion', '异常信号影']]
+lesion_stack = ["$lesion&异常信号影"]
+若又遇到 lesion_desc = [24, 27, 'lesion_desc', '额叶明显'],那么:
+ll_stack = ["$lesion&异常信号影$额叶明显&"]
+
+d. 注意: 由于lesion有2个作用, 1是遇到lesion_desc要拼一起，左结构化输出； 2是与当前seg中所有的item/desc等拼一起输出. 所以针对两种用途，建立了2个stack变量lesion_stack 和 ll_stack， 以示区别.
+
+12 x
+a. 名称: 指每一个被vector_seg分割开的子segment. 使用x作为名称， 是比较短, 便于书写, 因为主函数中要多次调用.
+a. 作用: <1> 每次拿到一整段标注好的输入时, 会先调用 split_targets，根据 vector_seg 标签对其进行切割;
+        <2> 将一整个segments 切割成多个小seg，每一个seg，就是一个x，之后在x中遍历每一项，进行拼接、组合等具体操作;
+
+13 res_x
+a. 名称: 因为一个子seg叫做x，故使用 res_x, 作为存储一个 x 中所有结构化结果的变量名.
+b. 作用: 在一个 x 中, 将每一个结构化输出存储在res_x 中， 一个x结束后，将res_x中所有结果放入总的结果变量 output_list 中.
+
+14 output_list
+a. 名称: 总的 output 的一个列表
+b. 作用: 将每一个 res_x 中的结果汇总到一起，存储到总的 output_list 中.
