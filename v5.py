@@ -640,6 +640,7 @@ def exam_standard(origin_targets):
         res_x = []
 
         # lesion: 病灶; lesion_desc_list: 存储病灶描述的列表
+        lesion = None
         lesion_desc_list = []
         for j in x:
             if j[2] == "lesion":
