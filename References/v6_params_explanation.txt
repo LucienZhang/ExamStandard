@@ -96,7 +96,7 @@ ppo_stack = [
 
 9 exam 和 exam_stack
 a. 名称: exam 存储 exam值; exam_stack 存储拼接好的值
-B. 作用: <1> exam 用来在 _build_sorted_product_params 函数中根据索引排序, 是函数中*args参数的其中一个;
+b. 作用: <1> exam 用来在 _build_sorted_product_params 函数中根据索引排序, 是函数中*args参数的其中一个;
         <2> exam_stack 用来拼接最后放入 res_x 的结构化输出
 c. 示例: 若遇到 [26, 28, 'exam', 'IVP'], 则:
 exam = [[26, 28, 'exam', 'IVP']], 其中 26 作为排序用的索引
@@ -107,7 +107,7 @@ exam_stack = ["$exam&IVP"]
 <1> medical_events 和 medical_events_stack;
 <2> time 和 time_stack;
 <3> entity_neg 和 entity_neg_stack.
-以上3组, 都与 exam/ exam_stack 类似, 前者 (xx) 用来排序， 后者(xx_stack) 用来拼最后的结构化输出
+以上3组, 都与 exam/ exam_stack 类似, 前者 (xx) 用来在调用 _build_sorted_product_params 函数时排序， 后者(xx_stack) 用来拼最后的结构化输出
 
 
 11 lesion, ll_stack 和 lesion_stack
@@ -163,8 +163,8 @@ x = [
 
 13 res_x
 a. 名称: 因为一个子seg叫做x，故使用 res_x, 作为存储一个 x 中所有结构化结果的变量名.
-b. 作用: 在一个 x 中, 将每一个结构化输出存储在res_x 中， 一个x结束后，将res_x中所有结果放入总的结果变量 output_list 中.
-c. 示例: 在以下x中:
+b. 作用: 在一个 x 中, 将每一个结构化输出存储在res_x 中， 一个x结束后，将res_x中所有结果, 合并到总的结果变量 output_list 中.
+c. 示例: 如果在以下x中:
 x = [
     [69, 69, 'symptom_pos', '左'],
     [70, 71, 'symptom_obj', '肾盂'],
@@ -172,7 +172,7 @@ x = [
     [74, 75, 'symptom_deco', '轻度'],
     [76, 77, 'symptom_desc', '扩张']
 ],
-res_x = [
+那么 res_x = [
     "$symptom_pos&左$symptom_obj&肾盂$symptom_deco&轻度$symptom_desc&扩张",
     "$symptom_pos&左$symptom_obj&肾盏$symptom_deco&轻度$symptom_desc&扩张"
 ]
@@ -180,7 +180,7 @@ res_x = [
 14 output_list
 a. 名称: 总的 output 的一个列表
 b. 作用: 将每一个 res_x 中的结果汇总到一起，存储到总的 output_list 中.
-c. 示例: 考虑以下origin_targets (包含2个x):
+c. 示例: 考虑以下origin_targets (该例子中一共包含2个子seg, 也就是2个x):
 origin_targets = [
     [61, 61, 'symptom_pos', '左'],
     [62, 62, 'symptom_obj', '肾'],
