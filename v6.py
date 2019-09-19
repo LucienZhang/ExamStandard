@@ -34,10 +34,10 @@ $symptom_pos&双侧$symptom_obj&额$exam&DWI$lesion&异常信号影$reversed_exa
 
 def _build_sorted_product_params(*args, **stacks):
     """
-    1 该函数用来将传入的所有stack, 按照索引，进行先后顺序的排序
-    2 返回的结果, 将作为 __build_product_param 函数的参数
-    :param args: items, exam_stack, ppos 等
-    :return: 根据索引排好先后顺序的列表
+    该函数用来将传入的所有stack, 按照索引，进行先后顺序的排序
+    :param args: items, exam_stack, ppos 等, 用来排序
+            stacks: ppo_stack, exam_stack, ir, deco_desc等, 根据排序结果, 将stacks按顺序构造最终返回的响应.
+    :return: 根据索引排好先后顺序的列表, 直接作为 itertools.product 函数的参数
     """
 
     stack_map = {
@@ -107,25 +107,33 @@ def _build_sorted_product_params(*args, **stacks):
     return sorted_product_params
 
 
-# 该函数用来构造 itertools.product 所需的参数 (注: 参数中不可存在空列表)
-# 正确参数举例: [["$obj&肾", "%obj&肝脏"], ["$item&大小$exam_result&正常"]]
-# 错误参数举例: [["$obj&肾", "%obj&肝脏"], [], [], ["$item&大小$exam_result&正常"]]
-def _build_product_param(*stacks):
-    product_param = []
-    for stackOne in stacks:
-        if len(stackOne) > 0:
-            product_param.append(stackOne)
-    return product_param
+# # 该函数暂时不用
+# def _build_product_param(*stacks):
+#     """
+#     该函数用来构造 itertools.product 所需的参数 (注: 参数中不可存在空列表)
+#     正确参数举例: [["$obj&肾", "%obj&肝脏"], ["$item&大小$exam_result&正常"]]
+#     错误参数举例: [["$obj&肾", "%obj&肝脏"], [], [], ["$item&大小$exam_result&正常"]]
+#     """
+#     product_param = []
+#     for stackOne in stacks:
+#         if len(stackOne) > 0:
+#             product_param.append(stackOne)
+#     return product_param
 
 
-# 输入: [53, 55, 'symptom_obj', '副鼻窦']
-# 输出: "$symptom_obj&副鼻窦"
 def _connect_tag_and_value(t):
+    """
+    输入: [53, 55, 'symptom_obj', '副鼻窦']
+    输出: "$symptom_obj&副鼻窦"
+    """
     return "$" + t[2] + "&" + t[3]
 
 
-# 列表排序用
 def _get_sort_key(elem):
+    """
+    用途: some_list.sort(key=_get_sort_key)
+    参数: elem: 列表中的元素
+    """
     # [[55, 57, 'exam', 'DWI']] -> 55
     if isinstance(elem, list):
         return elem[-1][0]
@@ -135,9 +143,9 @@ def _get_sort_key(elem):
         return int(list(elem.keys())[0])
 
 
-# 该函数用来判断2个obj之间关系
 def _check_obj_relationship(self_obj, other_obj, object_relation_map=obj_rel_map):
     """
+    该函数用来判断2个obj之间关系
     :param self_obj: 自己 = "心脏"
     :param other_obj: 其他 = "肝脏"
     :return: 1并列, 2从属
@@ -202,7 +210,7 @@ def _check_ppo_situation(ppo_list):
 
 def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
     """
-    具体情况
+    该函数基于_check_ppo_situation 返回的结果, 来分析具体情况
     sit: 在函数 _check_ppo_situation 中返回的情况
     :param ppos: [[96, 97, 'symptom_obj', '中脑'], [105, 106, 'symptom_obj', '小脑']]
     :return:
@@ -737,7 +745,7 @@ def exam_standard(origin_targets):
         results, reversed_ir = [], []
         ir, deco_desc = [], []
 
-        # 用来其他标签
+        # 其他
         treatment_stack = []
         medical_events, medical_events_stack = [], []
         treatment, treatment_stack = [], []  # 样本12中出现过 [54, 57, 'treatment', '静脉注射']
