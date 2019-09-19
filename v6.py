@@ -1,8 +1,11 @@
 from itertools import product
 import sys
+# import json
 from utils import split_target
 from data.obj_rel_map import obj_rel_map
 from data.v6_test_data import samples
+# from load_data_script import data
+
 
 """
 # v6相对与v5的更新:
@@ -1429,6 +1432,16 @@ def exam_standard(origin_targets):
 if __name__ == "__main__":
     sample = samples[int(sys.argv[1])]
     ans = exam_standard(sample)
-    # print("\n")
-    # for r in ans:
-    #     print(r)
+
+    # 以下为存储 json
+    # final_res = []
+    # for d in range(len(samples)):
+    #     tmp = {}
+    #     tmp["id"] = d
+    #     tmp["text"] = data[d]["input"]["text"]
+    #     tmp["res"] = exam_standard(samples[d])
+    #     final_res.append(tmp)
+    #
+    # with open("/users/hk/dev/ExamStandard/data/v6_output_0920.json", "a") as f:
+    #     fobj = json.dumps(final_res, ensure_ascii=False, indent=4)
+    #     f.write(fobj)

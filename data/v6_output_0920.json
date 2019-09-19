@@ -1,0 +1,1971 @@
+[
+    {
+        "id": 0,
+        "text": "检查技术：静脉注射99mTc-EHAID 2mCi后立即连续采集30分钟影像，随后分于1、4.5、6、24小时采集静态影像。肝胆显像示：静脉注射示踪剂 1分钟即见心、肝、双肾隐约显影，5分钟见膀胱隐约显影。1小时时肝影和双肾仍较浓，轮廓较清晰，随时间延长至24小时肝影未见明显减淡。心影始终较浓。血及软组织本底增高。检查时间内始终未见肝内外胆管、胆囊及肠道显影。",
+        "res": [
+            "$treatment&静脉注射$treatment_desc&99mTc-EHAID 2mCi",
+            "$symptom_obj&肝胆$exam&显像$medical_events&静脉注射示踪剂 1分钟$symptom_obj&心$reversed_exam_result&隐约$reversed_exam_item&显影",
+            "$symptom_obj&肝胆$exam&显像$medical_events&静脉注射示踪剂 1分钟$symptom_obj&肝$reversed_exam_result&隐约$reversed_exam_item&显影",
+            "$symptom_obj&肝胆$exam&显像$medical_events&静脉注射示踪剂 1分钟$symptom_pos&双$symptom_obj&肾$reversed_exam_result&隐约$reversed_exam_item&显影",
+            "$time&5分钟$symptom_obj&膀胱$reversed_exam_result&隐约$reversed_exam_item&显影",
+            "$time&1小时$symptom_pos&双$symptom_obj&肾$exam_item&影$exam_result&较浓",
+            "$time&1小时$symptom_pos&双$symptom_obj&肾$exam_item&轮廓$exam_result&较清晰",
+            "$time&随时间延长至24小时$symptom_obj&肝$exam_item&影$exam_result&未见明显减淡",
+            "$symptom_obj&心$exam_item&影$exam_result&始终较浓",
+            "$symptom_obj&血$exam_item&本底$exam_result&增高",
+            "$symptom_obj&软组织$exam_item&本底$exam_result&增高",
+            "$reversed_exam_result&未见$reversed_exam_item&显影$symptom_obj&肝内外胆管",
+            "$reversed_exam_result&未见$reversed_exam_item&显影$symptom_obj&胆囊",
+            "$reversed_exam_result&未见$reversed_exam_item&显影$symptom_obj&肠道"
+        ]
+    },
+    {
+        "id": 1,
+        "text": "急诊，餐后扫查，肠气干扰明显，图像质量欠佳：目前腹腔可显示处未探及明显肿块及无回声。肝脏大小、形态正常，表面平整光滑，实质回声尚均匀。门静脉主干内径正常，血流通畅，为入肝血流。肝静脉走行未见异常，管腔内未见明显异常回声，血流通畅。CDFI：肝内未见异常血流信号。胆囊大小、形态正常，壁毛糙。肝内胆管及胆总管不扩张。脾脏大小、形态正常，实质回声均匀，脾静脉未见扩张。胰腺显示不清。",
+        "res": [
+            "$exam&餐后扫查$symptom_obj&肠气$symptom_desc&干扰明显",
+            "$exam&餐后扫查$symptom_obj&肠气$exam_item&图像$exam_result&质量欠佳",
+            "$time&目前$symptom_obj&腹腔$object_part&可显示处$entity_neg&未探及$symptom_deco&明显$symptom_desc&肿块",
+            "$time&目前$symptom_obj&腹腔$object_part&可显示处$entity_neg&无$symptom_desc&回声",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&表面$exam_result&平整光滑",
+            "$symptom_obj&肝脏$object_part&实质$exam_item&回声$exam_result&尚均匀",
+            "$symptom_obj&门静脉$object_part&主干$exam_item&内径$exam_result&正常",
+            "$symptom_obj&门静脉$object_part&主干$exam_item&血流$exam_result&通畅",
+            "$symptom_obj&门静脉$object_part&主干$exam_item&血流$exam_result&为入肝血流",
+            "$symptom_obj&肝静脉$exam_item&走行$exam_result&未见异常",
+            "$symptom_obj&肝静脉$object_part&管腔内$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&肝静脉$object_part&管腔内$exam_item&血流$exam_result&通畅",
+            "$exam&CDFI$symptom_obj&肝内$reversed_exam_result&未见异常$reversed_exam_item&血流信号",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&毛糙",
+            "$symptom_obj&肝内胆管$entity_neg&不$symptom_desc&扩张",
+            "$symptom_obj&胆总管$entity_neg&不$symptom_desc&扩张",
+            "$symptom_obj&脾脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾脏$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&脾静脉$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&胰腺$exam_item&显示$exam_result&不清"
+        ]
+    },
+    {
+        "id": 2,
+        "text": "双侧额颞顶枕叶脑沟内可见许多条索状异常信号影，以额叶明显，T1WI略低信号，T2WI水抑制稍高信号，边界清楚，DWI未见明显高信号，无明显占位效应，脑组织未见异常信号影，灰白质分界清楚，双侧脑室对称，中线结构无明显偏移，脑沟裂无明显增宽，脑回结构尚清楚。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&额$lesion_desc&许多条$lesion&异常信号影",
+            "$symptom_pos&双侧$symptom_obj&颞$lesion_desc&许多条$lesion&异常信号影",
+            "$symptom_pos&双侧$symptom_obj&顶枕叶$lesion_desc&许多条$lesion&异常信号影",
+            "$symptom_pos&双侧$symptom_obj&脑沟内$lesion_desc&许多条$lesion&异常信号影",
+            "$symptom_pos&双侧$symptom_obj&额$lesion_desc&索状$lesion&异常信号影",
+            "$symptom_pos&双侧$symptom_obj&颞$lesion_desc&索状$lesion&异常信号影",
+            "$symptom_pos&双侧$symptom_obj&顶枕叶$lesion_desc&索状$lesion&异常信号影",
+            "$symptom_pos&双侧$symptom_obj&脑沟内$lesion_desc&索状$lesion&异常信号影",
+            "$symptom_pos&双侧$symptom_obj&额$lesion&异常信号影$lesion_desc&额叶明显",
+            "$symptom_pos&双侧$symptom_obj&颞$lesion&异常信号影$lesion_desc&额叶明显",
+            "$symptom_pos&双侧$symptom_obj&顶枕叶$lesion&异常信号影$lesion_desc&额叶明显",
+            "$symptom_pos&双侧$symptom_obj&脑沟内$lesion&异常信号影$lesion_desc&额叶明显",
+            "$symptom_pos&双侧$symptom_obj&额$lesion&异常信号影$exam_item&T1WI$exam_result&略低信号",
+            "$symptom_pos&双侧$symptom_obj&颞$lesion&异常信号影$exam_item&T1WI$exam_result&略低信号",
+            "$symptom_pos&双侧$symptom_obj&顶枕叶$lesion&异常信号影$exam_item&T1WI$exam_result&略低信号",
+            "$symptom_pos&双侧$symptom_obj&脑沟内$lesion&异常信号影$exam_item&T1WI$exam_result&略低信号",
+            "$symptom_pos&双侧$symptom_obj&额$lesion&异常信号影$exam_item&T2WI水抑制$exam_result&稍高信号",
+            "$symptom_pos&双侧$symptom_obj&额$lesion&异常信号影$exam_item&T2WI水抑制$exam_result&边界清楚",
+            "$symptom_pos&双侧$symptom_obj&颞$lesion&异常信号影$exam_item&T2WI水抑制$exam_result&稍高信号",
+            "$symptom_pos&双侧$symptom_obj&颞$lesion&异常信号影$exam_item&T2WI水抑制$exam_result&边界清楚",
+            "$symptom_pos&双侧$symptom_obj&顶枕叶$lesion&异常信号影$exam_item&T2WI水抑制$exam_result&稍高信号",
+            "$symptom_pos&双侧$symptom_obj&顶枕叶$lesion&异常信号影$exam_item&T2WI水抑制$exam_result&边界清楚",
+            "$symptom_pos&双侧$symptom_obj&脑沟内$lesion&异常信号影$exam_item&T2WI水抑制$exam_result&稍高信号",
+            "$symptom_pos&双侧$symptom_obj&脑沟内$lesion&异常信号影$exam_item&T2WI水抑制$exam_result&边界清楚",
+            "$symptom_pos&双侧$symptom_obj&额$lesion&异常信号影$exam&DWI$reversed_exam_result&未见明显$reversed_exam_item&高信号",
+            "$symptom_pos&双侧$symptom_obj&颞$lesion&异常信号影$exam&DWI$reversed_exam_result&未见明显$reversed_exam_item&高信号",
+            "$symptom_pos&双侧$symptom_obj&顶枕叶$lesion&异常信号影$exam&DWI$reversed_exam_result&未见明显$reversed_exam_item&高信号",
+            "$symptom_pos&双侧$symptom_obj&脑沟内$lesion&异常信号影$exam&DWI$reversed_exam_result&未见明显$reversed_exam_item&高信号",
+            "$symptom_pos&双侧$symptom_obj&额$exam&DWI$lesion&异常信号影$lesion_desc&无明显占位效应",
+            "$symptom_pos&双侧$symptom_obj&颞$exam&DWI$lesion&异常信号影$lesion_desc&无明显占位效应",
+            "$symptom_pos&双侧$symptom_obj&顶枕叶$exam&DWI$lesion&异常信号影$lesion_desc&无明显占位效应",
+            "$symptom_pos&双侧$symptom_obj&脑沟内$exam&DWI$lesion&异常信号影$lesion_desc&无明显占位效应",
+            "$symptom_obj&脑组织$reversed_exam_result&未见异常$reversed_exam_item&信号影",
+            "$symptom_obj&灰白质$exam_item&分界$exam_result&清楚",
+            "$symptom_pos&双侧$symptom_obj&脑室$symptom_desc&对称",
+            "$symptom_obj&中线结构$entity_neg&无$symptom_deco&明显$symptom_desc&偏移",
+            "$symptom_obj&脑沟裂$entity_neg&无$symptom_deco&明显$symptom_desc&增宽",
+            "$symptom_obj&脑回结构$symptom_deco&尚$symptom_desc&清楚"
+        ]
+    },
+    {
+        "id": 3,
+        "text": "骨盆诸构成骨骨皮质连续，骨质信号均匀，骨髓内未见明显异常信号影，双侧髋关节形态正常，关节面光整，关节间隙不窄，关节腔未见明显积液。左侧臀大肌较右侧缩小，信号不均，边缘模糊，且外侧缘皮下脂肪间隙内可见片状长T1长T2异常信号影，大小约0.6×1.3×2.4cm，边界清楚，局部皮肤略凹陷。",
+        "res": [
+            "$symptom_obj&骨盆诸构成骨$object_part&骨皮质$symptom_desc&连续",
+            "$symptom_obj&骨盆诸构成骨$object_part&骨质$exam_item&信号$exam_result&均匀",
+            "$symptom_obj&骨盆诸构成骨$object_part&骨髓内$reversed_exam_result&未见明显异常$reversed_exam_item&信号影",
+            "$symptom_pos&双侧$symptom_obj&髋关节$exam_item&形态$exam_result&正常",
+            "$symptom_obj&关节$exam_item&面$exam_result&光整",
+            "$symptom_obj&关节$exam_item&间隙$exam_result&不窄",
+            "$symptom_obj&关节$object_part&关节腔$entity_neg&未见$symptom_deco&明显$symptom_desc&积液",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_deco&较右侧$symptom_desc&缩小",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$exam_item&信号$exam_result&不均",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$exam_item&边缘$exam_result&模糊",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&皮下脂肪$lesion_desc&片状长$lesion&T1长T2异常信号影",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&间隙内$lesion_desc&片状长$lesion&T1长T2异常信号影",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&皮下脂肪$lesion&T1长T2异常信号影$exam_item&大小$exam_result&约0.6×1.3×2.4cm",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&间隙内$lesion&T1长T2异常信号影$exam_item&大小$exam_result&约0.6×1.3×2.4cm",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&皮下脂肪$lesion&T1长T2异常信号影$exam_item&边界$exam_result&清楚",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&间隙内$lesion&T1长T2异常信号影$exam_item&边界$exam_result&清楚",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$object_part&皮肤$symptom_deco&局部$symptom_desc&凹陷",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$object_part&皮肤$symptom_deco&略$symptom_desc&凹陷"
+        ]
+    },
+    {
+        "id": 4,
+        "text": "腰椎排列序列正常，胸、腰椎S状侧弯改变，椎体形态正常，未见骨质破坏及明显骨质增生。骶髂关节间隙未见狭窄。椎旁软组织未见异常，韧带未见钙化。L4、5、S1棘突可疑线状透亮影。",
+        "res": [
+            "$symptom_obj&腰椎$exam_item&排列序列$exam_result&正常",
+            "$symptom_obj&胸、腰椎$symptom_desc&S状侧弯改变",
+            "$symptom_obj&椎体$exam_item&形态$exam_result&正常",
+            "$symptom_obj&椎体$entity_neg&未见$symptom_desc&骨质破坏",
+            "$symptom_obj&椎体$entity_neg&未见$symptom_deco&明显$symptom_desc&骨质增生",
+            "$symptom_obj&骶髂关节$exam_item&间隙$exam_result&未见狭窄",
+            "$symptom_obj&椎旁$object_part&软组织$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&椎旁$object_part&韧带$entity_neg&未见$symptom_desc&钙化",
+            "$symptom_pos&L4、5、S1$symptom_obj&棘突$symptom_deco&可疑$symptom_desc&透亮影",
+            "$symptom_pos&L4、5、S1$symptom_obj&棘突$symptom_deco&线状$symptom_desc&透亮影"
+        ]
+    },
+    {
+        "id": 5,
+        "text": "右膝关节形态正常，骨皮质连续，未见明显骨折线，骨密度均匀，膝关节在位。",
+        "res": [
+            "$symptom_pos&右$symptom_obj&膝关节$exam_item&形态$exam_result&正常",
+            "$symptom_pos&右$symptom_obj&膝关节$exam_item&骨皮质$exam_result&连续",
+            "$symptom_pos&右$symptom_obj&膝关节$reversed_exam_result&未见明显$reversed_exam_item&骨折线",
+            "$symptom_pos&右$symptom_obj&膝关节$exam_item&骨密度$exam_result&均匀",
+            "$symptom_obj&膝关节$symptom_desc&在位"
+        ]
+    },
+    {
+        "id": 6,
+        "text": "腹腔内可见数个低回声区，其中一个大小约1.36cm×0.39cm，边界清晰，形态规则，CDFI：其内可见血流信号。",
+        "res": [
+            "$symptom_obj&腹腔内$lesion_desc&数个$lesion&低回声区",
+            "$symptom_obj&腹腔内$lesion&低回声区$exam_item&大小$exam_result&约1.36cm×0.39cm",
+            "$symptom_obj&腹腔内$lesion&低回声区$exam_item&边界$exam_result&清晰",
+            "$symptom_obj&腹腔内$lesion&低回声区$exam_item&形态$exam_result&规则",
+            "$symptom_obj&腹腔内$lesion&低回声区$exam&CDFI$reversed_exam_result&其内可见$reversed_exam_item&血流信号"
+        ]
+    },
+    {
+        "id": 7,
+        "text": "腹部立位平片示：腹部肠管内少量积气，以左上腹部结肠内稍多，未见明显扩张及液气平面，双膈下未见游离气体。",
+        "res": [
+            "$symptom_obj&腹部$exam&立位平片$symptom_obj&腹部肠管内$symptom_deco&少量$symptom_desc&积气",
+            "$symptom_obj&腹部$exam&立位平片$symptom_obj&腹部肠管内$entity_neg&未见$symptom_deco&明显$symptom_desc&扩张",
+            "$symptom_obj&腹部$exam&立位平片$symptom_obj&腹部肠管内$entity_neg&未见$symptom_deco&明显$symptom_desc&液气平面",
+            "$symptom_pos&双$symptom_obj&膈下$entity_neg&未见$symptom_desc&游离气体"
+        ]
+    },
+    {
+        "id": 8,
+        "text": "　　根据标准左手、腕的正位片，与女孩骨龄标准对比，尺骨茎突开始形成，该女孩的实际骨龄约为6.5岁。",
+        "res": [
+            "$exam&正位片$symptom_obj&尺骨$object_part&茎突$symptom_deco&开始$symptom_desc&形成",
+            "$exam&骨龄$exam_result&约为6.5岁"
+        ]
+    },
+    {
+        "id": 9,
+        "text": "双侧大脑半球密度未见明显异常，灰白质对比良好。基底节及内外囊未见病变。脑室系统大小、形态及密度未见明显异常，脑池、脑沟无增宽。中线结构无偏移。小脑未见异常，左顶骨局部凹陷。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&大脑半球$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_pos&双侧$symptom_obj&大脑半球$object_part&灰白质$exam_item&对比$exam_result&良好",
+            "$symptom_obj&基底节$entity_neg&未见$symptom_desc&病变",
+            "$symptom_obj&内外囊$entity_neg&未见$symptom_desc&病变",
+            "$symptom_obj&脑室系统$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&脑室系统$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&脑室系统$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_obj&脑池$entity_neg&无$symptom_desc&增宽",
+            "$symptom_obj&脑沟$entity_neg&无$symptom_desc&增宽",
+            "$symptom_obj&中线结构$entity_neg&无$symptom_desc&偏移",
+            "$symptom_obj&小脑$entity_neg&未见$symptom_desc&异常",
+            "$symptom_pos&左$symptom_obj&顶骨$symptom_deco&局部$symptom_desc&凹陷"
+        ]
+    },
+    {
+        "id": 10,
+        "text": "双侧乳腺区皮下可见稍低回声区，范围分别约28×4mm（右侧）、33×5mm（左侧）。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&乳腺区$object_part&皮下$lesion_desc&可见$lesion&低回声区",
+            "$symptom_pos&双侧$symptom_obj&乳腺区$object_part&皮下$lesion_desc&稍$lesion&低回声区",
+            "$symptom_pos&双侧$symptom_obj&乳腺区$object_part&皮下$lesion&低回声区$exam_item&范围$exam_result&约28×4mm（右侧）",
+            "$symptom_pos&双侧$symptom_obj&乳腺区$object_part&皮下$lesion&低回声区$exam_item&范围$exam_result&33×5mm（左侧）"
+        ]
+    },
+    {
+        "id": 11,
+        "text": "双侧上颌窦、筛窦、蝶窦见粘膜轻度增厚，窦壁骨质未见明显异常，双侧鼻甲未见明显肥厚，鼻中隔居中，鼻咽顶后部软组织增厚。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&上颌窦$object_part&粘膜$symptom_deco&轻度$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&粘膜$symptom_deco&轻度$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&蝶窦$object_part&粘膜$symptom_deco&轻度$symptom_desc&增厚",
+            "$symptom_obj&窦壁$object_part&骨质$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_pos&双侧$symptom_obj&鼻甲$entity_neg&未见$symptom_deco&明显$symptom_desc&肥厚",
+            "$symptom_obj&鼻中隔$symptom_desc&居中",
+            "$symptom_obj&鼻咽顶$symptom_pos&后部$object_part&软组织$symptom_desc&增厚"
+        ]
+    },
+    {
+        "id": 12,
+        "text": "肾血流灌注像示：腹主动脉清晰显影后6″双肾显影欠清晰，轮廓不清。肾血流灌注曲线示双肾峰值较低平。肾功能像示：静脉注射后1分钟左肾显影，位置正常，体积增大，放射性分布不均匀，中央区可见放射性稀疏缺损区，随时间延长肾皮质影略减淡，其中央稀疏缺损区渐有放射性浓聚，至20分钟时肾盏可见放射性滞留；右肾显影欠清晰，轮廓较清晰，放射性分布尚均匀，随时间延长肾影渐增浓，至20分钟时肾盂见显像剂滞留。至20分钟时膀胱区仅有少量放射性聚集；肾图示：双侧肾图呈持续上升型。肾小球滤过率（GFR）：总GFR 27.69ml/min，左肾GFR 18.27ml/min，右肾GFR　9.42ml/min（幼儿GFR值仅供参考）。",
+        "res": [
+            "$symptom_obj&肾$exam&血流灌注像$symptom_obj&腹主动脉$reversed_exam_result&清晰$reversed_exam_item&显影",
+            "$symptom_obj&肾$exam&血流灌注像$time&后6″$symptom_pos&双$symptom_obj&肾$exam_item&显影$exam_result&欠清晰",
+            "$symptom_obj&肾$exam&血流灌注像$time&后6″$symptom_pos&双$symptom_obj&肾$exam_item&轮廓$exam_result&不清",
+            "$symptom_obj&肾$exam&血流灌注曲线$symptom_pos&双$symptom_obj&肾$exam_item&峰值$exam_result&较低平",
+            "$symptom_obj&肾$exam&功能像$treatment&静脉注射$time&后1分钟$symptom_pos&左$symptom_obj&肾$exam_item&显影$exam_result&正常",
+            "$symptom_obj&肾$exam&功能像$treatment&静脉注射$time&后1分钟$symptom_pos&左$symptom_obj&肾$exam_item&位置$exam_result&正常",
+            "$symptom_obj&肾$exam&功能像$treatment&静脉注射$time&后1分钟$symptom_pos&左$symptom_obj&肾$exam_item&体积$exam_result&增大",
+            "$symptom_obj&肾$exam&功能像$treatment&静脉注射$time&后1分钟$symptom_pos&左$symptom_obj&肾$exam_item&放射性分布$exam_result&不均匀",
+            "$symptom_obj&肾$exam&功能像$treatment&静脉注射$time&后1分钟$symptom_pos&左$symptom_obj&肾$exam_item&放射性分布$exam_result&中央区可见放射性稀疏缺损区",
+            "$symptom_obj&肾$object_part&皮质$exam_item&影$exam_result&略减淡",
+            "$symptom_obj&肾$object_part&皮质$exam_item&影$exam_result&中央稀疏缺损区渐有放射性浓聚",
+            "$time&至20分钟时$symptom_obj&肾盏$symptom_desc&放射性滞留",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&显影$exam_result&欠清晰",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&轮廓$exam_result&较清晰",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&放射性分布$exam_result&尚均匀",
+            "$symptom_obj&肾$exam_item&影$exam_result&渐增浓",
+            "$time&至20分钟时$symptom_obj&肾盂$symptom_desc&显像剂滞留",
+            "$time&至20分钟时$symptom_obj&膀胱区$symptom_deco&仅有$symptom_desc&放射性聚集",
+            "$time&至20分钟时$symptom_obj&膀胱区$symptom_deco&少量$symptom_desc&放射性聚集",
+            "$symptom_pos&双侧$symptom_obj&肾$exam&图$exam_result&持续上升型",
+            "$exam&GFR$exam_item&总GFR$exam_result&27.69ml/min",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&GFR$exam_result&18.27ml/min",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&GFR$exam_result&9.42ml/min"
+        ]
+    },
+    {
+        "id": 13,
+        "text": "肝：肝脏大小、形态正常，包膜光滑，实质回声均匀，管道走行清晰，未见异常团块回声。CDFI：肝内未见异常血流信号。胆：胆囊大小18×8mm，形态正常，壁光滑，囊内透声好。胆总管内径1.0mm。胰：腹腔大量气体干扰，胰腺显示不清。脾：脾脏无肿大，实质回声均匀，脾厚13mm。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝脏$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝脏$object_part&管道$exam_item&走行$exam_result&清晰",
+            "$symptom_obj&肝脏$object_part&管道$reversed_exam_result&未见异常$reversed_exam_item&团块回声",
+            "$exam&CDFI$symptom_obj&肝内$reversed_exam_result&未见异常$reversed_exam_item&血流信号",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&18×8mm",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&囊内$exam_item&透声$exam_result&好",
+            "$symptom_obj&胆总管$exam_item&内径$exam_result&1.0mm",
+            "$symptom_obj&腹腔$symptom_deco&大量$symptom_desc&气体干扰",
+            "$symptom_obj&胰腺$exam_item&显示$exam_result&不清",
+            "$symptom_obj&脾脏$entity_neg&无$symptom_desc&肿大",
+            "$symptom_obj&脾脏$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&脾$exam_item&厚$exam_result&13mm"
+        ]
+    },
+    {
+        "id": 14,
+        "text": "检查技术：静脉注射99mTc-EHAID 2mCi后立即连续采集30分钟影像，随后分于2、6、23小时采集静态影像。肝胆显像示：静脉注射示踪剂 1分钟即见心、肝、双肾隐约显影，5分钟见膀胱隐约显影。肝影较浓，轮廓较清晰，边缘不光整，随时间延长肝影未见明显减淡。心影始终较浓。血及软组织本底增高。检查时间内始终未见肝内外胆管、胆囊及肠道显影。",
+        "res": [
+            "$treatment&静脉注射$treatment_desc&99mTc-EHAID 2mCi",
+            "$symptom_obj&肝胆$exam&显像$medical_events&静脉注射示踪剂 1分钟$symptom_obj&心$reversed_exam_result&隐约$reversed_exam_item&显影",
+            "$symptom_obj&肝胆$exam&显像$medical_events&静脉注射示踪剂 1分钟$symptom_obj&肝$reversed_exam_result&隐约$reversed_exam_item&显影",
+            "$symptom_obj&肝胆$exam&显像$medical_events&静脉注射示踪剂 1分钟$symptom_pos&双$symptom_obj&肾$reversed_exam_result&隐约$reversed_exam_item&显影",
+            "$time&5分钟$symptom_obj&膀胱$reversed_exam_result&隐约$reversed_exam_item&显影",
+            "$symptom_obj&肝$exam_item&影$exam_result&较浓",
+            "$symptom_obj&肝$exam_item&轮廓$exam_result&较清晰",
+            "$symptom_obj&肝$exam_item&边缘$exam_result&不光整",
+            "$symptom_obj&肝$exam_item&影$exam_result&未见明显减淡",
+            "$symptom_obj&心$exam_item&影$exam_result&始终较浓",
+            "$symptom_obj&血$exam_item&本底$exam_result&增高",
+            "$symptom_obj&软组织$exam_item&本底$exam_result&增高",
+            "$reversed_exam_result&检查时间内始终未见$reversed_exam_item&显影$symptom_obj&肝内外胆管",
+            "$reversed_exam_result&检查时间内始终未见$reversed_exam_item&显影$symptom_obj&胆囊",
+            "$reversed_exam_result&检查时间内始终未见$reversed_exam_item&显影$symptom_obj&肠道"
+        ]
+    },
+    {
+        "id": 15,
+        "text": "头颅形态正常，颅骨内外板光整连续，骨密度均匀，颅缝不宽，蝶鞍形态正常，未见骨质破坏；枕骨隆突周围软组织局限性瘤性突起。",
+        "res": [
+            "$symptom_obj&头颅$exam_item&形态$exam_result&正常",
+            "$symptom_obj&颅骨$object_part&内外板$symptom_desc&光整连续",
+            "$symptom_obj&颅骨$object_part&内外板$exam_item&骨密度$exam_result&均匀",
+            "$symptom_obj&颅骨$object_part&内外板$exam_item&颅缝$exam_result&不宽",
+            "$symptom_obj&颅骨$object_part&蝶鞍$exam_item&形态$exam_result&正常",
+            "$symptom_obj&颅骨$object_part&蝶鞍$entity_neg&未见$symptom_desc&骨质破坏",
+            "$symptom_obj&枕骨$object_part&隆突$symptom_pos&周围$object_part&软组织$symptom_deco&局限性$symptom_desc&瘤性突起"
+        ]
+    },
+    {
+        "id": 16,
+        "text": "男生殖器：左侧睾丸大小：前后径8mm，长径15mm，横径9mm；右侧睾丸大小：前后径7mm，长径16mm，横径9mm。双侧睾丸形态规则，大小正常，回声均匀，未见占位。双侧阴囊鞘膜均可见液性暗区，前后径分别约22mm(左侧)、20mm(右侧).CDFI：睾丸内可见血流信号，分布均匀。",
+        "res": [
+            "$symptom_pos&左侧$symptom_obj&睾丸$exam_item&前后径$exam_result&8mm",
+            "$symptom_pos&左侧$symptom_obj&睾丸$exam_item&长径$exam_result&15mm",
+            "$symptom_pos&左侧$symptom_obj&睾丸$exam_item&横径$exam_result&9mm",
+            "$symptom_pos&右侧$symptom_obj&睾丸$exam_item&前后径$exam_result&7mm",
+            "$symptom_pos&右侧$symptom_obj&睾丸$exam_item&长径$exam_result&16mm",
+            "$symptom_pos&右侧$symptom_obj&睾丸$exam_item&横径$exam_result&9mm",
+            "$symptom_pos&双侧$symptom_obj&睾丸$exam_item&形态$exam_result&规则",
+            "$symptom_pos&双侧$symptom_obj&睾丸$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双侧$symptom_obj&睾丸$exam_item&回声$exam_result&均匀",
+            "$symptom_pos&双侧$symptom_obj&睾丸$exam_item&回声$exam_result&未见占位",
+            "$symptom_pos&双侧$symptom_obj&阴囊鞘膜$lesion&液性暗区$exam_item&前后径$exam_result&约22mm(左侧)",
+            "$symptom_pos&双侧$symptom_obj&阴囊鞘膜$lesion&液性暗区$exam_item&前后径$exam_result&20mm(右侧)",
+            "$exam&CDFI$symptom_obj&睾丸内$exam_item&血流信号$exam_result&分布均匀"
+        ]
+    },
+    {
+        "id": 17,
+        "text": "腹部立位平片示：双横膈下未见游离气体影，结肠脾曲积气，余所示肠管未见明显积气扩张及液气平面，结肠有部分粪便影。",
+        "res": [
+            "$symptom_obj&腹部$exam&立位平片$symptom_pos&双$symptom_obj&横膈下$entity_neg&未见$symptom_desc&游离气体影",
+            "$symptom_obj&结肠脾曲$symptom_desc&积气",
+            "$object_part&余$symptom_obj&肠管$entity_neg&未见$symptom_deco&明显$symptom_desc&积气扩张",
+            "$object_part&余$symptom_obj&肠管$entity_neg&未见$symptom_deco&明显$symptom_desc&液气平面",
+            "$symptom_obj&结肠$symptom_deco&部分$symptom_desc&粪便影"
+        ]
+    },
+    {
+        "id": 18,
+        "text": "肝脏形态大小正常，包膜光滑，肝实质回声均匀，肝内管道结构显示清晰，血管走向分布正常。CDFI未见明显异常血流。胆囊显示不清。胆总管未见扩张。脾形态大小正常，包膜光滑，实质回声均，未见明显异常回声。CDFI未见明显异常血流。胰腺形态大小正常，回声均匀，其内未见明显异常回声。双肾大小形态正常，包膜光滑，皮质回声均，锥体分布正常，集合系统未见明显分离。双肾内未见明显异常声像。CDFI检查双肾彩色血流分布正常，频谱未见明显异常。扫查时右上腹腔可见大小约3.4cm×3.0cm不均质回声包块，界清，形态规则，呈同心圆征，长度范围约4.6cm。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&管道$exam_item&结构$exam_result&显示清晰",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走向$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam_item&分布$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胆囊$exam_item&显示$exam_result&不清",
+            "$symptom_obj&胆总管$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&脾$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&脾$object_part&实质$exam_item&回声$exam_result&均",
+            "$symptom_obj&脾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&脾$object_part&实质$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&胰腺$reversed_exam_result&其内未见明显异常$reversed_exam_item&回声",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_pos&双$symptom_obj&肾$object_part&皮质$exam_item&回声$exam_result&均",
+            "$symptom_pos&双$symptom_obj&肾$object_part&锥体$exam_item&分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$entity_neg&未见$symptom_deco&明显$symptom_desc&分离",
+            "$symptom_pos&双$symptom_obj&肾内$reversed_exam_result&未见明显异常$reversed_exam_item&声像",
+            "$exam&CDFI$symptom_pos&双$symptom_obj&肾$exam_item&彩色血流分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam&频谱$exam_result&未见明显异常",
+            "$symptom_pos&右$symptom_obj&上腹腔$exam_item&大小$exam_result&约3.4cm×3.0cm",
+            "$symptom_pos&右$symptom_obj&上腹腔$lesion_desc&不均质$lesion&回声包块",
+            "$symptom_pos&右$symptom_obj&上腹腔$lesion&回声包块$exam_item&界$exam_result&清",
+            "$symptom_pos&右$symptom_obj&上腹腔$lesion&回声包块$exam_item&形态$exam_result&规则",
+            "$symptom_pos&右$symptom_obj&上腹腔$lesion&回声包块$exam_item&形态$exam_result&呈同心圆征",
+            "$symptom_pos&右$symptom_obj&上腹腔$lesion&回声包块$exam_item&长度范围$exam_result&约4.6cm"
+        ]
+    },
+    {
+        "id": 19,
+        "text": "急诊彩超：肝脏形态大小正常，包膜光滑，肝实质回声均匀，肝内管道结构显示清晰，血管走向分布正常。CDFI未见明显异常血流。胆囊形态大小正常，壁薄光滑，其内未见明显异常声像。胆总管未见扩张。脾形态大小正常，包膜光滑，实质回声均，未见明显异常回声。CDFI未见明显异常血流。胰腺形态大小正常，回声均匀，其内未见明显异常回声。双肾大小形态正常，包膜光滑，皮质回声均，锥体分布正常，集合系统未见明显分离。双肾内未见明显异常声像。CDFI检查双肾彩色血流分布正常，频谱未见明显异常。腹腔扫查，未见明显肿大淋巴结。",
+        "res": [
+            "$exam&急诊彩超$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$exam&急诊彩超$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$exam&急诊彩超$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&管道$exam_item&结构$exam_result&显示清晰",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走向$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam_item&分布$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&薄",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&壁$reversed_exam_result&其内未见明显异常$reversed_exam_item&声像",
+            "$symptom_obj&胆总管$entity_neg&未$symptom_desc&扩张",
+            "$symptom_obj&脾$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&脾$object_part&实质$exam_item&回声$exam_result&均",
+            "$symptom_obj&脾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&脾$object_part&实质$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&胰腺$reversed_exam_result&其内未见明显异常$reversed_exam_item&回声",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_pos&双$symptom_obj&肾$object_part&皮质$exam_item&回声$exam_result&均",
+            "$symptom_pos&双$symptom_obj&肾$object_part&锥体分布$symptom_desc&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$entity_neg&未见$symptom_deco&明显$symptom_desc&分离",
+            "$symptom_pos&双$symptom_obj&肾内$reversed_exam_result&未见明显异常$reversed_exam_item&声像",
+            "$exam&CDFI$symptom_pos&双$symptom_obj&肾$exam_item&彩色血流分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam&频谱$exam_result&未见明显异常",
+            "$symptom_obj&腹腔$exam&扫查$entity_neg&未见$symptom_deco&明显$symptom_desc&肿大淋巴结"
+        ]
+    },
+    {
+        "id": 20,
+        "text": "【检查所见】：胸廓对称，纵膈、气管居中。双肺纹理增粗、紊乱、模糊。双肺门影无增大。双膈面光整，双肋膈角锐利。心影形态、大小未见异常。双侧肋骨走形自然，骨皮质连续，骨小梁清晰。",
+        "res": [
+            "$symptom_obj&胸廓$symptom_desc&对称",
+            "$symptom_obj&纵膈$symptom_desc&居中",
+            "$symptom_obj&气管$symptom_desc&居中",
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&增粗",
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&紊乱",
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&模糊",
+            "$symptom_pos&双$symptom_obj&肺门$exam_item&影$exam_result&无增大",
+            "$symptom_pos&双$symptom_obj&膈面$symptom_desc&光整",
+            "$symptom_pos&双$symptom_obj&肋膈角$symptom_desc&锐利",
+            "$symptom_obj&心影$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&心影$exam_item&大小$exam_result&未见异常",
+            "$symptom_pos&双侧$symptom_obj&肋骨$exam_item&走形$exam_result&自然",
+            "$symptom_pos&双侧$symptom_obj&肋骨$object_part&骨皮质$symptom_desc&连续",
+            "$symptom_pos&双侧$symptom_obj&肋骨$object_part&骨小梁$symptom_desc&清晰"
+        ]
+    },
+    {
+        "id": 21,
+        "text": "腹腔内肠系膜间可见数个大小不等的低回声区，其中一个大小约9×21mm，边界清晰，形态尚规则，CDFI：其内可见血流信号。右肾大小94×34mm，实质厚12mm，左肾大小99×38mm，实质厚13mm，双肾大小形态正常，实质与集合系统分界清晰，未见明显异常回声团块。双侧输尿管未见明显扩张。",
+        "res": [
+            "$symptom_obj&腹腔内$object_part&肠系膜间$lesion_desc&数个$lesion&低回声区",
+            "$symptom_obj&腹腔内$object_part&肠系膜间$lesion_desc&大小不等$lesion&低回声区",
+            "$symptom_obj&腹腔内$object_part&肠系膜间$lesion&低回声区$exam_item&大小$exam_result&约9×21mm",
+            "$symptom_obj&腹腔内$object_part&肠系膜间$lesion&低回声区$exam_item&边界$exam_result&清晰",
+            "$symptom_obj&腹腔内$object_part&肠系膜间$lesion&低回声区$exam_item&形态$exam_result&尚规则",
+            "$symptom_obj&腹腔内$object_part&肠系膜间$lesion&低回声区$exam&CDFI$reversed_exam_result&其内可见$reversed_exam_item&血流信号",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&大小$exam_result&94×34mm",
+            "$symptom_pos&右$symptom_obj&肾$object_part&实质$exam_item&厚$exam_result&12mm",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&大小$exam_result&99×38mm",
+            "$symptom_pos&左$symptom_obj&肾$object_part&实质$exam_item&厚$exam_result&13mm",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&实质$exam_item&分界$exam_result&清晰",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$exam_item&分界$exam_result&清晰",
+            "$symptom_pos&双$symptom_obj&肾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声团块",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$reversed_exam_result&未见明显异常$reversed_exam_item&回声团块",
+            "$symptom_pos&双侧$symptom_obj&输尿管$entity_neg&未见$symptom_deco&明显$symptom_desc&扩张"
+        ]
+    },
+    {
+        "id": 22,
+        "text": "胸廓两侧大致对称。右肺中、下叶见斑片状稍高密度影，边界不清，气管及1－3级支气管通畅，纵隔、双肺门未见肿大淋巴结。胸膜腔、心包腔未见积液征象。胸壁软组织未见异常密度影。",
+        "res": [
+            "$symptom_obj&胸廓$symptom_pos&两侧$symptom_deco&大致$symptom_desc&对称",
+            "$symptom_obj&右肺中$lesion_desc&斑片状$lesion&高密度影",
+            "$symptom_obj&下叶$lesion_desc&斑片状$lesion&高密度影",
+            "$symptom_obj&右肺中$lesion_desc&稍$lesion&高密度影",
+            "$symptom_obj&下叶$lesion_desc&稍$lesion&高密度影",
+            "$symptom_obj&右肺中$lesion&高密度影$exam_item&边界$exam_result&不清",
+            "$symptom_obj&下叶$lesion&高密度影$exam_item&边界$exam_result&不清",
+            "$symptom_obj&气管$object_part&1－3级$symptom_obj&支气管$symptom_desc&通畅",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&肿大淋巴结",
+            "$symptom_obj&双肺门$entity_neg&未见$symptom_desc&肿大淋巴结",
+            "$symptom_obj&胸膜腔$entity_neg&未见$symptom_desc&积液征象",
+            "$symptom_obj&心包腔$entity_neg&未见$symptom_desc&积液征象",
+            "$symptom_obj&胸壁$object_part&软组织$entity_neg&未见$symptom_desc&异常密度",
+            "$symptom_obj&胸壁$object_part&软组织$entity_neg&未见$symptom_desc&影"
+        ]
+    },
+    {
+        "id": 23,
+        "text": "肝脏形态大小正常，包膜光滑，肝实质回声均匀，肝内管道结构显示清晰，血管走向分布正常。CDFI未见明显异常血流。胆囊形态大小正常，壁薄光滑，其内未见明显异常声像。胆总管未见扩张。脾形态大小正常，包膜光滑，实质回声均，未见明显异常回声。CDFI未见明显异常血流。胰腺形态大小正常，回声均匀，其内未见明显异常回声。双肾大小形态正常，包膜光滑，皮质回声均，锥体分布正常，集合系统未见明显分离。双肾内未见明显异常声像。CDFI检查双肾彩色血流分布正常，频谱未见明显异常。腹腔内探及多个低回声结节，界清，形态规则，测其一大小约1.6cm×0.8cm，CDFI：可见少许血流信号。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&管道$exam_item&结构$exam_result&显示清晰",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走向$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam_item&分布$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&薄",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&壁$reversed_exam_result&其内未见明显异常$reversed_exam_item&声像",
+            "$symptom_obj&胆总管$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&脾$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾$exam_item&大小$exam_result&正常",
+            "$object_part&包膜$symptom_desc&光滑",
+            "$object_part&包膜$object_part&实质$exam_item&回声$exam_result&均",
+            "$object_part&包膜$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$object_part&包膜$object_part&实质$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&回声$exam_result&均匀",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_pos&双$symptom_obj&肾$object_part&皮质$exam_item&回声$exam_result&均",
+            "$symptom_pos&双$symptom_obj&肾$object_part&锥体$exam_item&分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$entity_neg&未见$symptom_deco&明显$symptom_desc&分离",
+            "$symptom_pos&双$symptom_obj&肾内$reversed_exam_result&未见明显异常$reversed_exam_item&声像",
+            "$exam&CDFI$symptom_pos&双$symptom_obj&肾$exam_item&彩色血流分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam&频谱$exam_result&未见明显异常",
+            "$symptom_obj&腹腔内$lesion_desc&多个$lesion&低回声结节",
+            "$symptom_obj&腹腔内$lesion&低回声结节$exam_item&界$exam_result&清",
+            "$symptom_obj&腹腔内$lesion&低回声结节$exam_item&形态$exam_result&规则",
+            "$symptom_obj&腹腔内$lesion&低回声结节$exam_item&大小$exam_result&约1.6cm×0.8cm",
+            "$symptom_obj&腹腔内$lesion&低回声结节$exam&CDFI$reversed_exam_result&少许$reversed_exam_item&血流信号"
+        ]
+    },
+    {
+        "id": 24,
+        "text": "RVOT:(mm)20AOV:(mm)21LAS:(mm)19RVD:(mm)14LVIDd:(mm)34LVIDS:(mm)21IVSD:(mm)6LVPWd:(mm)5MPA:(mm)15EF:(%)70FS:(%)40E/A>1心脏各房室内径正常，室间隔及左室后壁厚度正常，室壁运动协调，房室间隔连续，未见明显过隔血流。主动脉根部内径正常，瓣叶启闭好，CDFI：未见明显异常血流。二尖瓣纤细柔软，瓣口取样E>A，瓣叶启闭好，CDFI：未见明显异常血流。三尖瓣及肺动脉瓣未见明显返流。",
+        "res": [
+            "$exam_item&RVOT:(mm)$exam_result&20",
+            "$exam_item&AOV:(mm)$exam_result&21",
+            "$exam_item&LAS:(mm)$exam_result&19",
+            "$exam_item&RVD:(mm)$exam_result&14",
+            "$exam_item&LVIDd:(mm)$exam_result&34",
+            "$exam_item&LVIDS:(mm)$exam_result&21",
+            "$exam_item&IVSD:(mm)$exam_result&6",
+            "$exam_item&LVPWd:(mm)$exam_result&5",
+            "$exam_item&MPA:(mm)$exam_result&15",
+            "$exam_item&EF:(%)$exam_result&70",
+            "$exam_item&FS:(%)$exam_result&40",
+            "$exam_item&E/A$exam_result&>1",
+            "$symptom_obj&心脏$object_part&各房室$exam_item&内径$exam_result&正常",
+            "$symptom_obj&室间隔$symptom_obj&左室$object_part&后壁$exam_item&厚度$exam_result&正常",
+            "$object_part&室壁$exam_item&运动$exam_result&协调",
+            "$object_part&房室$exam_item&间隔$exam_result&连续",
+            "$object_part&房室$reversed_exam_result&未见明显$reversed_exam_item&过隔血流",
+            "$symptom_obj&主动脉$object_part&根部$exam_item&内径$exam_result&正常",
+            "$object_part&瓣叶$exam_item&启闭$exam_result&好",
+            "$object_part&瓣叶$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&二尖瓣$symptom_desc&纤细",
+            "$symptom_obj&二尖瓣$symptom_desc&柔软",
+            "$symptom_obj&二尖瓣$object_part&瓣口$exam_item&取样$exam_result&E>A",
+            "$symptom_obj&二尖瓣$object_part&瓣叶$exam_item&启闭$exam_result&好",
+            "$symptom_obj&二尖瓣$object_part&瓣叶$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&三尖瓣$entity_neg&未见$symptom_deco&明显$symptom_desc&返流",
+            "$symptom_obj&肺动脉瓣$entity_neg&未见$symptom_deco&明显$symptom_desc&返流"
+        ]
+    },
+    {
+        "id": 25,
+        "text": "【检查所见】：双膈下未见游离气体，全腹肠腔胀气扩张，未见气液平面，腹部未见明显异常钙化影。",
+        "res": [
+            "$symptom_pos&双$symptom_obj&膈下$entity_neg&未见$symptom_desc&游离气体",
+            "$symptom_obj&全腹$object_part&肠腔$symptom_desc&胀气",
+            "$symptom_obj&全腹$object_part&肠腔$symptom_desc&扩张",
+            "$symptom_obj&全腹$object_part&肠腔$entity_neg&未见$symptom_desc&气液平面",
+            "$symptom_obj&腹部$reversed_exam_result&未见明显异常$reversed_exam_item&钙化影"
+        ]
+    },
+    {
+        "id": 26,
+        "text": "心脏各房室内径正常，室间隔及左室后壁厚度正常，室壁运动协调，房室间隔连续，未见明显过隔血流。主动脉根部内径正常，瓣叶启闭好，CDFI：未见明显异常血流。二尖瓣纤细柔软，瓣叶启闭好，CDFI：未见明显异常血流。三尖瓣及肺动脉瓣未见明显返流。左侧冠脉内径约1.3mm，右侧冠脉内径约1.2mm。",
+        "res": [
+            "$symptom_obj&心脏$object_part&各房室$exam_item&内径$exam_result&正常",
+            "$symptom_obj&室间隔$symptom_obj&左室$object_part&后壁$exam_item&厚度$exam_result&正常",
+            "$object_part&室壁$exam_item&运动$exam_result&协调",
+            "$object_part&房室$exam_item&间隔$exam_result&连续",
+            "$object_part&房室$reversed_exam_result&未见明显过隔$reversed_exam_item&血流",
+            "$symptom_obj&主动脉$object_part&根部$exam_item&内径$exam_result&正常",
+            "$symptom_obj&主动脉$object_part&瓣叶$exam_item&启闭$exam_result&好",
+            "$symptom_obj&主动脉$object_part&瓣叶$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&二尖瓣$symptom_desc&纤细",
+            "$symptom_obj&二尖瓣$symptom_desc&柔软",
+            "$symptom_obj&二尖瓣$object_part&瓣叶$exam_item&启闭$exam_result&好",
+            "$symptom_obj&二尖瓣$object_part&瓣叶$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&三尖瓣$entity_neg&未见$symptom_deco&明显$symptom_desc&返流",
+            "$symptom_obj&肺动脉瓣$entity_neg&未见$symptom_deco&明显$symptom_desc&返流",
+            "$symptom_pos&左侧$symptom_obj&冠脉$exam_item&内径$exam_result&约1.3mm",
+            "$symptom_pos&右侧$symptom_obj&冠脉$exam_item&内径$exam_result&约1.2mm"
+        ]
+    },
+    {
+        "id": 27,
+        "text": "肝脏形态、大小未见明显异常，边缘光滑，肝叶比例未见明显异常，未见明显异常密度影，门静脉未见明显异常。胆囊显影，未见明显异常密度影，壁薄，左肝管走行区可见结节状致密影，边缘欠清，余肝内外胆管未见明显扩张。胰腺形态饱满，未见明显异常密度影，胰管未见扩张；脾脏不大，密度均匀。腹膜后未见异常增大的淋巴结影。扫描所及左肺下叶胸膜下可见斑片状实变影，边缘模糊。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&肝脏$exam_item&边缘$exam_result&光滑",
+            "$symptom_obj&肝叶$exam_item&比例$exam_result&未见明显异常",
+            "$symptom_obj&肝叶$reversed_exam_result&未见明显异常$reversed_exam_item&密度影",
+            "$symptom_obj&门静脉$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&胆囊$reversed_exam_result&未见明显异常$reversed_exam_item&密度影",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&薄",
+            "$symptom_pos&左$symptom_obj&肝管$object_part&走行区$lesion_desc&可见$lesion&致密影",
+            "$symptom_pos&左$symptom_obj&肝管$object_part&走行区$lesion_desc&结节状$lesion&致密影",
+            "$symptom_pos&左$symptom_obj&肝管$object_part&走行区$lesion&致密影$exam_item&边缘$exam_result&欠清",
+            "$object_part&余$symptom_obj&肝内外胆管$entity_neg&未见$symptom_deco&明显$symptom_desc&扩张",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&饱满",
+            "$symptom_obj&胰腺$reversed_exam_result&未见明显异常$reversed_exam_item&密度影",
+            "$symptom_obj&胰管$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&脾脏$entity_neg&不$symptom_desc&大",
+            "$symptom_obj&脾脏$exam_item&密度$exam_result&均匀",
+            "$symptom_obj&腹膜后$entity_neg&未见$symptom_deco&异常增大$symptom_desc&淋巴结影",
+            "$symptom_obj&左肺$object_part&下叶$lesion_desc&可见$lesion&实变影",
+            "$symptom_obj&左肺$object_part&胸膜下$lesion_desc&可见$lesion&实变影",
+            "$symptom_obj&左肺$object_part&下叶$lesion_desc&斑片状$lesion&实变影",
+            "$symptom_obj&左肺$object_part&胸膜下$lesion_desc&斑片状$lesion&实变影",
+            "$symptom_obj&左肺$object_part&下叶$lesion&实变影$exam_item&边缘$exam_result&模糊",
+            "$symptom_obj&左肺$object_part&胸膜下$lesion&实变影$exam_item&边缘$exam_result&模糊"
+        ]
+    },
+    {
+        "id": 28,
+        "text": "双侧上颌窦粘膜稍增厚，双侧筛窦、蝶窦及额窦窦壁粘膜光整，未见明显增厚，窦腔内充气良好，未见明显异常密度影，副鼻窦骨质结构完整，未见骨质吸收及破坏。鼻咽腺样体肥大。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&上颌窦$object_part&粘膜$symptom_deco&稍$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&窦壁$symptom_desc&光整",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&粘膜$symptom_desc&光整",
+            "$symptom_pos&双侧$symptom_obj&蝶窦$object_part&窦壁$symptom_desc&光整",
+            "$symptom_pos&双侧$symptom_obj&蝶窦$object_part&粘膜$symptom_desc&光整",
+            "$symptom_pos&双侧$symptom_obj&额窦$object_part&窦壁$symptom_desc&光整",
+            "$symptom_pos&双侧$symptom_obj&额窦$object_part&粘膜$symptom_desc&光整",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&窦壁$entity_neg&未见$symptom_deco&明显$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&粘膜$entity_neg&未见$symptom_deco&明显$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&蝶窦$object_part&窦壁$entity_neg&未见$symptom_deco&明显$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&蝶窦$object_part&粘膜$entity_neg&未见$symptom_deco&明显$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&额窦$object_part&窦壁$entity_neg&未见$symptom_deco&明显$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&额窦$object_part&粘膜$entity_neg&未见$symptom_deco&明显$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&窦腔内$symptom_desc&充气良好",
+            "$symptom_pos&双侧$symptom_obj&蝶窦$object_part&窦腔内$symptom_desc&充气良好",
+            "$symptom_pos&双侧$symptom_obj&额窦$object_part&窦腔内$symptom_desc&充气良好",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&窦腔内$reversed_exam_result&未见明显异常$reversed_exam_item&密度影",
+            "$symptom_pos&双侧$symptom_obj&蝶窦$object_part&窦腔内$reversed_exam_result&未见明显异常$reversed_exam_item&密度影",
+            "$symptom_pos&双侧$symptom_obj&额窦$object_part&窦腔内$reversed_exam_result&未见明显异常$reversed_exam_item&密度影",
+            "$symptom_obj&副鼻窦$object_part&骨质$exam_item&结构$exam_result&完整",
+            "$entity_neg&未见$symptom_obj&副鼻窦$object_part&骨质$symptom_desc&吸收",
+            "$entity_neg&未见$symptom_obj&副鼻窦$object_part&骨质$symptom_desc&破坏",
+            "$symptom_obj&鼻咽$object_part&腺样体$symptom_desc&肥大"
+        ]
+    },
+    {
+        "id": 29,
+        "text": "双肺纹理增多、稍模糊，未见结节影或斑片影，肺门结构正常，气管及支气管走行正常，无狭窄或扩张，纵隔结构无偏移，内未见明显肿大淋巴结，胸腺影仍可见。双侧胸膜无增厚，胸腔未见积液。双侧腋下见多发肿大淋巴结。",
+        "res": [
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&稍模糊",
+            "$symptom_obj&双肺$entity_neg&未见$symptom_desc&结节影",
+            "$symptom_obj&双肺$entity_neg&未见$symptom_desc&斑片影",
+            "$symptom_obj&肺门$exam_item&结构$exam_result&正常",
+            "$symptom_obj&气管$exam_item&走行$exam_result&正常",
+            "$symptom_obj&气管$exam_item&走行$exam_result&无狭窄或扩张",
+            "$symptom_obj&支气管$exam_item&走行$exam_result&正常",
+            "$symptom_obj&支气管$exam_item&走行$exam_result&无狭窄或扩张",
+            "$symptom_obj&纵隔$exam_item&结构$exam_result&无偏移",
+            "$symptom_obj&纵隔$symptom_pos&内$entity_neg&未见$symptom_deco&明显$symptom_desc&肿大淋巴结",
+            "$symptom_obj&胸腺$exam_item&影$exam_result&可见",
+            "$symptom_pos&双侧$symptom_obj&胸膜$entity_neg&无$symptom_desc&增厚",
+            "$symptom_obj&胸腔$entity_neg&未见$symptom_desc&积液",
+            "$symptom_pos&双侧$symptom_obj&腋下$symptom_deco&多发$symptom_desc&肿大淋巴结"
+        ]
+    },
+    {
+        "id": 30,
+        "text": "左侧颈部可探及多个大小不等的低回声区，其中一个大小14×17mm，边界清晰，形态尚规则，CDFI：其内可见血流信号。左侧颌下腺大小约13×23mm，右侧颌下腺大小约9×20mm，左侧颌下腺内部回声增粗，分布欠均匀。",
+        "res": [
+            "$symptom_pos&左侧$symptom_obj&颈部$lesion_desc&多个$lesion&低回声区",
+            "$symptom_pos&左侧$symptom_obj&颈部$lesion_desc&大小不等$lesion&低回声区",
+            "$symptom_pos&左侧$symptom_obj&颈部$lesion&低回声区$exam_item&大小$exam_result&14×17mm",
+            "$symptom_pos&左侧$symptom_obj&颈部$lesion&低回声区$exam_item&边界$exam_result&清晰",
+            "$symptom_pos&左侧$symptom_obj&颈部$lesion&低回声区$exam_item&形态$exam_result&尚规则",
+            "$symptom_pos&左侧$symptom_obj&颈部$lesion&低回声区$exam&CDFI$reversed_exam_result&其内可见$reversed_exam_item&血流信号",
+            "$symptom_pos&左侧$symptom_obj&颌下腺$exam_item&大小$exam_result&约13×23mm",
+            "$symptom_pos&右侧$symptom_obj&颌下腺$exam_item&大小$exam_result&约9×20mm",
+            "$symptom_pos&左侧$symptom_obj&颌下腺$object_part&内部$exam_item&回声$exam_result&增粗",
+            "$symptom_pos&左侧$symptom_obj&颌下腺$object_part&内部$exam_item&分布$exam_result&欠均匀"
+        ]
+    },
+    {
+        "id": 31,
+        "text": "左髋关节各骨骨质未见异常，关节面光整，关节间隙正常。沈通氏线连续。关节囊及关节周围软组织未见异常。",
+        "res": [
+            "$symptom_pos&左$symptom_obj&髋关节$object_part&各骨$exam_item&骨质$exam_result&未见异常",
+            "$symptom_obj&关节$exam_item&面$exam_result&光整",
+            "$symptom_obj&关节$exam_item&间隙$exam_result&正常",
+            "$symptom_obj&关节$exam_item&沈通氏线$exam_result&连续",
+            "$symptom_obj&关节$object_part&囊$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&关节$symptom_pos&周围$object_part&软组织$entity_neg&未见$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 32,
+        "text": "侧位左肱骨远端背侧骨皮质欠光整，左肘关节余骨形态、大小、密度未见明显异常，肘关节在位，肘关节软组织肿胀。",
+        "res": [
+            "$symptom_obj&左肱骨$symptom_pos&远端背侧$object_part&骨皮质$entity_neg&欠$symptom_deco&侧位$symptom_desc&光整",
+            "$symptom_pos&左$symptom_obj&肘关节$object_part&余骨$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_pos&左$symptom_obj&肘关节$object_part&余骨$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_pos&左$symptom_obj&肘关节$object_part&余骨$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_obj&肘关节$symptom_desc&在位",
+            "$symptom_obj&肘关节$object_part&软组织$symptom_desc&肿胀"
+        ]
+    },
+    {
+        "id": 33,
+        "text": "鼻咽顶后壁软组织影增厚，向下突出，局部气道变狭窄。邻近诸骨未见明显骨质异常。",
+        "res": [
+            "$symptom_obj&鼻咽顶$object_part&后壁$exam_item&影$exam_result&增厚",
+            "$symptom_obj&鼻咽顶$object_part&后壁$exam_item&影$exam_result&向下突出",
+            "$symptom_obj&鼻咽顶$object_part&软组织$exam_item&影$exam_result&增厚",
+            "$symptom_obj&鼻咽顶$object_part&软组织$exam_item&影$exam_result&向下突出",
+            "$symptom_obj&气道$symptom_deco&局部$symptom_desc&变狭窄",
+            "$object_part&邻近$object_part&诸$symptom_obj&骨$entity_neg&未见$symptom_deco&明显$symptom_desc&骨质异常"
+        ]
+    },
+    {
+        "id": 34,
+        "text": "左侧腓骨下段骨折后，局部骨质缺损，软组织稍肿胀。左胫骨弯曲。关节在位，关节间隙正常。",
+        "res": [
+            "$symptom_pos&左侧$symptom_obj&腓骨$object_part&下段$symptom_desc&骨折",
+            "$time&后$symptom_pos&左侧$symptom_obj&腓骨$object_part&骨质$symptom_deco&局部$symptom_desc&缺损",
+            "$time&后$symptom_pos&左侧$symptom_obj&腓骨$object_part&软组织$symptom_deco&稍$symptom_desc&肿胀",
+            "$symptom_pos&左$symptom_obj&胫骨$symptom_desc&弯曲",
+            "$symptom_obj&关节$symptom_desc&在位",
+            "$symptom_obj&关节$exam_item&间隙$exam_result&正常"
+        ]
+    },
+    {
+        "id": 35,
+        "text": "双侧肾脏体积增大，双肾盂肾盏扩张，双侧输尿管明显迂曲扩张，右侧为著。左肾周外侧可见多房囊性病变，边界尚清，最大截面约3.7x1.7cm，增强后囊性成分未见明显强化，囊壁及分隔轻度强化，左肾实质略受压。膀胱壁弥漫不规则增厚。扫描层面内肝脏、胆囊、胰腺未见明显异常。脾大。腹盆腔未见明显积液。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&肾脏$exam_item&体积$exam_result&增大",
+            "$symptom_pos&双$symptom_obj&肾盂$symptom_desc&扩张",
+            "$symptom_pos&双$symptom_obj&肾盏$symptom_desc&扩张",
+            "$symptom_pos&双侧$symptom_obj&输尿管$symptom_deco&明显$symptom_desc&迂曲$symptom_deco&右侧为著",
+            "$symptom_pos&左$symptom_obj&肾$symptom_pos&周外侧$symptom_deco&多房$symptom_desc&囊性病变",
+            "$symptom_pos&左$symptom_obj&肾$symptom_pos&周外侧$exam_item&边界$exam_result&尚清",
+            "$symptom_pos&左$symptom_obj&肾$symptom_pos&周外侧$exam_item&最大截面$exam_result&约3.7x1.7cm",
+            "$exam&增强后$symptom_pos&左$symptom_obj&肾$symptom_pos&周外侧$object_part&囊性成分$entity_neg&未$symptom_deco&明显$symptom_desc&强化",
+            "$exam&增强后$symptom_pos&左$symptom_obj&肾$symptom_pos&周外侧$object_part&囊壁$symptom_deco&轻度$symptom_desc&强化",
+            "$exam&增强后$symptom_pos&左$symptom_obj&肾$symptom_pos&周外侧$object_part&分隔$symptom_deco&轻度$symptom_desc&强化",
+            "$symptom_pos&左$symptom_obj&肾$object_part&实质$symptom_deco&略$symptom_desc&受压",
+            "$symptom_obj&膀胱$object_part&壁$symptom_deco&弥漫不规则$symptom_desc&增厚",
+            "$exam&扫描层面内$symptom_obj&肝脏$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$exam&扫描层面内$symptom_obj&胆囊$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$exam&扫描层面内$symptom_obj&胰腺$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&脾$symptom_desc&大",
+            "$symptom_obj&腹盆腔$entity_neg&未见$symptom_deco&明显$symptom_desc&积液"
+        ]
+    },
+    {
+        "id": 36,
+        "text": "甲状腺显影清晰，位置正常，右叶体积增大，其内放射性分布不均匀，中下部可见一放射性分布稀疏缺损区，边界欠清晰。左叶腺体放射性分布尚均匀，未见明显异常局灶性放射性浓聚、稀疏或缺损区。",
+        "res": [
+            "$symptom_obj&甲状腺$exam_item&显影$exam_result&清晰",
+            "$symptom_obj&甲状腺$exam_item&位置$exam_result&正常",
+            "$symptom_pos&右$symptom_obj&叶$exam_item&体积$exam_result&增大",
+            "$symptom_pos&右$symptom_obj&叶$symptom_pos&内$exam_item&放射性分布$exam_result&不均匀",
+            "$symptom_pos&右$symptom_obj&叶$symptom_pos&中下部$lesion_desc&一$lesion&稀疏缺损区",
+            "$symptom_pos&右$symptom_obj&叶$symptom_pos&中下部$lesion_desc&放射性分布$lesion&稀疏缺损区",
+            "$symptom_pos&右$symptom_obj&叶$symptom_pos&中下部$lesion&稀疏缺损区$exam_item&边界$exam_result&欠清晰",
+            "$symptom_pos&左$symptom_obj&叶$object_part&腺体$exam_item&放射性分布$exam_result&尚均匀",
+            "$symptom_pos&左$symptom_obj&叶$object_part&腺体$exam_item&放射性分布$exam_result&未见明显异常局灶性放射性浓聚、稀疏或缺损区"
+        ]
+    },
+    {
+        "id": 37,
+        "text": "肝脏形态大小正常，包膜光滑，肝实质回声均匀，肝内管道结构显示清晰，血管走向分布正常。CDFI未见明显异常血流。胆囊形态大小正常，壁薄光滑，其内未见明显异常声像。胆总管未见扩张。脾形态大小正常，包膜光滑，实质回声均，未见明显异常回声。CDFI未见明显异常血流。胰腺形态大小正常，回声均匀，其内未见明显异常回声。双肾大小形态正常，包膜光滑，皮质回声均，锥体分布正常，集合系统未见明显分离。双肾内未见明显异常声像。CDFI检查双肾彩色血流分布正常，频谱未见明显异常。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&管道$exam_item&结构$exam_result&显示清晰",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走向$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam_item&分布$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&薄",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&壁$reversed_exam_result&其内未见明显异常$reversed_exam_item&声像",
+            "$symptom_obj&胆总管$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&脾$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&脾$object_part&实质$exam_item&回声$exam_result&均",
+            "$symptom_obj&脾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&脾$object_part&实质$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&胰腺$reversed_exam_result&其内未见明显异常$reversed_exam_item&回声",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_pos&双$symptom_obj&肾$object_part&皮质$exam_item&回声$exam_result&均",
+            "$symptom_pos&双$symptom_obj&肾$object_part&锥体$exam_item&分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$entity_neg&未见$symptom_deco&明显$symptom_desc&分离",
+            "$symptom_pos&双$symptom_obj&肾内$reversed_exam_result&未见明显异常$reversed_exam_item&声像",
+            "$exam&CDFI$symptom_pos&双$symptom_obj&肾$exam_item&彩色血流$exam_result&分布正常",
+            "$symptom_pos&双$symptom_obj&肾$exam&频谱$exam_result&未见明显异常"
+        ]
+    },
+    {
+        "id": 38,
+        "text": "两肺纹理增多、模糊影，肺门形态大小位置未见异常。纵隔及气管未见移位，纵隔未见增宽，心脏形态大小未见异常，两膈光整，两肋膈角锐利。胸廓骨骼及胸壁软组织未见异常。",
+        "res": [
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&模糊影",
+            "$symptom_obj&肺门$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&肺门$exam_item&大小$exam_result&未见异常",
+            "$symptom_obj&肺门$exam_item&位置$exam_result&未见异常",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&气管$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&增宽",
+            "$symptom_obj&心脏$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&心脏$exam_item&大小$exam_result&未见异常",
+            "$symptom_obj&两膈$symptom_desc&光整",
+            "$symptom_pos&两$symptom_obj&肋膈角$symptom_desc&锐利",
+            "$symptom_obj&胸廓$object_part&骨骼$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&胸壁$object_part&软组织$entity_neg&未见$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 39,
+        "text": "KUB：双肾区、双输尿管径路及膀胱区未见阳性结石影。IVP：右肾盂、肾盏显影清楚，肾小盏杯口锐利，右侧输尿管未见明显异常。左肾显影稍延迟，左肾盂肾盏轻度扩张，左侧输尿管较对侧显影稍延迟，尚通畅，未见明显扩张、积水。膀胱充盈良好，壁光滑。膀胱输尿管未见明显返流征象。",
+        "res": [
+            "$exam&KUB$symptom_pos&双$symptom_obj&肾区$reversed_exam_result&未见阳性$reversed_exam_item&结石影",
+            "$exam&KUB$symptom_pos&双$symptom_obj&输尿管$object_part&径路$reversed_exam_result&未见阳性$reversed_exam_item&结石影",
+            "$exam&KUB$symptom_obj&膀胱区$reversed_exam_result&未见阳性$reversed_exam_item&结石影",
+            "$exam&IVP$symptom_pos&右$symptom_obj&肾盂$exam_item&显影$exam_result&清楚",
+            "$exam&IVP$symptom_pos&右$symptom_obj&肾盏$exam_item&显影$exam_result&清楚",
+            "$exam&IVP$symptom_obj&肾小盏$object_part&杯口$symptom_desc&锐利",
+            "$symptom_pos&右侧$symptom_obj&输尿管$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&显影$exam_result&稍延迟",
+            "$symptom_pos&左$symptom_obj&肾盂$symptom_deco&轻度$symptom_desc&扩张",
+            "$symptom_pos&左$symptom_obj&肾盏$symptom_deco&轻度$symptom_desc&扩张",
+            "$symptom_pos&左侧$symptom_obj&输尿管$exam_item&显影$exam_result&稍延迟",
+            "$symptom_pos&左侧$symptom_obj&输尿管$exam_item&显影$exam_result&尚通畅",
+            "$symptom_pos&左侧$symptom_obj&输尿管$entity_neg&未见$symptom_deco&明显$symptom_desc&扩张",
+            "$symptom_pos&左侧$symptom_obj&输尿管$entity_neg&未见$symptom_deco&明显$symptom_desc&积水",
+            "$symptom_obj&膀胱$symptom_desc&充盈良好",
+            "$symptom_obj&膀胱$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&膀胱$symptom_obj&输尿管$entity_neg&未见$symptom_deco&明显$symptom_desc&返流征象"
+        ]
+    },
+    {
+        "id": 40,
+        "text": "肝脏大小形态正常，边缘角锐，实质回声均匀。肝内血管走行清晰，肝门静脉未见明显增宽。胆囊因已进食收缩无法显示。脾脏形态大小正常，包膜光整，内部回声均匀。因患儿哭闹及大量肠气干扰，图像显示不清，腹部超声探查未见明显异常声包块回声。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&边缘$exam_result&角锐",
+            "$symptom_obj&肝脏$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走行$exam_result&清晰",
+            "$symptom_obj&肝门静脉$entity_neg&未见$symptom_deco&明显$symptom_desc&增宽",
+            "$symptom_obj&脾脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾脏$object_part&包膜$symptom_desc&光整",
+            "$symptom_obj&脾脏$object_part&内部$exam_item&回声$exam_result&均匀",
+            "$exam_item&图像$exam_result&显示不清",
+            "$symptom_obj&腹部$exam&超声$reversed_exam_result&未见明显异常声$reversed_exam_item&包块回声"
+        ]
+    },
+    {
+        "id": 41,
+        "text": "食管：黏膜光滑柔软，血管纹理清晰，扩张度好，齿状线清晰。贲门：粘膜光滑，未见异常.胃底：粘膜红白相间，粘液湖清。胃体：粘膜光滑，色泽潮红，未见溃疡及出血。胃角：粘膜红白相间，粘膜光滑柔软，蠕动可。胃窦:粘膜见点状充血，未见出血及溃疡，蠕动尚可。幽门：呈圆形，开闭尚可。十二指肠：球部及降部未见异常。",
+        "res": [
+            "$symptom_obj&食管$object_part&黏膜$symptom_desc&光滑",
+            "$symptom_obj&食管$object_part&黏膜$symptom_desc&柔软",
+            "$symptom_obj&食管$object_part&血管$exam_item&纹理$exam_result&清晰",
+            "$symptom_obj&食管$object_part&血管$exam_item&扩张度$exam_result&好",
+            "$symptom_obj&食管$object_part&血管$exam_item&齿状线$exam_result&清晰",
+            "$symptom_obj&贲门$object_part&粘膜$symptom_desc&光滑",
+            "$symptom_obj&贲门$object_part&粘膜$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&胃底$object_part&粘膜$symptom_desc&红白相间",
+            "$symptom_obj&胃底$object_part&粘液$symptom_desc&湖清",
+            "$symptom_obj&胃体$object_part&粘膜$symptom_desc&光滑",
+            "$symptom_obj&胃体$object_part&粘膜$exam_item&色泽$exam_result&潮红",
+            "$symptom_obj&胃体$object_part&粘膜$entity_neg&未见$symptom_desc&溃疡",
+            "$symptom_obj&胃体$object_part&粘膜$entity_neg&未见$symptom_desc&出血",
+            "$symptom_obj&胃角$object_part&粘膜$symptom_desc&红白相间",
+            "$symptom_obj&胃角$object_part&粘膜$symptom_desc&光滑",
+            "$symptom_obj&胃角$object_part&粘膜$symptom_desc&柔软",
+            "$symptom_obj&胃角$object_part&粘膜$exam_item&蠕动$exam_result&可",
+            "$symptom_obj&胃窦$object_part&粘膜$symptom_deco&点状$symptom_desc&充血",
+            "$symptom_obj&胃窦$object_part&粘膜$entity_neg&未见$symptom_desc&出血",
+            "$symptom_obj&胃窦$object_part&粘膜$entity_neg&未见$symptom_desc&溃疡",
+            "$symptom_obj&胃窦$object_part&粘膜$exam_item&蠕动$exam_result&尚可",
+            "$symptom_obj&幽门$symptom_desc&圆形",
+            "$symptom_obj&幽门$exam_item&开闭$exam_result&尚可",
+            "$symptom_obj&十二指肠$object_part&球部$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&十二指肠$object_part&降部$entity_neg&未见$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 42,
+        "text": "【检查所见】：双膈下未见明显游离气体，中上腹肠管明显扩张胀气，其内可见多个大小不等液平面，余腹部未见明显异常钙化影。",
+        "res": [
+            "$symptom_pos&双$symptom_obj&膈下$entity_neg&未见$symptom_deco&明显$symptom_desc&游离气体",
+            "$symptom_obj&中上腹$object_part&肠管$symptom_deco&明显$symptom_desc&扩张",
+            "$symptom_obj&中上腹$object_part&肠管$symptom_deco&明显$symptom_desc&胀气",
+            "$symptom_obj&中上腹$object_part&肠管$symptom_deco&多个$symptom_desc&液平面",
+            "$symptom_obj&中上腹$object_part&肠管$symptom_deco&大小不等$symptom_desc&液平面",
+            "$object_part&余$symptom_obj&腹部$reversed_exam_result&未见明显异常$reversed_exam_item&钙化影"
+        ]
+    },
+    {
+        "id": 43,
+        "text": "左手腕关节现已见8个骨化中心发育，尺桡骨骨骺已出现，骨龄与实际年龄基本相符，请结合临床。",
+        "res": [
+            "$symptom_pos&左$symptom_obj&手腕关节$exam_result&8个",
+            "$symptom_obj&尺桡骨$exam_item&骨骺$exam_result&已出现",
+            "$exam_item&骨龄$exam_result&与实际年龄基本相符"
+        ]
+    },
+    {
+        "id": 44,
+        "text": "右侧髋关节在位，各骨形态正常，骨质密度均匀，骨皮质连续，未见明显异常透亮线影。",
+        "res": [
+            "$symptom_pos&右侧$symptom_obj&髋关节$symptom_desc&在位",
+            "$symptom_pos&右侧$symptom_obj&髋关节$object_part&各骨$exam_item&形态$exam_result&正常",
+            "$symptom_pos&右侧$symptom_obj&髋关节$object_part&各骨$exam_item&骨质密度$exam_result&均匀",
+            "$symptom_pos&右侧$symptom_obj&髋关节$object_part&各骨$exam_item&骨皮质$exam_result&连续",
+            "$symptom_pos&右侧$symptom_obj&髋关节$object_part&各骨$exam_item&骨皮质$exam_result&未见明显异常透亮"
+        ]
+    },
+    {
+        "id": 45,
+        "text": "肝脏形态、大小大致正常，肝实质密度不均匀，肝内见多发斑点状高致密影，肝内胆管未见明显扩张。脾脏形态、大小及密度未见明显异常。胆囊不大，胆囊壁不厚，胆囊内未见异常密度影。双肾位于脊柱两侧，形态大小如常，边缘规则无突起，实质密度尚均匀，其内未见异常密度影，双侧肾盂及输尿管上段未见明显扩张影。膀胱充盈尚可，膀胱前壁局部增厚，膀胱内可见均匀一致水样密度影，未见明显异常密度影。腹腔内肠管结构紊乱，阑尾稍增粗，管腔内见斑点状高致密影，右侧结肠旁沟及盆腔内见少量液性密度影，盲肠下方周围腹膜密度稍增高。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&大致正常",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&大致正常",
+            "$symptom_obj&肝$object_part&实质$exam_item&密度$exam_result&不均匀",
+            "$symptom_obj&肝内$lesion_desc&多发$lesion&高致密影",
+            "$symptom_obj&肝内$lesion_desc&斑点状$lesion&高致密影",
+            "$symptom_obj&肝内$object_part&胆管$entity_neg&未见$symptom_deco&明显$symptom_desc&扩张",
+            "$symptom_obj&脾脏$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&脾脏$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&脾脏$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_obj&胆囊$entity_neg&不$symptom_desc&大",
+            "$symptom_obj&胆囊$object_part&壁$entity_neg&不$symptom_desc&厚",
+            "$symptom_obj&胆囊内$reversed_exam_result&未见异常$reversed_exam_item&密度影",
+            "$symptom_pos&双$symptom_obj&肾$symptom_desc&位于脊柱两侧",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&如常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&如常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&边缘$exam_result&规则无突起",
+            "$symptom_pos&双$symptom_obj&肾$object_part&实质$exam_item&密度$exam_result&尚均匀",
+            "$symptom_pos&双$symptom_obj&肾$object_part&实质$reversed_exam_result&其内未见异常$reversed_exam_item&密度影",
+            "$symptom_pos&双侧$symptom_obj&肾盂$entity_neg&未见$symptom_deco&明显$symptom_desc&扩张",
+            "$symptom_obj&输尿管$symptom_pos&上段$entity_neg&未见$symptom_deco&明显$symptom_desc&扩张",
+            "$symptom_obj&膀胱$symptom_desc&充盈$symptom_deco&尚可",
+            "$symptom_obj&膀胱$object_part&前壁$symptom_deco&局部$symptom_desc&增厚",
+            "$symptom_obj&膀胱内$reversed_exam_result&可见均匀一致水样$reversed_exam_item&密度影",
+            "$symptom_obj&膀胱内$reversed_exam_result&未见明显异常$reversed_exam_item&密度影",
+            "$symptom_obj&腹腔内$object_part&肠管$exam_item&结构$exam_result&紊乱",
+            "$symptom_obj&阑尾$symptom_deco&稍$symptom_desc&增粗",
+            "$symptom_obj&管腔内$reversed_exam_result&见斑点状$reversed_exam_item&高致密影",
+            "$symptom_pos&右侧$symptom_obj&结肠旁沟$reversed_exam_result&少量液性$reversed_exam_item&密度影",
+            "$symptom_pos&右侧$symptom_obj&盆腔内$reversed_exam_result&少量液性$reversed_exam_item&密度影",
+            "$symptom_obj&盲肠$symptom_pos&下方$symptom_pos&周围$object_part&腹膜$exam_item&密度$exam_result&稍增高"
+        ]
+    },
+    {
+        "id": 46,
+        "text": "右肾大小约85×30mm，实质厚约9mm，左肾大小约100×39mm，实质厚约15mm，右肾较左肾偏小，双肾实质与集合系统分界清晰，未见明显异常回声团块。双侧输尿管未见明显扩张。",
+        "res": [
+            "$symptom_pos&右$symptom_obj&肾$exam_item&大小$exam_result&约85×30mm",
+            "$symptom_pos&右$symptom_obj&肾$object_part&实质$exam_item&厚$exam_result&约9mm",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&大小$exam_result&约100×39mm",
+            "$symptom_pos&左$symptom_obj&肾$object_part&实质$exam_item&厚$exam_result&约15mm",
+            "$symptom_pos&右$symptom_obj&肾$symptom_deco&较左肾偏$symptom_desc&小",
+            "$symptom_pos&双$symptom_obj&肾$object_part&实质$exam_item&分界$exam_result&清晰",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$exam_item&分界$exam_result&清晰",
+            "$symptom_pos&双$symptom_obj&肾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声团块",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$reversed_exam_result&未见明显异常$reversed_exam_item&回声团块",
+            "$symptom_pos&双侧$symptom_obj&输尿管$entity_neg&未见$symptom_deco&明显$symptom_desc&扩张"
+        ]
+    },
+    {
+        "id": 47,
+        "text": "肝：肝脏大小、形态正常，包膜光滑，实质回声均匀，管道走行清晰，未见异常团块回声。CDFI：肝内未见异常血流信号。胆：餐后胆囊，胆囊大小约42×15mm。胆总管内径4mm。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝脏$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝脏$object_part&管道$exam_item&走行$exam_result&清晰",
+            "$symptom_obj&肝脏$object_part&管道$reversed_exam_result&未见异常$reversed_exam_item&团块回声",
+            "$exam&CDFI$symptom_obj&肝内$reversed_exam_result&未见异常$reversed_exam_item&血流信号",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&约42×15mm",
+            "$symptom_obj&胆总管$exam_item&内径$exam_result&4mm"
+        ]
+    },
+    {
+        "id": 48,
+        "text": "右额叶见片状低密度影，余双侧大脑半球未见明显异常密度，灰白质对比良好。脑室系统形态、大小、密度未见明显异常，脑池、脑沟未见明显增宽、狭窄，中线结构居中，所示小脑、脑干未见明显异常，颅骨未见明显异常。",
+        "res": [
+            "$symptom_pos&右$symptom_obj&额叶$reversed_exam_result&片状$reversed_exam_item&低密度影",
+            "$object_part&余$symptom_pos&双侧$symptom_obj&大脑半球$reversed_exam_result&未见明显异常$reversed_exam_item&密度",
+            "$object_part&余$symptom_pos&双侧$symptom_obj&大脑半球$object_part&灰白质$exam_item&对比$exam_result&良好",
+            "$symptom_obj&脑室系统$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&脑室系统$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&脑室系统$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_obj&脑池$entity_neg&未见$symptom_deco&明显$symptom_desc&增宽",
+            "$symptom_obj&脑池$entity_neg&未见$symptom_deco&明显$symptom_desc&狭窄",
+            "$symptom_obj&脑沟$entity_neg&未见$symptom_deco&明显$symptom_desc&增宽",
+            "$symptom_obj&脑沟$entity_neg&未见$symptom_deco&明显$symptom_desc&狭窄",
+            "$symptom_obj&中线结构$symptom_desc&居中",
+            "$symptom_obj&小脑$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&脑干$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&颅骨$entity_neg&未见$symptom_deco&明显$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 49,
+        "text": "动片部分层面伪影较多，影响图像质量，大致观察：双侧大脑半球密度未见明显异常，灰白质对比良好。基底节及内外囊未见病变。脑室系统大小、形态及密度未见明显异常，脑池、脑沟无增宽。中线结构无偏移。小脑未见异常，颅骨无殊。左侧上颌窦粘膜轻度增厚。腺样体肥厚。",
+        "res": [
+            "$exam&动片部分$exam_item&层面伪影$exam_result&较多",
+            "$exam&动片部分$exam_item&层面伪影$exam_result&影响图像质量",
+            "$symptom_pos&双侧$symptom_obj&大脑半球$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_pos&双侧$symptom_obj&大脑半球$object_part&灰白质$exam_item&对比$exam_result&良好",
+            "$symptom_pos&双侧$symptom_obj&大脑半球$object_part&基底节$entity_neg&未见$symptom_desc&病变",
+            "$symptom_pos&双侧$symptom_obj&大脑半球$object_part&内外囊$entity_neg&未见$symptom_desc&病变",
+            "$symptom_obj&脑室系统$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&脑室系统$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&脑室系统$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_obj&脑池$entity_neg&无$symptom_desc&增宽",
+            "$symptom_obj&脑沟$entity_neg&无$symptom_desc&增宽",
+            "$symptom_obj&中线结构$symptom_deco&无$symptom_desc&偏移",
+            "$symptom_obj&小脑$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&颅骨$symptom_desc&无殊",
+            "$symptom_pos&左侧$symptom_obj&上颌$object_part&窦粘膜$symptom_deco&轻度$symptom_desc&增厚",
+            "$symptom_obj&腺样体$symptom_desc&肥厚"
+        ]
+    },
+    {
+        "id": 50,
+        "text": "两肺纹理增多、稍模糊，肺门形态大小位置未见异常。纵隔及气管未见移位，纵隔未见增宽，心脏形态大小未见异常，两膈光整，两肋膈角锐利。",
+        "res": [
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&稍模糊",
+            "$symptom_obj&肺门$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&肺门$exam_item&大小$exam_result&未见异常",
+            "$symptom_obj&肺门$exam_item&位置$exam_result&未见异常",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&气管$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&增宽",
+            "$symptom_obj&心脏$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&心脏$exam_item&大小$exam_result&未见异常",
+            "$symptom_obj&两膈$symptom_desc&光整",
+            "$symptom_pos&两$symptom_obj&肋膈角$symptom_desc&锐利"
+        ]
+    },
+    {
+        "id": 51,
+        "text": "腹腔内见多个低回声结节，界清，测一大小约0.8cmx0.4cm。",
+        "res": [
+            "$symptom_obj&腹腔内$lesion_desc&多个$lesion&低回声结节",
+            "$symptom_obj&腹腔内$lesion&低回声结节$exam_item&界$exam_result&清",
+            "$symptom_obj&腹腔内$lesion&低回声结节$lesion_desc&测一",
+            "$symptom_obj&腹腔内$lesion&低回声结节$exam_item&大小$exam_result&约0.8cmx0.4cm"
+        ]
+    },
+    {
+        "id": 52,
+        "text": "【检查所见】：左腕仅见头骨及钩骨骨化中心；第4、5指骨近端指骨骨骺较平，未见浅凹。",
+        "res": [
+            "$reversed_exam_result&仅见$reversed_exam_item&骨化中心$symptom_pos&左$symptom_obj&腕$object_part&头骨",
+            "$reversed_exam_result&仅见$reversed_exam_item&骨化中心$symptom_pos&左$symptom_obj&腕$object_part&钩骨",
+            "$object_part&第4、5指骨近端$symptom_obj&指骨$exam_item&骨骺$exam_result&较平",
+            "$object_part&第4、5指骨近端$symptom_obj&指骨$exam_item&骨骺$exam_result&未见浅凹"
+        ]
+    },
+    {
+        "id": 53,
+        "text": "---急诊检查时患儿配合情况尚好，受肠气影响显示欠清，其内可显示区域探查情况：腹腔内脐旁处可见数个大小不等的低回声小结节，较大约0.7cm×0.5cm，边界尚清，未见明显融合，其余区域未见明显结节样显示。CDFI：上述低回声结节内可见细小点状血流信号。",
+        "res": [
+            "$exam_item&显示$exam_result&欠清",
+            "$symptom_obj&腹腔$symptom_pos&内$object_part&脐旁处$lesion_desc&数个$lesion&结节",
+            "$symptom_obj&腹腔$symptom_pos&内$object_part&脐旁处$lesion_desc&大小不等$lesion&结节",
+            "$symptom_obj&腹腔$symptom_pos&内$object_part&脐旁处$lesion_desc&低回声$lesion&结节",
+            "$symptom_obj&腹腔$symptom_pos&内$object_part&脐旁处$lesion_desc&小$lesion&结节",
+            "$symptom_obj&腹腔$symptom_pos&内$object_part&脐旁处$lesion&结节$lesion_desc&较大约0.7cm×0.5cm",
+            "$symptom_obj&腹腔$symptom_pos&内$object_part&脐旁处$lesion&结节$exam_item&边界$exam_result&尚清",
+            "$symptom_obj&腹腔$symptom_pos&内$object_part&脐旁处$lesion&结节$exam_item&边界$exam_result&未见明显融合",
+            "$object_part&其余区域$entity_neg&未见$symptom_deco&明显$symptom_desc&结节样显示",
+            "$exam&CDFI$lesion&低回声结节内$reversed_exam_result&可见细小点状$reversed_exam_item&血流信号"
+        ]
+    },
+    {
+        "id": 54,
+        "text": "腹腔及腹膜后未见明显肿大淋巴结；所扫层面右侧升结肠及回盲部肠壁无明显增厚，肠腔无明显狭窄，肠周脂肪间隙清楚，邻近小肠无明显扩张积液，阑尾显示不清，局部未见明显软组织肿块，后腹膜无明显增厚。",
+        "res": [
+            "$symptom_obj&腹腔$entity_neg&未见$symptom_deco&明显$symptom_desc&肿大淋巴结",
+            "$symptom_obj&腹膜后$entity_neg&未见$symptom_deco&明显$symptom_desc&肿大淋巴结",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&升结肠$object_part&肠壁$entity_neg&无$symptom_deco&明显$symptom_desc&增厚",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&回盲$object_part&肠壁$entity_neg&无$symptom_deco&明显$symptom_desc&增厚",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&升结肠$object_part&肠腔$entity_neg&无$symptom_deco&明显$symptom_desc&狭窄",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&回盲$object_part&肠腔$entity_neg&无$symptom_deco&明显$symptom_desc&狭窄",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&升结肠$object_part&肠周脂肪$exam_item&间隙$exam_result&清楚",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&回盲$object_part&肠周脂肪$exam_item&间隙$exam_result&清楚",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&升结肠$object_part&邻近小肠$entity_neg&无$symptom_deco&明显$symptom_desc&扩张",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&升结肠$object_part&邻近小肠$entity_neg&无$symptom_deco&明显$symptom_desc&积液",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&回盲$object_part&邻近小肠$entity_neg&无$symptom_deco&明显$symptom_desc&扩张",
+            "$exam&扫层面$symptom_pos&右侧$symptom_obj&回盲$object_part&邻近小肠$entity_neg&无$symptom_deco&明显$symptom_desc&积液",
+            "$symptom_obj&阑尾$exam_item&显示$exam_result&不清",
+            "$symptom_obj&阑尾$entity_neg&未见$symptom_deco&明显$symptom_desc&软组织肿块",
+            "$symptom_pos&后$symptom_obj&腹膜$entity_neg&无$symptom_deco&明显$symptom_desc&增厚"
+        ]
+    },
+    {
+        "id": 55,
+        "text": "插管后经肛管注入气体，压力约9KPa，见直肠、乙状结肠、降结肠、横结肠、升结肠依次显示，于横结肠处见一软组织密度影，呈杯口状，随着气体逐渐退缩，直至软组织影消失，气体进入小肠。",
+        "res": [
+            "$treatment&插管后经肛管注入气体$treatment_desc&压力约9KPa",
+            "$symptom_obj&直肠$reversed_exam_result&依次$reversed_exam_item&显示",
+            "$symptom_obj&乙状结肠$reversed_exam_result&依次$reversed_exam_item&显示",
+            "$symptom_obj&降结肠$reversed_exam_result&依次$reversed_exam_item&显示",
+            "$symptom_obj&横结肠$reversed_exam_result&依次$reversed_exam_item&显示",
+            "$symptom_obj&升结肠$reversed_exam_result&依次$reversed_exam_item&显示",
+            "$symptom_obj&横结肠$lesion_desc&见一$lesion&软组织密度影",
+            "$symptom_obj&横结肠$lesion&软组织密度影$lesion_desc&杯口状",
+            "$symptom_obj&横结肠$lesion&软组织密度影$lesion_desc&随着气体逐渐退缩"
+        ]
+    },
+    {
+        "id": 56,
+        "text": "右侧颈部见多个低回声结节，测其一大小约1.5cmx0.7cm，界清，形态规则，CDFI：内部可见血流信号。",
+        "res": [
+            "$symptom_pos&右侧$symptom_obj&颈部$lesion_desc&多个$lesion&低回声结节",
+            "$symptom_pos&右侧$symptom_obj&颈部$lesion&低回声结节$exam_item&大小$exam_result&约1.5cmx0.7cm",
+            "$symptom_pos&右侧$symptom_obj&颈部$lesion&低回声结节$exam_item&界$exam_result&清",
+            "$symptom_pos&右侧$symptom_obj&颈部$lesion&低回声结节$exam_item&形态$exam_result&规则",
+            "$symptom_pos&右侧$symptom_obj&颈部$lesion&低回声结节$exam&CDFI$reversed_exam_result&内部可见$reversed_exam_item&血流信号"
+        ]
+    },
+    {
+        "id": 57,
+        "text": "颈椎生理曲度稍反弓，各椎体大小、形态及骨质密度正常，C2-3、C3-4椎体后缘呈阶梯状改变，各椎间隙未见明显变窄，项韧带未见明显钙化。",
+        "res": [
+            "$symptom_obj&颈椎$exam_item&生理曲度$exam_result&稍反弓",
+            "$symptom_obj&椎体$exam_item&大小$exam_result&正常",
+            "$symptom_obj&椎体$exam_item&形态$exam_result&正常",
+            "$symptom_obj&椎体$exam_item&骨质密度$exam_result&正常",
+            "$symptom_pos&C2-3$symptom_obj&椎体$symptom_desc&阶梯状改变",
+            "$symptom_pos&C3-4$symptom_obj&椎体$symptom_desc&阶梯状改变",
+            "$symptom_obj&椎间隙$entity_neg&未见$symptom_deco&明显$symptom_desc&变窄",
+            "$symptom_obj&项韧带$entity_neg&未见$symptom_deco&明显$symptom_desc&钙化"
+        ]
+    },
+    {
+        "id": 58,
+        "text": "左锁骨外形正常，骨质未见明显异常，肩锁关节在位，关节间隙无明显增宽，关节周围软组织无明显肿胀及异常密度影。左肱骨中段骨折错位、分离。",
+        "res": [
+            "$symptom_pos&左$symptom_obj&锁骨$exam_item&外形$exam_result&正常",
+            "$symptom_pos&左$symptom_obj&锁骨$exam_item&骨质$exam_result&未见明显异常",
+            "$symptom_obj&肩锁$object_part&关节$symptom_desc&在位",
+            "$symptom_obj&关节$exam_item&间隙$exam_result&无明显增宽",
+            "$symptom_obj&关节$symptom_pos&周围$object_part&软组织$entity_neg&无$symptom_deco&明显$symptom_desc&肿胀",
+            "$symptom_obj&关节$symptom_pos&周围$object_part&软组织$entity_neg&无$symptom_deco&异常$symptom_desc&密度影",
+            "$symptom_pos&左$symptom_obj&肱骨$symptom_pos&中段$symptom_deco&骨折$symptom_desc&错位",
+            "$symptom_pos&左$symptom_obj&肱骨$symptom_pos&中段$symptom_deco&骨折$symptom_desc&分离"
+        ]
+    },
+    {
+        "id": 59,
+        "text": "右肾肾动脉起始段内径约3.0mm，血流峰速143cm/s，RI0.67。左肾肾动脉起始段内径约2.7mm，血流峰速180cm/s，RI0.74。",
+        "res": [
+            "$symptom_pos&右$symptom_obj&肾$object_part&肾动脉$exam_item&内径$exam_result&约3.0mm",
+            "$symptom_pos&右$symptom_obj&肾$object_part&起始段$exam_item&内径$exam_result&约3.0mm",
+            "$symptom_pos&右$symptom_obj&肾$object_part&肾动脉$exam_item&血流峰速$exam_result&143cm/s",
+            "$symptom_pos&右$symptom_obj&肾$object_part&起始段$exam_item&血流峰速$exam_result&143cm/s",
+            "$symptom_pos&右$symptom_obj&肾$object_part&肾动脉$exam_item&RI$exam_result&0.67",
+            "$symptom_pos&右$symptom_obj&肾$object_part&起始段$exam_item&RI$exam_result&0.67",
+            "$symptom_pos&左$symptom_obj&肾$object_part&肾动脉$exam_item&内径$exam_result&约2.7mm",
+            "$symptom_pos&左$symptom_obj&肾$object_part&起始段$exam_item&内径$exam_result&约2.7mm",
+            "$symptom_pos&左$symptom_obj&肾$object_part&肾动脉$exam_item&血流峰速$exam_result&180cm/s",
+            "$symptom_pos&左$symptom_obj&肾$object_part&起始段$exam_item&血流峰速$exam_result&180cm/s",
+            "$symptom_pos&左$symptom_obj&肾$object_part&肾动脉$exam_item&RI$exam_result&0.74",
+            "$symptom_pos&左$symptom_obj&肾$object_part&起始段$exam_item&RI$exam_result&0.74"
+        ]
+    },
+    {
+        "id": 60,
+        "text": "【检查所见】：双侧膈下未见游离气体，右上腹见肠管积气，并见一液平面，双侧胁腹线未显示，腹部未见明显异常钙化影。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&膈下$entity_neg&未见$symptom_desc&游离气体",
+            "$symptom_pos&右$symptom_obj&上腹$symptom_desc&肠管积气",
+            "$symptom_pos&右$symptom_obj&上腹$symptom_deco&一$symptom_desc&液平面",
+            "$symptom_pos&双侧$symptom_obj&胁腹线$entity_neg&未$symptom_desc&显示",
+            "$symptom_obj&腹部$reversed_exam_result&未见明显异常$reversed_exam_item&钙化影"
+        ]
+    },
+    {
+        "id": 61,
+        "text": "肝脏形态大小正常，包膜光滑，肝实质回声均匀，肝内管道结构显示清晰，血管走向分布正常。CDFI未见明显异常血流。胆囊形态大小正常，壁薄光滑，其内未见明显异常声像。胆总管未见扩张。脾形态大小正常，包膜光滑，实质回声均，未见明显异常回声。CDFI未见明显异常血流。胰腺形态大小正常，回声均匀，其内未见明显异常回声。双肾大小形态正常，包膜光滑，皮质回声均，锥体分布正常，集合系统未见明显分离。双肾内未见明显异常声像。CDFI检查双肾彩色血流分布正常，频谱未见明显异常。腹腔扫查，未见明显异常包块回声。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&管道$exam_item&结构$exam_result&显示清晰",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走向$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam_item&分布$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&薄",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&壁$reversed_exam_result&其内未见明显异常$reversed_exam_item&声像",
+            "$symptom_obj&胆总管$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&脾$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&脾$object_part&实质$exam_item&回声$exam_result&均",
+            "$symptom_obj&脾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&脾$object_part&实质$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&胰腺$reversed_exam_result&其内未见明显异常$reversed_exam_item&回声",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_pos&双$symptom_obj&肾$object_part&皮质$exam_item&回声$exam_result&均",
+            "$symptom_pos&双$symptom_obj&肾$object_part&锥体$exam_item&分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$entity_neg&未见$symptom_deco&明显$symptom_desc&分离",
+            "$symptom_pos&双$symptom_obj&肾内$reversed_exam_result&未见明显异常$reversed_exam_item&声像",
+            "$exam&CDFI$symptom_pos&双$symptom_obj&肾$exam_item&彩色血流分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam&频谱$exam_result&未见明显异常",
+            "$symptom_obj&腹腔$exam&扫查$reversed_exam_result&未见明显异常$reversed_exam_item&包块回声"
+        ]
+    },
+    {
+        "id": 62,
+        "text": "所示胸廓骨质及胸壁软组织未见明显异常。双肺纹理增粗、模糊，双肺门无增大、增浓，双膈面光整，双肋膈角锐利。心影形态、大小未见明显异常。上纵隔影增宽，提示胸腺影。",
+        "res": [
+            "$symptom_obj&胸廓$object_part&骨质$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&胸壁$object_part&软组织$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_pos&双$symptom_obj&肺$exam_item&纹理$exam_result&增粗",
+            "$symptom_pos&双$symptom_obj&肺$exam_item&纹理$exam_result&模糊",
+            "$symptom_pos&双$symptom_obj&肺门$entity_neg&无$symptom_desc&增大",
+            "$symptom_pos&双$symptom_obj&肺门$entity_neg&无$symptom_desc&增浓",
+            "$symptom_pos&双$symptom_obj&膈面$symptom_desc&光整",
+            "$symptom_pos&双$symptom_obj&肋膈角$symptom_desc&锐利",
+            "$symptom_obj&心影$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&心影$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&上纵隔$exam_item&影$exam_result&增宽",
+            "$symptom_obj&上纵隔$exam_item&影$exam_result&胸腺影"
+        ]
+    },
+    {
+        "id": 63,
+        "text": "双下肢基本等长、对称，双侧髋关节对称，双沈通氏线连续性可，双侧闭孔对称，双侧股骨、胫腓骨对称，骨质未见明显异常密度，双侧股骨、胫腓骨骨骺对称，形态未见明显异常，周围软组织未见明显异常。",
+        "res": [
+            "$symptom_pos&双$symptom_obj&下肢$symptom_deco&基本$symptom_desc&等长",
+            "$symptom_pos&双$symptom_obj&下肢$symptom_deco&基本$symptom_desc&对称",
+            "$symptom_pos&双侧$symptom_obj&髋关节$symptom_desc&对称",
+            "$object_part&双$exam_item&沈通氏线$exam_result&连续性可",
+            "$symptom_pos&双侧$symptom_obj&闭孔$symptom_desc&对称",
+            "$symptom_pos&双侧$symptom_obj&股骨$symptom_desc&对称",
+            "$symptom_pos&双侧$symptom_obj&胫腓骨$symptom_desc&对称",
+            "$symptom_pos&双侧$symptom_obj&股骨$object_part&骨质$reversed_exam_result&未见明显异常$reversed_exam_item&密度",
+            "$symptom_pos&双侧$symptom_obj&胫腓骨$object_part&骨质$reversed_exam_result&未见明显异常$reversed_exam_item&密度",
+            "$symptom_pos&双侧$symptom_obj&股骨$object_part&骨骺$symptom_desc&对称",
+            "$symptom_pos&双侧$symptom_obj&胫腓骨$object_part&骨骺$symptom_desc&对称",
+            "$symptom_pos&双侧$symptom_obj&股骨$object_part&骨骺$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_pos&双侧$symptom_obj&胫腓骨$object_part&骨骺$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_pos&双侧$symptom_obj&股骨$symptom_pos&周围$object_part&软组织$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_pos&双侧$symptom_obj&胫腓骨$symptom_pos&周围$object_part&软组织$entity_neg&未见$symptom_deco&明显$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 64,
+        "text": "左手腕关节现已见7个骨化中心发育，尺桡骨骨骺已出现，骨龄与实际年龄不相符，请结合临床。",
+        "res": [
+            "$symptom_pos&左$symptom_obj&手腕关节$exam_result&7个",
+            "$symptom_obj&尺桡骨$exam_item&骨骺$exam_result&已出现",
+            "$exam_item&骨龄$exam_result&与实际年龄不相符"
+        ]
+    },
+    {
+        "id": 65,
+        "text": "胸廓两侧对称，气管居中，双肺纹理增多、增粗，未见明显实质性病变。双肺门影无增大、增浓。双膈面光整，双肋膈角锐利。心影形态大小未见明显异常。纵膈大血管未见明显异常。胸廓软组织未见明显异常。",
+        "res": [
+            "$symptom_obj&胸廓$symptom_pos&两侧$symptom_desc&对称",
+            "$symptom_obj&气管$symptom_desc&居中",
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&增粗",
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&未见明显实质性病变",
+            "$symptom_pos&双$symptom_obj&肺门$exam_item&影$exam_result&无增大、增浓",
+            "$symptom_pos&双$symptom_obj&膈面$symptom_desc&光整",
+            "$symptom_pos&双$symptom_obj&肋膈角$symptom_desc&锐利",
+            "$symptom_obj&心影$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&心影$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&纵膈$object_part&大血管$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&胸廓$object_part&软组织$entity_neg&未见$symptom_deco&明显$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 66,
+        "text": "腹腔气体干扰：肝脏形态大小正常，包膜光滑，肝实质回声均匀，肝内管道结构显示清晰，血管走向分布正常。CDFI未见明显异常血流。胆囊形态大小正常，壁薄光滑，其内未见明显异常声像。胆总管未见扩张。脾形态大小正常，包膜光滑，实质回声均，未见明显异常回声。CDFI未见明显异常血流。胰腺显示不清。双肾大小形态正常，包膜光滑，皮质回声均，锥体分布正常，集合系统未见明显分离。双肾内未见明显异常声像。CDFI检查双肾彩色血流分布正常，频谱未见明显异常。腹腔扫查未见明显异常肿大淋巴结。",
+        "res": [
+            "$symptom_obj&腹腔$symptom_desc&气体干扰",
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&管道$exam_item&结构$exam_result&显示清晰",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走向$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam_item&分布$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&薄",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&壁$reversed_exam_result&其内未见明显异常$reversed_exam_item&声像",
+            "$symptom_obj&胆总管$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&脾$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&脾$object_part&实质$exam_item&回声$exam_result&均",
+            "$symptom_obj&脾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&脾$object_part&实质$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胰腺$exam_item&显示$exam_result&不清",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_pos&双$symptom_obj&肾$object_part&皮质$exam_item&回声$exam_result&均",
+            "$symptom_pos&双$symptom_obj&肾$object_part&锥体$exam_item&分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$entity_neg&未见$symptom_deco&明显$symptom_desc&分离",
+            "$symptom_pos&双$symptom_obj&肾内$reversed_exam_result&未见明显异常$reversed_exam_item&声像",
+            "$exam&CDFI$symptom_pos&双$symptom_obj&肾$exam_item&彩色血流分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam&频谱$exam_result&未见明显异常",
+            "$symptom_obj&腹腔$exam&扫查$entity_neg&未见$symptom_deco&明显$symptom_desc&肿大淋巴结",
+            "$symptom_obj&腹腔$exam&扫查$entity_neg&未见$symptom_deco&异常$symptom_desc&肿大淋巴结"
+        ]
+    },
+    {
+        "id": 67,
+        "text": "肾血流灌注像示：腹主动脉清晰显影后2″右肾清晰显影，左肾轮廓欠清晰。肾血流灌注曲线示双肾灌注峰同时到达，左肾峰值较右肾略低。肾功能像示：静脉注射后1分钟右肾显影，位置正常，大小可，3分钟时肾影最浓，随时间延长皮质影逐渐减淡，20分钟末可见右肾盂肾盏内少量显像剂滞留。左肾显影淡，边缘不光整，放射性分布不均匀，其中央部呈放射性稀疏缺损区，随时间延长皮质影稍减淡，中央部稀疏缺损区有放射性充填，20分钟末可见左肾集合系统内大量显像剂滞留。肾图示：左肾图曲线呈持续上升型；右肾图曲线呈抛物线型。肾小球滤过率（GFR）：总GFR 100.13ml/min，左肾GFR 31.42ml/min，右肾GFR　68.71ml/min。（婴儿GFR值仅供参考）",
+        "res": [
+            "$symptom_obj&肾$exam&血流灌注像$symptom_obj&腹主动脉$reversed_exam_result&清晰$reversed_exam_item&显影",
+            "$symptom_obj&肾$exam&血流灌注像$time&后2″$symptom_pos&右$symptom_obj&肾$reversed_exam_result&清晰$reversed_exam_item&显影",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&轮廓$exam_result&欠清晰",
+            "$symptom_obj&肾$exam&血流灌注曲线$symptom_pos&双$symptom_obj&肾$exam_item&灌注峰$exam_result&同时到达",
+            "$symptom_obj&肾$exam&血流灌注曲线$symptom_pos&左$symptom_obj&肾$exam_item&峰值$exam_result&较右肾略低",
+            "$symptom_obj&肾$exam&功能像$treatment&静脉注射$time&后1分钟$symptom_pos&右$symptom_obj&肾$exam_item&显影$exam_result&正常",
+            "$symptom_obj&肾$exam&功能像$treatment&静脉注射$time&后1分钟$symptom_pos&右$symptom_obj&肾$exam_item&位置$exam_result&正常",
+            "$symptom_obj&肾$exam&功能像$treatment&静脉注射$time&后1分钟$symptom_pos&右$symptom_obj&肾$exam_item&大小$exam_result&可",
+            "$time&3分钟时$symptom_obj&肾$exam_item&影$exam_result&最浓",
+            "$time&3分钟时$symptom_obj&肾$object_part&皮质$exam_item&影$exam_result&逐渐减淡",
+            "$time&20分钟末$symptom_pos&右$symptom_obj&肾盂$symptom_deco&少量$symptom_desc&显像剂滞留",
+            "$time&20分钟末$symptom_pos&右$symptom_obj&肾盏内$symptom_deco&少量$symptom_desc&显像剂滞留",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&显影$exam_result&淡",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&边缘$exam_result&不光整",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&放射性分布$exam_result&不均匀",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&放射性分布$exam_result&中央部呈放射性稀疏缺损区",
+            "$symptom_pos&左$symptom_obj&肾$object_part&皮质$exam_item&影$exam_result&稍减淡",
+            "$symptom_pos&左$symptom_obj&肾$object_part&皮质$exam_item&影$exam_result&中央部稀疏缺损区有放射性充填",
+            "$time&20分钟末$symptom_pos&左$symptom_obj&肾$object_part&集合系统$symptom_deco&随时间延长$symptom_desc&显像剂滞留",
+            "$time&20分钟末$symptom_pos&左$symptom_obj&肾$object_part&集合系统$symptom_deco&大量$symptom_desc&显像剂滞留",
+            "$symptom_pos&左$symptom_obj&肾$exam&图$exam_item&曲线$exam_result&持续上升型",
+            "$symptom_pos&右$symptom_obj&肾$exam&图$exam_item&曲线$exam_result&抛物线型",
+            "$exam&GFR$exam_item&总GFR$exam_result&100.13ml/min",
+            "$exam&GFR$symptom_pos&左$symptom_obj&肾$exam_item&GFR$exam_result&31.42ml/min",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&GFR$exam_result&68.71ml/min"
+        ]
+    },
+    {
+        "id": 68,
+        "text": "餐后扫查：肝脏形态大小正常，包膜光滑，肝实质回声均匀，肝内管道结构显示清晰，血管走向分布正常。CDFI未见明显异常血流。胆囊形态大小正常，壁薄光滑，其内未见明显异常声像。胆总管未见扩张。脾形态大小正常，包膜光滑，实质回声均，未见明显异常回声。CDFI未见明显异常血流。胰腺形态大小正常，回声均匀，其内未见明显异常回声。双肾大小形态正常，包膜光滑，皮质回声均，锥体分布正常，集合系统未见明显分离。双肾内未见明显异常声像。CDFI检查双肾彩色血流分布正常，频谱未见明显异常。右下腹扫查未见明显异常回声。腹腔扫查，未见明显异常肿大淋巴结。",
+        "res": [
+            "$exam&餐后扫查$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$exam&餐后扫查$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$exam&餐后扫查$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&管道$exam_item&结构$exam_result&显示清晰",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走向$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam_item&分布$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&薄",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&壁$reversed_exam_result&其内未见明显异常$reversed_exam_item&声像",
+            "$symptom_obj&胆总管$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&脾$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&脾$object_part&实质$exam_item&回声$exam_result&均",
+            "$symptom_obj&脾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&脾$object_part&实质$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&胰腺$reversed_exam_result&其内未见明显异常$reversed_exam_item&回声",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_pos&双$symptom_obj&肾$object_part&皮质$exam_item&回声$exam_result&均",
+            "$symptom_pos&双$symptom_obj&肾$object_part&锥体$exam_item&分布$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&肾$object_part&集合系统$entity_neg&未见$symptom_deco&明显$symptom_desc&分离",
+            "$symptom_pos&双$symptom_obj&肾内$reversed_exam_result&未见明显异常$reversed_exam_item&声像",
+            "$exam&CDFI$symptom_pos&双$symptom_obj&肾$exam_item&彩色血流$exam_result&分布正常",
+            "$symptom_pos&双$symptom_obj&肾$exam&频谱$exam_result&未见明显异常",
+            "$symptom_pos&右$symptom_obj&下腹$exam&扫查$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&腹腔$exam&扫查$entity_neg&未见$symptom_deco&明显$symptom_desc&肿大淋巴结",
+            "$symptom_obj&腹腔$exam&扫查$entity_neg&未见$symptom_deco&异常$symptom_desc&肿大淋巴结"
+        ]
+    },
+    {
+        "id": 69,
+        "text": "两肺纹理增多、模糊，左肺下叶见斑片状模糊影，余肺野内未见实变影，肺门形态大小位置未见异常。纵隔及气管未见移位，纵隔未见增宽，心脏形态大小未见异常，两膈光整，两肋膈角锐利。胸廓骨骼及胸壁软组织未见异常。",
+        "res": [
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&模糊",
+            "$symptom_obj&左肺$object_part&下叶$reversed_exam_result&斑片状$reversed_exam_item&模糊影",
+            "$object_part&余$symptom_obj&肺野内$reversed_exam_result&未见$reversed_exam_item&实变影",
+            "$symptom_obj&肺门$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&肺门$exam_item&大小$exam_result&未见异常",
+            "$symptom_obj&肺门$exam_item&位置$exam_result&未见异常",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&气管$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&增宽",
+            "$symptom_obj&心脏$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&心脏$exam_item&大小$exam_result&未见异常",
+            "$symptom_obj&两膈$symptom_desc&光整",
+            "$symptom_pos&两$symptom_obj&肋膈角$symptom_desc&锐利",
+            "$symptom_obj&胸廓$object_part&骨骼$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&胸壁$object_part&软组织$entity_neg&未见$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 70,
+        "text": "【检查所见】：与2010-12-25日片对比：左侧小脑半球体积缩小，可见条片状长T1长T2异常信号，第四脑室扩大，与前片大致相仿；原枕骨左侧内板下新月形长T1长T2信号消失。左顶叶侧脑室后角旁见片状长T1长T2信号，边界清晰，T2FLAIR低信号，大致同前片。增强示颅内未见异常强化灶。矢状位示鼻咽顶后壁增厚，相应鼻咽腔变窄；双侧扁桃体增大。余同前片。",
+        "res": [
+            "$symptom_pos&左侧$symptom_obj&小脑$object_part&半球$exam_item&体积$exam_result&缩小",
+            "$symptom_obj&第四脑室$symptom_desc&扩大$symptom_deco&与前片大致相仿",
+            "$symptom_obj&枕骨$object_part&左侧内板下$lesion&新月形长T1长T2信号$lesion_desc&消失",
+            "$symptom_pos&左$symptom_obj&顶叶$object_part&侧脑室$lesion&片状长T1长T2信号$exam_item&边界$exam_result&清晰",
+            "$symptom_pos&左$symptom_obj&顶叶$object_part&后角旁$lesion&片状长T1长T2信号$exam_item&边界$exam_result&清晰",
+            "$symptom_pos&矢状位$symptom_obj&鼻咽$object_part&顶后壁$symptom_desc&增厚",
+            "$symptom_obj&鼻咽腔$symptom_desc&变窄",
+            "$symptom_pos&双侧$symptom_obj&扁桃体$symptom_desc&增大"
+        ]
+    },
+    {
+        "id": 71,
+        "text": "右肾位置、大小正常，轮廓清晰，边缘整齐，形态规整，放射性分布均匀；左肾位置、大小正常，轮廓欠清晰，边缘不光整，形态欠规整，放射性分布不均匀，见多处大小不等的放射性稀疏区。",
+        "res": [
+            "$symptom_pos&右$symptom_obj&肾$exam_item&位置$exam_result&正常",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&轮廓$exam_result&清晰",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&边缘$exam_result&整齐",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&形态$exam_result&规整",
+            "$symptom_pos&右$symptom_obj&肾$exam_item&放射性分布$exam_result&均匀",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&位置$exam_result&正常",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&大小$exam_result&正常",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&轮廓$exam_result&欠清晰",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&边缘$exam_result&不光整",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&形态$exam_result&欠规整",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&放射性分布$exam_result&不均匀",
+            "$symptom_pos&左$symptom_obj&肾$exam_item&放射性分布$exam_result&多处大小不等的放射性稀疏区"
+        ]
+    },
+    {
+        "id": 72,
+        "text": "静脉注射显像剂后1-30分钟、60分钟分别行腹部前位显像，1分钟可见肝脏显影，肝影较清晰，轮廓光整。30分钟左上腹见散在多发片状放射性浓集影，60分钟见肝脏影慢性减淡，胆囊明显显影，右上腹影增浓并往下腹部移动。",
+        "res": [
+            "$treatment&静脉注射$treatment_desc&显像剂",
+            "$symptom_obj&肝$exam_item&影$exam_result&较清晰",
+            "$symptom_obj&肝$exam_item&轮廓$exam_result&光整",
+            "$time&30分钟$symptom_pos&左$symptom_obj&上腹$lesion_desc&见$lesion&浓集影",
+            "$time&30分钟$symptom_pos&左$symptom_obj&上腹$lesion_desc&散在$lesion&浓集影",
+            "$time&30分钟$symptom_pos&左$symptom_obj&上腹$lesion_desc&多发$lesion&浓集影",
+            "$time&30分钟$symptom_pos&左$symptom_obj&上腹$lesion_desc&片状$lesion&浓集影",
+            "$time&30分钟$symptom_pos&左$symptom_obj&上腹$lesion_desc&放射性$lesion&浓集影",
+            "$time&60分钟$symptom_obj&肝脏$exam_item&影$exam_result&慢性减淡",
+            "$symptom_obj&胆囊$exam_result&明显",
+            "$symptom_pos&右$symptom_obj&上腹$exam_item&影$exam_result&增浓并往下腹部移动"
+        ]
+    },
+    {
+        "id": 73,
+        "text": "所见右足第2趾外影重叠，影响观察。跖趾、楔骨骨质、形态未见明显异常，骨皮质连续性未见明显中断，诸跖趾间关节关系良好，软组织肿胀。",
+        "res": [
+            "$symptom_pos&右$symptom_obj&足$object_part&第2趾$exam_item&外影$exam_result&重叠",
+            "$symptom_pos&右$symptom_obj&足$object_part&第2趾$exam_item&外影$exam_result&影响观察",
+            "$symptom_obj&跖趾$exam_item&骨质$exam_result&未见明显异常",
+            "$symptom_obj&跖趾$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&楔骨$exam_item&骨质$exam_result&未见明显异常",
+            "$symptom_obj&楔骨$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&跖趾$exam_item&骨皮质$exam_result&连续性未见明显中断",
+            "$symptom_obj&楔骨$exam_item&骨皮质$exam_result&连续性未见明显中断",
+            "$symptom_obj&跖趾$symptom_pos&间$object_part&关节关系$symptom_desc&良好",
+            "$symptom_obj&跖趾$object_part&软组织$symptom_desc&肿胀"
+        ]
+    },
+    {
+        "id": 74,
+        "text": "平卧位腹腔探查可见数个稍低回声区，其中一个大小约19×10mm，边界清晰，形态规则。CDFI:其内可见血流信号。",
+        "res": [
+            "$symptom_pos&平卧位$symptom_obj&腹腔$lesion_desc&数个$lesion&低回声区",
+            "$symptom_pos&平卧位$symptom_obj&腹腔$lesion_desc&稍$lesion&低回声区",
+            "$symptom_pos&平卧位$symptom_obj&腹腔$lesion&低回声区$exam_item&大小$exam_result&约19×10mm",
+            "$symptom_pos&平卧位$symptom_obj&腹腔$lesion&低回声区$exam_item&边界$exam_result&清晰",
+            "$symptom_pos&平卧位$symptom_obj&腹腔$lesion&低回声区$exam_item&形态$exam_result&规则",
+            "$symptom_pos&平卧位$symptom_obj&腹腔$lesion&低回声区$exam&CDFI$reversed_exam_result&其内可见$reversed_exam_item&血流信号"
+        ]
+    },
+    {
+        "id": 75,
+        "text": "　胸廓对称，气管居中。两肺纹理增多、增粗，两肺未见明显异常密度影，两肺门结构正常。心影形态、大小在正常范围，主动脉结不突。两膈面光滑，两肋膈角存在。　　片内包括膈上水平－耻骨联合水平，双膈下未见明显游离气体，腹腔内肠管可见积气，肠管无明显扩张，右下腹肠管可见液平，双肾区、输尿管走行区及膀胱区未见明显不透X线影像。",
+        "res": [
+            "$symptom_obj&胸廓$symptom_desc&对称",
+            "$symptom_obj&气管$symptom_desc&居中",
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&增粗",
+            "$symptom_obj&两肺$reversed_exam_result&未见明显异常$reversed_exam_item&密度影",
+            "$symptom_pos&两$symptom_obj&肺门$exam_item&结构$exam_result&正常",
+            "$symptom_obj&心影$exam_item&形态$exam_result&正常范围",
+            "$symptom_obj&心影$exam_item&大小$exam_result&正常范围",
+            "$symptom_obj&主动脉结$entity_neg&不$symptom_desc&突",
+            "$symptom_pos&两$symptom_obj&膈面$symptom_desc&光滑",
+            "$symptom_pos&两$symptom_obj&肋膈角$symptom_desc&存在",
+            "$symptom_obj&膈上水平－耻骨联合水平$entity_neg&未见$symptom_deco&明显$symptom_desc&游离气体",
+            "$symptom_pos&双$symptom_obj&膈下$entity_neg&未见$symptom_deco&明显$symptom_desc&游离气体",
+            "$symptom_obj&腹腔内$object_part&肠管$symptom_desc&积气",
+            "$symptom_obj&肠管$entity_neg&无$symptom_deco&明显$symptom_desc&扩张",
+            "$symptom_pos&右$symptom_obj&下腹$object_part&肠管$symptom_desc&见液平",
+            "$symptom_pos&双$symptom_obj&肾区$reversed_exam_result&未见明显不透$reversed_exam_item&X线影像",
+            "$symptom_obj&输尿管$object_part&走行区$reversed_exam_result&未见明显不透$reversed_exam_item&X线影像",
+            "$symptom_obj&膀胱区$reversed_exam_result&未见明显不透$reversed_exam_item&X线影像"
+        ]
+    },
+    {
+        "id": 76,
+        "text": "　　脑实质内未见明确异常密度影，脑室系统无扩张，脑沟、脑池不宽，中线结构无移位。颅骨未见确切异常征象。",
+        "res": [
+            "$symptom_obj&脑$object_part&实质内$reversed_exam_result&未见明确异常$reversed_exam_item&密度影",
+            "$symptom_obj&脑室系统$entity_neg&无$symptom_desc&扩张",
+            "$symptom_obj&脑沟$entity_neg&不$symptom_desc&宽",
+            "$symptom_obj&脑池$entity_neg&不$symptom_desc&宽",
+            "$symptom_obj&中线结构$entity_neg&无$symptom_desc&移位",
+            "$symptom_obj&颅骨$entity_neg&未见$symptom_deco&确切$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 77,
+        "text": "双侧上颌窦、筛窦及双侧蝶窦内粘膜增厚，窦壁光滑，未见明显骨质吸收或缺损。双侧鼻道通畅，未见软组织块影。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&上颌窦$object_part&粘膜$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&粘膜$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&蝶窦内$object_part&粘膜$symptom_desc&增厚",
+            "$symptom_pos&双侧$symptom_obj&上颌窦$object_part&窦壁$symptom_desc&光滑",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&窦壁$symptom_desc&光滑",
+            "$symptom_pos&双侧$symptom_obj&蝶窦内$object_part&窦壁$symptom_desc&光滑",
+            "$symptom_pos&双侧$symptom_obj&上颌窦$object_part&窦壁$entity_neg&未见$symptom_deco&明显$symptom_desc&骨质吸收或缺损",
+            "$symptom_pos&双侧$symptom_obj&筛窦$object_part&窦壁$entity_neg&未见$symptom_deco&明显$symptom_desc&骨质吸收或缺损",
+            "$symptom_pos&双侧$symptom_obj&蝶窦内$object_part&窦壁$entity_neg&未见$symptom_deco&明显$symptom_desc&骨质吸收或缺损",
+            "$symptom_pos&双侧$symptom_obj&鼻道$symptom_desc&通畅",
+            "$symptom_pos&双侧$symptom_obj&鼻道$entity_neg&未见$symptom_desc&软组织块影"
+        ]
+    },
+    {
+        "id": 78,
+        "text": "肝：肝脏大小、形态正常，包膜光滑，实质回声均匀，管道走行清晰，未见异常团块回声。CDFI：肝内未见异常血流信号。胆：胆囊大小59×25mm、形态正常，壁光滑，囊内透声好。胆总管内径4mm。胰：胰腺大小、形态正常，实质回声均匀。脾：脾脏无肿大，实质回声均匀，脾厚28mm。",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝脏$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝脏$object_part&管道$exam_item&走行$exam_result&清晰",
+            "$symptom_obj&肝脏$object_part&管道$reversed_exam_result&未见异常$reversed_exam_item&团块回声",
+            "$exam&CDFI$symptom_obj&肝内$reversed_exam_result&未见异常$reversed_exam_item&血流信号",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&59×25mm",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&囊内$exam_item&透声$exam_result&好",
+            "$symptom_obj&胆总管$exam_item&内径$exam_result&4mm",
+            "$symptom_obj&胰腺$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胰腺$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&脾脏$entity_neg&无$symptom_desc&肿大",
+            "$symptom_obj&脾脏$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&脾$exam_item&厚$exam_result&28mm"
+        ]
+    },
+    {
+        "id": 79,
+        "text": "双侧大脑半球实质内未见明显异常信号，DWI序列未见明显高信号。双侧额颞部脑外间隙增宽；余脑池及脑室未见扩大和闭塞，脑沟无明显增宽及变窄。小脑、脑干及垂体未见明显异常，中线结构未见移位，颅骨信号未见异常。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&大脑半球$object_part&实质内$reversed_exam_result&未见明显异常$reversed_exam_item&信号",
+            "$symptom_pos&双侧$symptom_obj&大脑半球$object_part&实质内$exam&DWI序列$reversed_exam_result&未见明显$reversed_exam_item&高信号",
+            "$symptom_pos&双侧$symptom_obj&额颞部$exam_item&脑外间隙$exam_result&增宽",
+            "$object_part&余$symptom_obj&脑池$entity_neg&未见$symptom_desc&扩大",
+            "$object_part&余$symptom_obj&脑池$entity_neg&未见$symptom_desc&闭塞",
+            "$object_part&余$symptom_obj&脑室$entity_neg&未见$symptom_desc&扩大",
+            "$object_part&余$symptom_obj&脑室$entity_neg&未见$symptom_desc&闭塞",
+            "$symptom_obj&脑沟$entity_neg&无$symptom_deco&明显$symptom_desc&增宽",
+            "$symptom_obj&脑沟$entity_neg&无$symptom_deco&明显$symptom_desc&变窄",
+            "$symptom_obj&小脑$symptom_obj&脑干$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&中线结构$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&颅骨$exam_item&信号$exam_result&未见异常"
+        ]
+    },
+    {
+        "id": 80,
+        "text": "双肺纹理增多、增粗，下肺纹理稍模糊、间见小斑点状影，肺内未见明显异常阴影，两肺门结构正常，心影大小、形态正常，双膈面光整，肋膈角锐利。",
+        "res": [
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&双肺$exam_item&纹理$exam_result&增粗",
+            "$symptom_obj&下肺$exam_item&纹理$exam_result&稍模糊",
+            "$symptom_obj&下肺$exam_item&纹理$exam_result&间见小斑点状影",
+            "$symptom_obj&肺内$entity_neg&未见$symptom_deco&明显$symptom_desc&阴影",
+            "$symptom_obj&肺内$entity_neg&未见$symptom_deco&异常$symptom_desc&阴影",
+            "$symptom_pos&两$symptom_obj&肺门$exam_item&结构$exam_result&正常",
+            "$symptom_obj&心影$exam_item&大小$exam_result&正常",
+            "$symptom_obj&心影$exam_item&形态$exam_result&正常",
+            "$symptom_pos&双$symptom_obj&膈面$symptom_desc&光整",
+            "$symptom_obj&肋膈角$symptom_desc&锐利"
+        ]
+    },
+    {
+        "id": 81,
+        "text": "（扫描序列 Sag：T1WI；Tra：T1WI、T2WI、DWI、ADC）双侧大脑半球脑实质未见明显异常信号影，脑皮髓质分界尚清，脑室系统未见明显异常，各脑池、脑沟未见明显异常，中线结构居中，中脑、桥脑、延髓及小脑形态、信号均未见明显异常。多发头皮软组织肿胀。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&大脑半球$object_part&脑实质$reversed_exam_result&未见明显异常$reversed_exam_item&信号影",
+            "$symptom_obj&脑皮髓质$exam_item&分界$exam_result&尚清",
+            "$symptom_obj&脑室系统$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&脑池$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&脑沟$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&中线结构$symptom_desc&居中",
+            "$symptom_obj&中脑$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&中脑$exam_item&信号$exam_result&未见明显异常",
+            "$symptom_obj&桥脑$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&桥脑$exam_item&信号$exam_result&未见明显异常",
+            "$symptom_obj&延髓$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&延髓$exam_item&信号$exam_result&未见明显异常",
+            "$symptom_obj&小脑$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&小脑$exam_item&信号$exam_result&未见明显异常",
+            "$symptom_obj&头皮软组织$symptom_deco&多发$symptom_desc&肿胀"
+        ]
+    },
+    {
+        "id": 82,
+        "text": "【检查所见】：胸廓对称，气管及纵膈居中。双肺纹理增多、增粗，双肺野见沿纹理分布斑点状模糊影。双肺门影无增大、增浓。双膈面光整，双肋膈角锐利。心影形态、大小未见明显异常。双侧腰大肌及腹脂线清晰。双膈下未见游离气体，腹部肠管积气，未见明显气液平面，腹部未见明显异常钙化影。",
+        "res": [
+            "$symptom_obj&胸廓$symptom_desc&对称",
+            "$symptom_obj&气管$symptom_desc&居中",
+            "$symptom_obj&纵膈$symptom_desc&居中",
+            "$symptom_pos&双$symptom_obj&肺$exam_item&纹理$exam_result&增多",
+            "$symptom_pos&双$symptom_obj&肺$exam_item&纹理$exam_result&增粗",
+            "$symptom_pos&双$symptom_obj&肺野$lesion_desc&沿纹理分布$lesion&模糊影",
+            "$symptom_pos&双$symptom_obj&肺野$lesion_desc&斑点状$lesion&模糊影",
+            "$symptom_obj&双肺门$exam_item&影$exam_result&无增大、增浓",
+            "$symptom_pos&双$symptom_obj&膈面$symptom_desc&光整",
+            "$symptom_pos&双$symptom_obj&肋膈角$symptom_desc&锐利",
+            "$symptom_obj&心影$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&心影$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_pos&双侧$symptom_obj&腰大肌$symptom_desc&清晰",
+            "$symptom_pos&双侧$symptom_obj&腹脂线$symptom_desc&清晰",
+            "$symptom_pos&双$symptom_obj&膈下$entity_neg&未见$symptom_desc&游离气体",
+            "$symptom_obj&腹部$object_part&肠管$symptom_desc&积气",
+            "$symptom_obj&腹部$object_part&肠管$entity_neg&未见$symptom_deco&明显$symptom_desc&气液平面",
+            "$symptom_obj&腹部$reversed_exam_result&未见明显异常$reversed_exam_item&钙化影"
+        ]
+    },
+    {
+        "id": 83,
+        "text": "急诊彩超检查：腹腔内探及多个低回声结节，较大的大小约1.5cmx0.7cm，边界尚清。CDFI：上述低回声结节内可见门样血流信号。",
+        "res": [
+            "$exam&急诊彩超$symptom_obj&腹腔内$lesion_desc&多个$lesion&低回声结节",
+            "$exam&急诊彩超$symptom_obj&腹腔内$lesion&低回声结节$exam_item&大小$exam_result&约1.5cmx0.7cm",
+            "$exam&急诊彩超$symptom_obj&腹腔内$lesion&低回声结节$exam_item&边界$exam_result&尚清",
+            "$symptom_obj&腹腔内$lesion&低回声结节$exam&CDFI$reversed_exam_result&可见门样$reversed_exam_item&血流信号"
+        ]
+    },
+    {
+        "id": 84,
+        "text": "肝脏形态大小正常，包膜光滑，肝实质回声均匀，肝内管道结构显示清晰，血管走向分布正常。CDFI未见明显异常血流。胆囊形态大小正常，壁薄光滑，其内未见明显异常声像。胆总管未见扩张。脾形态大小正常，包膜光滑，实质回声均，未见明显异常回声。CDFI未见明显异常血流。胰腺形态大小正常，回声均匀，其内未见明显异常回声。  ",
+        "res": [
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&正常",
+            "$symptom_obj&肝脏$exam_item&大小$exam_result&正常",
+            "$symptom_obj&肝脏$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&肝$object_part&实质$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&肝内$object_part&管道$exam_item&结构$exam_result&清晰",
+            "$symptom_obj&肝内$object_part&血管$exam_item&走向$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam_item&分布$exam_result&正常",
+            "$symptom_obj&肝内$object_part&血管$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胆囊$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&薄",
+            "$symptom_obj&胆囊$object_part&壁$symptom_desc&光滑",
+            "$symptom_obj&胆囊$object_part&壁$reversed_exam_result&其内未见明显异常$reversed_exam_item&声像",
+            "$symptom_obj&胆总管$entity_neg&未见$symptom_desc&扩张",
+            "$symptom_obj&脾$exam_item&形态$exam_result&正常",
+            "$symptom_obj&脾$exam_item&大小$exam_result&正常",
+            "$symptom_obj&脾$object_part&包膜$symptom_desc&光滑",
+            "$symptom_obj&脾$object_part&实质$exam_item&回声$exam_result&均",
+            "$symptom_obj&脾$object_part&实质$reversed_exam_result&未见明显异常$reversed_exam_item&回声",
+            "$symptom_obj&脾$object_part&实质$exam&CDFI$reversed_exam_result&未见明显异常$reversed_exam_item&血流",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&大小$exam_result&正常",
+            "$symptom_obj&胰腺$exam_item&回声$exam_result&均匀",
+            "$symptom_obj&胰腺$reversed_exam_result&其内未见明显异常$reversed_exam_item&回声"
+        ]
+    },
+    {
+        "id": 85,
+        "text": "【检查所见】：骶尾椎顺列，生理曲度自然。椎体骨质未见骨质增生或破坏，双侧骶孔对称，骶孔线连续。椎旁软组织未见明显异常。",
+        "res": [
+            "$symptom_obj&骶尾椎$symptom_desc&顺列",
+            "$symptom_obj&骶尾椎$exam_item&生理曲度$exam_result&自然",
+            "$symptom_obj&椎体$object_part&骨质$entity_neg&未见$symptom_desc&骨质增生",
+            "$symptom_obj&椎体$object_part&骨质$entity_neg&未见$symptom_desc&破坏",
+            "$symptom_obj&椎体$symptom_pos&双侧$object_part&骶孔$symptom_desc&对称",
+            "$symptom_obj&椎体$object_part&骶孔线$symptom_desc&连续",
+            "$symptom_obj&椎旁$object_part&软组织$entity_neg&未见$symptom_deco&明显$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 86,
+        "text": "双膝关节部诸骨骨质密度及形态未见异常，骨皮质小梁连续性未见中断，关节在位，关节间隙正常，关节囊及周围软组织无明显肿胀及异常密度影。",
+        "res": [
+            "$symptom_pos&双$symptom_obj&膝关节部$object_part&诸骨$exam_item&骨质密度$exam_result&未见异常",
+            "$symptom_pos&双$symptom_obj&膝关节部$object_part&诸骨$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&骨皮质$exam_item&连续性$exam_result&未见中断",
+            "$symptom_obj&小梁$exam_item&连续性$exam_result&未见中断",
+            "$symptom_obj&关节$symptom_desc&在位",
+            "$symptom_obj&关节$exam_item&间隙$exam_result&正常",
+            "$symptom_obj&关节$object_part&囊$entity_neg&无$symptom_deco&明显$symptom_desc&肿胀",
+            "$symptom_obj&关节$symptom_pos&周围$object_part&软组织$entity_neg&无$symptom_deco&明显$symptom_desc&肿胀",
+            "$symptom_obj&关节$object_part&囊$entity_neg&无$symptom_deco&异常$symptom_desc&密度影",
+            "$symptom_obj&关节$symptom_pos&周围$object_part&软组织$entity_neg&无$symptom_deco&异常$symptom_desc&密度影"
+        ]
+    },
+    {
+        "id": 87,
+        "text": "双侧脑实质未见明显异常密度影，脑皮髓质分界尚清，各脑室、脑池、脑沟未见明显异常，中线结构尚居中，颅骨未见明显异常。双侧上颌窦、双侧额窦、蝶窦及双侧筛窦内见密度增高影。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&脑实质$entity_neg&未见$symptom_deco&明显$symptom_desc&密度影",
+            "$symptom_pos&双侧$symptom_obj&脑实质$entity_neg&未见$symptom_deco&异常$symptom_desc&密度影",
+            "$symptom_obj&脑皮髓质$exam_item&分界$exam_result&尚清",
+            "$symptom_obj&脑室$entity_neg&未见$symptom_deco&各$symptom_desc&异常",
+            "$symptom_obj&脑室$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&脑池$entity_neg&未见$symptom_deco&各$symptom_desc&异常",
+            "$symptom_obj&脑池$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&脑沟$entity_neg&未见$symptom_deco&各$symptom_desc&异常",
+            "$symptom_obj&脑沟$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&中线结构$symptom_deco&尚$symptom_desc&居中",
+            "$symptom_obj&颅骨$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_pos&双侧$symptom_obj&上颌窦$symptom_desc&密度增高影",
+            "$symptom_pos&双侧$symptom_obj&额窦$symptom_desc&密度增高影",
+            "$symptom_pos&双侧$symptom_obj&蝶窦$symptom_desc&密度增高影",
+            "$symptom_pos&双侧$symptom_obj&筛窦内$symptom_desc&密度增高影"
+        ]
+    },
+    {
+        "id": 88,
+        "text": "右侧乳腺腺体范围32×8mm，左侧乳腺腺体21×6mm。CDFI示：其内未见明显异常血流信号。",
+        "res": [
+            "$symptom_pos&右侧$symptom_obj&乳腺$object_part&腺体$exam_item&范围$exam_result&32×8mm",
+            "$symptom_pos&左侧$symptom_obj&乳腺$object_part&腺体$exam_result&21×6mm",
+            "$symptom_pos&左侧$symptom_obj&乳腺$object_part&腺体$exam&CDFI$reversed_exam_result&其内未见明显异常$reversed_exam_item&血流信号"
+        ]
+    },
+    {
+        "id": 89,
+        "text": "左手腕关节现已见8个骨化中心发育，尺桡骨骨骺已出现，骨龄与实际年龄基本相符，请结合临床。",
+        "res": [
+            "$symptom_pos&左$symptom_obj&手腕关节$exam_result&8个",
+            "$symptom_obj&尺桡骨$exam_item&骨骺$exam_result&已出现",
+            "$exam_item&骨龄$exam_result&与实际年龄基本相符"
+        ]
+    },
+    {
+        "id": 90,
+        "text": "双侧大脑半球密度未见明显异常，灰白质对比良好。基底节及内外囊未见病变。脑室系统大小、形态及密度未见明显异常，脑池、脑沟无增宽。中线结构无偏移。小脑未见异常，颅骨无殊。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&大脑半球$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_pos&双侧$symptom_obj&大脑半球$object_part&灰白质$exam_item&对比$exam_result&良好",
+            "$symptom_obj&基底节$entity_neg&未见$symptom_desc&病变",
+            "$symptom_obj&内外囊$entity_neg&未见$symptom_desc&病变",
+            "$symptom_obj&脑室系统$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&脑室系统$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&脑室系统$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_obj&脑池$entity_neg&无$symptom_desc&增宽",
+            "$symptom_obj&脑沟$entity_neg&无$symptom_desc&增宽",
+            "$symptom_obj&中线结构$entity_neg&无$symptom_desc&偏移",
+            "$symptom_obj&小脑$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&颅骨$symptom_desc&无殊"
+        ]
+    },
+    {
+        "id": 91,
+        "text": "基本波率：低至中波幅8- 9 c/s α波，调节调幅欠佳，两半球尚对称，散见较多低至中波幅5 -7  c/sθ波。视反应存在。    HV:同背景活动。（合作欠佳）",
+        "res": [
+            "$exam&基本波率$reversed_exam_result&低至中波幅8- 9 c/s$reversed_exam_item&α波",
+            "$exam&基本波率$symptom_obj&调节调幅$symptom_desc&欠佳",
+            "$symptom_pos&两$symptom_obj&半球$symptom_deco&尚$symptom_desc&对称",
+            "$symptom_pos&两$symptom_obj&半球$reversed_exam_result&散见较多低至中波幅5 -7  c/s$reversed_exam_item&θ波",
+            "$exam_item&视反应$exam_result&存在",
+            "$exam&HV$exam_result&同背景活动"
+        ]
+    },
+    {
+        "id": 92,
+        "text": "【检查所见】：右上颌窦见一大小约16.8*10.3mm类圆形囊性低密度灶，CT值约37HU，左蝶窦粘膜增厚。鼻咽后壁软组织增厚，宽径约20mm。余副鼻窦清晰，窦壁未见骨质破坏。鼻中隔居中，鼻腔通畅，鼻甲未见增厚。",
+        "res": [
+            "$symptom_pos&右$symptom_obj&上颌窦$lesion_desc&一$lesion&低密度灶",
+            "$symptom_pos&右$symptom_obj&上颌窦$exam_item&大小$exam_result&约16.8*10.3mm",
+            "$symptom_pos&右$symptom_obj&上颌窦$lesion_desc&类圆形$lesion&低密度灶",
+            "$symptom_pos&右$symptom_obj&上颌窦$lesion_desc&囊性$lesion&低密度灶",
+            "$symptom_pos&右$symptom_obj&上颌窦$lesion&低密度灶$exam_item&CT值$exam_result&约37HU",
+            "$symptom_pos&左$symptom_obj&蝶窦$object_part&粘膜$symptom_desc&增厚",
+            "$symptom_obj&鼻咽$object_part&后壁$symptom_desc&增厚",
+            "$symptom_obj&鼻咽$object_part&软组织$symptom_desc&增厚",
+            "$symptom_obj&鼻咽$object_part&后壁$exam_item&宽径$exam_result&约20mm",
+            "$symptom_obj&鼻咽$object_part&软组织$exam_item&宽径$exam_result&约20mm",
+            "$object_part&余$symptom_obj&副鼻窦$symptom_desc&清晰",
+            "$object_part&余$symptom_obj&副鼻窦$object_part&窦壁$entity_neg&未见$symptom_desc&骨质破坏",
+            "$symptom_obj&鼻中隔$symptom_desc&居中",
+            "$symptom_obj&鼻腔$symptom_desc&通畅",
+            "$symptom_obj&鼻甲$entity_neg&未见$symptom_desc&增厚"
+        ]
+    },
+    {
+        "id": 93,
+        "text": "【检查所见】：胸廓对称，气管、纵膈居中。双肺纹理增多增粗，右下肺纹理模糊。双肺门影无增大、增浓。双膈面光整，双肋膈角锐利；心影形态大小未见异常。",
+        "res": [
+            "$symptom_obj&胸廓$symptom_desc&对称",
+            "$symptom_obj&气管$symptom_desc&居中",
+            "$symptom_obj&纵膈$symptom_desc&居中",
+            "$symptom_pos&双$symptom_obj&肺$exam_item&纹理$exam_result&增多",
+            "$symptom_pos&双$symptom_obj&肺$exam_item&纹理$exam_result&增粗",
+            "$symptom_pos&右$symptom_obj&下肺$exam_item&纹理$exam_result&模糊",
+            "$symptom_pos&双$symptom_obj&肺门$exam_item&影$exam_result&无增大、增浓",
+            "$symptom_pos&双$symptom_obj&膈面$symptom_desc&光整",
+            "$symptom_pos&双$symptom_obj&肋膈角$symptom_desc&锐利",
+            "$symptom_obj&心影$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&心影$exam_item&大小$exam_result&未见异常"
+        ]
+    },
+    {
+        "id": 94,
+        "text": "【检查所见】：脑实质未见异常密度影。诸脑室、脑池形态、大小于正常范围。中线不偏。脑沟无增宽、加深。骨板完整、连续。",
+        "res": [
+            "$symptom_obj&脑$object_part&实质$reversed_exam_result&未见异常$reversed_exam_item&密度影",
+            "$symptom_obj&脑室$exam_item&形态$exam_result&于正常范围",
+            "$symptom_obj&脑室$exam_item&大小$exam_result&于正常范围",
+            "$symptom_obj&脑池$exam_item&形态$exam_result&于正常范围",
+            "$symptom_obj&脑池$exam_item&大小$exam_result&于正常范围",
+            "$symptom_obj&中线$entity_neg&不$symptom_desc&偏",
+            "$symptom_obj&脑沟$entity_neg&无$symptom_desc&增宽",
+            "$symptom_obj&脑沟$entity_neg&无$symptom_desc&加深",
+            "$symptom_obj&骨板$symptom_desc&完整",
+            "$symptom_obj&骨板$symptom_desc&连续"
+        ]
+    },
+    {
+        "id": 95,
+        "text": "【检查所见】：颅内脑实质未见明显异常，诸脑室、脑池、脑裂未见异常，中线结构居中，颅骨骨板未见异常。",
+        "res": [
+            "$symptom_obj&颅内$object_part&脑实质$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&脑室$entity_neg&未见$symptom_deco&诸$symptom_desc&异常",
+            "$symptom_obj&脑池$entity_neg&未见$symptom_deco&诸$symptom_desc&异常",
+            "$symptom_obj&脑裂$entity_neg&未见$symptom_deco&诸$symptom_desc&异常",
+            "$symptom_obj&中线结构$symptom_desc&居中",
+            "$symptom_obj&颅骨$object_part&骨板$entity_neg&未见$symptom_desc&异常"
+        ]
+    },
+    {
+        "id": 96,
+        "text": "鼻咽腔顶部及后上壁软组织未见明显增厚，鼻咽腔气道无明显受压变窄，脑回压迹加深，颅缝无增宽。",
+        "res": [
+            "$symptom_obj&鼻咽腔$symptom_pos&顶部$object_part&软组织$entity_neg&未见$symptom_deco&明显$symptom_desc&增厚",
+            "$symptom_obj&鼻咽腔$symptom_pos&后上壁$object_part&软组织$entity_neg&未见$symptom_deco&明显$symptom_desc&增厚",
+            "$symptom_obj&鼻咽腔$object_part&气道$entity_neg&无$symptom_deco&明显$symptom_desc&受压变窄",
+            "$symptom_obj&脑回$symptom_desc&压迹加深",
+            "$symptom_obj&颅缝$entity_neg&无$symptom_desc&增宽"
+        ]
+    },
+    {
+        "id": 97,
+        "text": "腹部急诊扫描，胃肠道未准备，大致观察。肠管结构紊乱，肝脏形态无异常，轮廓光整，肝实质内未见明显异常密度。肝内外胆管无扩张，胆囊形态无异常，壁无增厚，腔内未见异常密度。脾形态狭长，约占11肋单元，厚约2.5cm，实质密度未见明显异常。胰腺及双肾形态密度未见异常。膀胱壁无异常增厚，腔内未见异常密度，腹膜后未见肿大淋巴结，未见腹腔积液。",
+        "res": [
+            "$symptom_obj&腹部$exam&急诊扫描$symptom_obj&肠管$exam_item&结构$exam_result&紊乱",
+            "$symptom_obj&肝脏$exam_item&形态$exam_result&无异常",
+            "$symptom_obj&肝脏$exam_item&轮廓$exam_result&光整",
+            "$symptom_obj&肝$object_part&实质内$reversed_exam_result&未见明显异常$reversed_exam_item&密度",
+            "$symptom_obj&肝内外胆管$entity_neg&无$symptom_desc&扩张",
+            "$symptom_obj&胆囊$exam_item&形态$exam_result&无异常",
+            "$symptom_obj&胆囊$object_part&壁$entity_neg&无$symptom_desc&增厚",
+            "$symptom_obj&胆囊$object_part&腔内$reversed_exam_result&未见异常$reversed_exam_item&密度",
+            "$symptom_obj&脾$exam_item&形态$exam_result&狭长",
+            "$symptom_obj&脾$exam_item&形态$exam_result&约占11肋单元",
+            "$symptom_obj&脾$exam_item&厚$exam_result&约2.5cm",
+            "$symptom_obj&脾$object_part&实质$exam_item&密度$exam_result&未见明显异常",
+            "$symptom_obj&胰腺$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&胰腺$exam_item&密度$exam_result&未见异常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&形态$exam_result&未见异常",
+            "$symptom_pos&双$symptom_obj&肾$exam_item&密度$exam_result&未见异常",
+            "$symptom_obj&膀胱$object_part&壁$entity_neg&无$symptom_deco&异常$symptom_desc&增厚",
+            "$symptom_obj&膀胱$object_part&腔内$reversed_exam_result&未见异常$reversed_exam_item&密度",
+            "$symptom_pos&腹膜后$entity_neg&未见$symptom_desc&肿大",
+            "$entity_neg&未见$symptom_obj&腹腔$symptom_desc&积液"
+        ]
+    },
+    {
+        "id": 98,
+        "text": "双侧额窦未见显示，双侧筛窦密度未见明显增高；双上颌窦不对称，左侧上颌窦窦腔较右侧小，密度未见明显增高，窦腔未见明显液气平面，窦壁骨质未见明显破坏。",
+        "res": [
+            "$symptom_pos&双侧$symptom_obj&额窦$reversed_exam_result&未见$reversed_exam_item&显示",
+            "$symptom_pos&双侧$symptom_obj&筛窦$exam_item&密度$exam_result&未见明显增高",
+            "$symptom_pos&双$symptom_obj&上颌窦$entity_neg&不$symptom_desc&对称",
+            "$symptom_pos&左侧$symptom_obj&上颌窦$object_part&窦腔$symptom_deco&较右侧$symptom_desc&小",
+            "$symptom_pos&左侧$symptom_obj&上颌窦$object_part&窦腔$exam_item&密度$exam_result&未见明显增高",
+            "$symptom_pos&左侧$symptom_obj&上颌窦$object_part&窦腔$entity_neg&未见$symptom_deco&明显$symptom_desc&液气平面",
+            "$symptom_pos&左侧$symptom_obj&上颌窦$object_part&窦壁$entity_neg&未见$symptom_deco&明显$symptom_desc&破坏",
+            "$symptom_pos&左侧$symptom_obj&上颌窦$object_part&骨质$entity_neg&未见$symptom_deco&明显$symptom_desc&破坏"
+        ]
+    },
+    {
+        "id": 99,
+        "text": "颈椎生理曲度存在，椎体排列序列正常，未见侧弯及滑脱。椎体外形正常，未见骨质破坏及明显骨质增生，各椎体附件未见异常。各椎间隙未见狭窄。椎旁软组织、周围韧带未见明显异常。两肺纹理增多，肺野内未见实变影，肺门形态大小位置未见异常。纵隔及气管未见移位，纵隔未见增宽，心脏形态大小未见异常，两膈光整，两肋膈角锐利。胸廓骨骼及胸壁软组织未见异常。双膈面下未见明显游离气体，腹部未见明显扩张的肠管及气液平面。胆囊区、肾区、输尿管区、膀胱区未见阳性结石影。腹壁软组织影未见异常。腹部未见异常软组织团块影及异常钙化影。两肾轮廓显影欠清。",
+        "res": [
+            "$symptom_obj&颈椎$exam_item&生理曲度$exam_result&存在",
+            "$symptom_obj&颈椎$object_part&椎体$exam_item&排列序列$exam_result&正常",
+            "$symptom_obj&颈椎$object_part&椎体$entity_neg&未见$symptom_desc&侧弯",
+            "$symptom_obj&颈椎$object_part&椎体$entity_neg&未见$symptom_desc&滑脱",
+            "$symptom_obj&椎体$exam_item&外形$exam_result&正常",
+            "$symptom_obj&椎体$entity_neg&未见$symptom_desc&骨质破坏",
+            "$symptom_obj&椎体$entity_neg&未见$symptom_deco&明显$symptom_desc&骨质增生",
+            "$symptom_obj&椎体附件$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&椎间隙$entity_neg&未见$symptom_desc&狭窄",
+            "$symptom_obj&椎旁$object_part&软组织$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&椎旁$symptom_pos&周围$object_part&韧带$entity_neg&未见$symptom_deco&明显$symptom_desc&异常",
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&肺野内$entity_neg&未见$symptom_desc&实变影",
+            "$symptom_obj&肺门$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&肺门$exam_item&大小$exam_result&未见异常",
+            "$symptom_obj&肺门$exam_item&位置$exam_result&未见异常",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&气管$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&增宽",
+            "$symptom_obj&心脏$exam_item&形态$exam_result&未见异常",
+            "$symptom_obj&心脏$exam_item&大小$exam_result&未见异常",
+            "$symptom_obj&两膈$symptom_desc&光整",
+            "$symptom_pos&两$symptom_obj&肋膈角$symptom_desc&锐利",
+            "$symptom_obj&胸廓$object_part&骨骼$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&胸壁$object_part&软组织$entity_neg&未见$symptom_desc&异常",
+            "$symptom_pos&双$symptom_obj&膈面下$entity_neg&未见$symptom_deco&明显$symptom_desc&游离气体",
+            "$symptom_obj&腹部$entity_neg&未见$symptom_deco&明显$symptom_desc&肠管",
+            "$symptom_obj&腹部$entity_neg&未见$symptom_deco&扩张的$symptom_desc&肠管",
+            "$symptom_obj&腹部$entity_neg&未见$symptom_deco&明显$symptom_desc&气液平面",
+            "$symptom_obj&腹部$entity_neg&未见$symptom_deco&扩张的$symptom_desc&气液平面",
+            "$symptom_obj&腹壁$object_part&软组织$exam_item&影$exam_result&未见异常",
+            "$symptom_obj&腹部$entity_neg&未见$symptom_deco&异常$symptom_desc&软组织团块影",
+            "$symptom_obj&腹部$entity_neg&未见$symptom_deco&异常$symptom_desc&钙化影",
+            "$symptom_pos&两$symptom_obj&肾$exam_item&轮廓$exam_result&欠清",
+            "$symptom_pos&两$symptom_obj&肾$exam_item&显影$exam_result&欠清"
+        ]
+    }
+]
