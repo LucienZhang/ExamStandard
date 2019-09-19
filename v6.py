@@ -52,7 +52,8 @@ def _build_sorted_product_params(*args, **stacks):
         "medical_events_stack": ["medical_events"],
         "time_stack": ["time"],
         "entity_neg_stack": ["entity_neg"],
-        "treatment_stack": ["treatment"]
+        "treatment_stack": ["treatment"],
+        "tt_stack": ["treatment_desc"]
     }
 
     tmp1 = []
@@ -83,7 +84,7 @@ def _build_sorted_product_params(*args, **stacks):
                 res.append({int(list(each_stack.keys())[0]): stack_value})
     # print("res:\n%s\n" % res)
 
-    # 由于 lesion 之前出现的 item/resul 不需要拼lesion, 所以在这里将出现在 item/result 之后的 lesion 从结果中剔除掉
+    # 如果x是 irA + lesion + irB 结构, 那么irA 单独输出, irB 才需要和 lesion 拼接
     tmp_lesion_idx, tmp_ir_idx = None, None
     ir_tags = ["exam_item", "exam_result", "symptom_deco",
                "symptom_desc", "reversed_exam_result", "reversed_exam_item"]
@@ -135,6 +136,15 @@ def _get_sort_key(elem):
     参数: elem: 列表中的元素
     """
     # [[55, 57, 'exam', 'DWI']] -> 55
+    # 样本28 obj + neg + part + desc, 用obj还是part的索引?
+
+    # 样本35, 看起来用 part 作为索引会好一点
+    # [35, 35, 'symptom_obj', '肾']
+    # .....
+    # [68, 70, 'exam', '增强后'],
+    # [71, 74, 'object_part', '囊性成分']
+
+    # 目前用 obj, 也就是ppos末尾项的索引 (符合样本35)
     if isinstance(elem, list):
         return elem[-1][0]
 
@@ -185,6 +195,7 @@ def _check_ppo_situation(ppo_list):
     part = "object_part"
     tmp = [j[2] for j in ppo_list]
     check_list = []
+
     for j in tmp:
         if j not in check_list:
             check_list.append(j)
@@ -193,19 +204,22 @@ def _check_ppo_situation(ppo_list):
         if j not in check_list:
             check_list.append(j)
 
+    res = None
     if obj in check_list:
         if pos not in check_list:
             if part not in check_list:
-                return 1  # obj
+                res = 1  # obj
             else:
-                return 2  # obj + part
+                res = 2  # obj + part
         elif pos in check_list:
             if part not in check_list:
-                return 3  # obj + pos
+                res = 3  # obj + pos
             else:
-                return 4  # obj + pos + part
+                res = 4  # obj + pos + part
     else:
-        return 5  # 没有obj的特殊情况
+        res = 5  # 没有obj的特殊情况
+
+    return res
 
 
 def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
@@ -243,8 +257,7 @@ def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
 
             # 样本24 室间隔o + 左室o + 后壁p
             elif [j[2] for j in ppos] == ["symptom_obj", "symptom_obj", "object_part"]:
-                obj_rel = _check_obj_relationship(self_obj=ppos[0][3], other_obj=ppos[1][3])
-
+                obj_rel = _check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[0][3])
                 if obj_rel == 1:
                     pass
                     # ppo_stack.append(_connect_tag_and_value(ppos[0]))
@@ -344,7 +357,6 @@ def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
 
                         if ppos[k-1][2] == "symptom_pos":
                             lucky_obj = ppos[k]
-                            print(tmp_pos)
                             tmp.insert(0, tmp_pos)
                         else:
                             if lucky_obj is not None:
@@ -382,12 +394,8 @@ def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
                 ppo_stack.append("".join([_connect_tag_and_value(k) for k in ppos]))
 
             # 该情况有2个样本45, 91, 需要2种不同拼法
-            # 造成该问题的原因，可能是45的2个pos分的没有太大必要，可以吧"下方周围"标为一个pos
-            # 还有一个因素,45的2个pos之间没有顿号，或者"和"，"及"等提示性连接词;
-            # 但是91样本的2个pos之间有一个关键词"及"
             # 样本45 盲肠o + 下方pos + 周围pos + 腹膜part 建议先拼成"盲肠+下方+周围+腹膜"
-            # 样本91 鼻咽腔o + 顶部pos + 后上壁pos + 软组织part
-            # 若要系统分辨，可能后续标注时, 需要将这种"和"，"及"等关键词都标出
+            # 样本91 (鼻咽腔o + 顶部pos) + (后上壁pos + 软组织part)
             elif [j[2] for j in ppos] == ["symptom_obj", "symptom_pos", "symptom_pos", "object_part"]:
                 for k in ppos:
                     if k[2] == "symptom_obj":
@@ -540,8 +548,10 @@ def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
                                     if k < len(ppos) - 1:
                                         if ppos[k + 1][2] != "symptom_obj":
                                             # 先查看obj之间关系 1并列 2从属
-                                            obj_rel = _check_obj_relationship(self_obj=ppos[1][3],
-                                                                              other_obj=ppos[k][3])
+                                            # 先来的是other_obj, 最后来的是self_obj
+                                            obj_rel = _check_obj_relationship(self_obj=ppos[k][3],
+                                                                              other_obj=ppos[1][3])
+
                                             if obj_rel == 1:
                                                 tmp_pos_obj = list(product(*[tmp_pos, tmp_obj]))
                                             elif obj_rel == 2:
@@ -705,8 +715,9 @@ def _build_ppo_stack(ppos, ppo_stack):
     # 5种情况 o+o, o + part/pos, pos/part + o (肯定有o)
     elif len(ppos) == 2:
         # 只有o+o需要判断2者关系(并列/从属/没关系)
+        # 先来的obj是other_obj, 后来的是self_obj
         if ppos[0][2] == "symptom_obj" and ppos[1][2] == "symptom_obj":
-            obj_rel = _check_obj_relationship(ppos[0][3], ppos[1][3])
+            obj_rel = _check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[0][3])
             if obj_rel == 1:
                 ppo_stack = [_connect_tag_and_value(j) for j in ppos]
             else:
@@ -745,10 +756,20 @@ def exam_standard(origin_targets):
         results, reversed_ir = [], []
         ir, deco_desc = [], []
 
-        # 其他
-        treatment_stack = []
+        # medical
         medical_events, medical_events_stack = [], []
-        treatment, treatment_stack = [], []  # 样本12中出现过 [54, 57, 'treatment', '静脉注射']
+
+        # treatment 用来存储进来的 treatment, 如 [[54, 57, 'treatment', '静脉注射']]
+        # treatment_stack 是在没有treatment_desc时, 用来放置单独的 treatment, 如 ["$treatment&静脉注射"]
+        # tt_stack 是遇到 treatment_desc时，将其和 treatment拼接后放进这个列表, 如样本55:
+        # [0, 9, 'treatment', '插管后经肛管注入气体'],
+        # [11, 17, 'treatment_desc', '压力约9KPa'],
+        # [18, 18, 'vector_seg', '，'],
+
+        # 那么 treatment = [[0, 9, 'treatment', '插管后经肛管注入气体']]
+        # 遇到 treatment_desc "压力约9KPa"时候, 将其和 treatment内拼接，得到:
+        # tt_stack = ["$treatment&插管后经肛管注入气体$treatment_desc&压力约9KPa"]
+        treatment, treatment_stack, tt_stack = [], [], []  # 样本12中出现过 [54, 57, 'treatment', '静脉注射']
 
         # exam = [[28, 31, 'exam', 'CDFI']], exam_stack = ["$exam&CDFI"]
         exam, exam_stack = [], []
@@ -781,9 +802,9 @@ def exam_standard(origin_targets):
                 if i == 0:
                     ppos.append(x[i])
                 else:
-                    # obj + pos + obj
-                    # obj + pos
-                    # obj + pos + part等
+                    # obj + pos(自己) + obj
+                    # obj + pos(自己)
+                    # obj + pos(自己) + part 等
                     if x[i - 1][2] in ["symptom_obj", "symptom_pos", "object_part"]:
                         ppos.append(x[i])
 
@@ -791,7 +812,6 @@ def exam_standard(origin_targets):
                         # xxx + pos + obj + xxx
                         # xxx + pos + part + xxx 等等
                         if x[i + 1][2] in ["symptom_obj", "symptom_pos", "object_part"]:
-
                             # xxx + pos + obj + xxx
                             # [192, 192, 'symptom_pos', '双'],
                             # [193, 194, 'symptom_obj', '肾内'],
@@ -880,8 +900,14 @@ def exam_standard(origin_targets):
                                     pass
 
             elif tag == "symptom_obj":
-                special_sit = 0
-                if i != 0:
+                obj_special_sit = 0
+                # 这个特殊情况是为了 "腹腔obj" + "扫查exam"这种结构, 因为在exam处会讲腹腔和扫查拼到一起，所以这里obj就pass即可
+                if i == 0:
+                    if i < len(x) - 1:
+                        if x[i+1][2] == "exam":
+                            obj_special_sit = 2
+
+                elif i != 0:
                     # [] + obj + xxx
                     if x[i - 1][2] not in ["symptom_obj", "symptom_pos", "object_part"]:
                         if len(ppos) > 0:
@@ -892,17 +918,25 @@ def exam_standard(origin_targets):
 
                             # if ppos[-1][2] == "symptom_obj":
                             if "symptom_obj" in [j[2] for j in ppos]:
+                                # 先找到ppos中的obj
+                                for k in ppos:
+                                    if k[2] == "symptom_obj":
+                                        other_obj = k[3]
+                                        break
+
                                 # 查看2个obj关系
-                                obj_rel = _check_obj_relationship(self_obj=value, other_obj=ppos[-1][3])
-
-                                # 只有这种是特殊情况, 不清空ppos
+                                obj_rel = _check_obj_relationship(self_obj=value, other_obj=other_obj)
+                                # 只有这种是特殊情况, 需要清空ppos
                                 if obj_rel == 1:
-                                    special_sit = 1
+                                    obj_special_sit = 1
 
-                if special_sit == 1:
+                if obj_special_sit == 1:
                     ppos = list()
 
                 ppos.append(x[i])
+
+                if obj_special_sit == 2:
+                    ppos.pop()
 
             elif tag == "object_part":
                 part_special_sit = 0
@@ -931,17 +965,18 @@ def exam_standard(origin_targets):
                 if i != 0:
                     # 以上样本 中的 "皮肤"
                     if x[i - 1][2] not in ["symptom_obj", "symptom_pos", "object_part"]:
-                        if ppos[-1][2] == "object_part":
-                            tail_part_value = ppos[-1][3]
-                            # 原 ppos = [左侧+臀大肌+外侧缘+间隙内]
-                            # 截断后 ppos = [左侧+臀大肌]
-                            # 然后将自己 "皮肤" 放入ppos = [左侧+臀大肌+皮肤]
-                            for j in range(len(ppos) - 1, -1, -1):
-                                if ppos[j][2] == "symptom_obj":
-                                    part_special_sit = 1
-                                    tmp_obj_idx = j
-                                    # ppos = ppos[:tmp_obj_idx + 1]
-                                    break
+                        if len(ppos) > 0:
+                            if ppos[-1][2] == "object_part":
+                                tail_part_value = ppos[-1][3]
+                                # 原 ppos = [左侧+臀大肌+外侧缘+间隙内]
+                                # 截断后 ppos = [左侧+臀大肌]
+                                # 然后将自己 "皮肤" 放入ppos = [左侧+臀大肌+皮肤]
+                                for j in range(len(ppos) - 1, -1, -1):
+                                    if ppos[j][2] == "symptom_obj":
+                                        part_special_sit = 1
+                                        tmp_obj_idx = j
+                                        # ppos = ppos[:tmp_obj_idx + 1]
+                                        break
 
                 if part_special_sit == 1:
                     # 样本 35
@@ -954,6 +989,8 @@ def exam_standard(origin_targets):
 
             elif tag == "exam":
                 exam = [x[i]]
+                exam_special_sit = 0
+
                 # [62, 63, 'symptom_obj', '肝胆'],
                 # [64, 65, 'exam', '显像'],
                 # [68, 78, 'medical_events', '静脉注射示踪剂 1分钟'],
@@ -965,23 +1002,20 @@ def exam_standard(origin_targets):
                 # [89, 90, 'reversed_exam_item', '显影'],
                 # [91, 91, 'vector_seg', '，']
 
-                # 遇到"肝胆+显像"这种结构时，会讲肝胆和显像拼到一起，作为 exam_stack
-                if i > 0:
+                # 遇到以上"肝胆+显像"这种结构时，会讲肝胆和显像拼到一起，作为 exam_stack
+                if i == 1:
                     if x[i-1][2] == "symptom_obj":
-                        exam_stack = [_connect_tag_and_value(x[i-1]) +
-                                      _connect_tag_and_value(x[i])]
-                    else:
-                        exam_stack = [_connect_tag_and_value(x[i])]
+                        exam_special_sit = 1
 
-                # 样本 1
-                # [3, 6, 'exam', '餐后扫查'],
-                # [8, 9, 'symptom_obj', '肠气'],
-                # [10, 13, 'symptom_desc', '干扰明显'],
-                # [15, 16, 'exam_item', '图像'],
-                # [17, 20, 'exam_result', '质量欠佳'],
-                # [21, 21, 'vector_seg', '：']
-                # 遇到 "餐后扫查" 时, i为0
-                elif i == 0:
+                # 72标签 [24, 27, 'exam', '前位显像']
+                if value == "前位显像":
+                    exam_special_sit = 1
+
+                if exam_special_sit == 1:
+                    exam_stack = [_connect_tag_and_value(x[i-1]) +
+                                  _connect_tag_and_value(x[i])]
+
+                else:
                     exam_stack = [_connect_tag_and_value(x[i])]
 
             elif tag == "time":
@@ -1000,10 +1034,45 @@ def exam_standard(origin_targets):
                 treatment = [x[i]]
                 treatment_stack = [_connect_tag_and_value(x[i])]
 
+            elif tag == "treatment_desc":
+                # 样本55 中出现过
+                # [0, 9, 'treatment', '插管后经肛管注入气体'],
+                # [11, 17, 'treatment_desc', '压力约9KPa'],
+                # [18, 18, 'vector_seg', '，']
+
+                # 样本72 (处理方式待定, 目前是treatment+treatment_desc拼接结构化结果)
+                # [0, 3, 'treatment', '静脉注射'],
+                # [4, 6, 'treatment_desc', '显像剂'],
+                # [8, 13, 'time', '1-30分钟'],
+                # [15, 18, 'time', '60分钟'],
+                # [22, 23, 'symptom_obj', '腹部'],
+                # [24, 27, 'exam', '前位显像'],
+                # [28, 28, 'vector_seg', '，']
+
+                # 与 treatment 拼接
+                if len(treatment) > 0:
+                    tt_stack = [_connect_tag_and_value(treatment[0]) +
+                                _connect_tag_and_value(x[i])]
+
+                # 构造 product_param
+                product_params = _build_sorted_product_params([x[i]],
+                                                              tt_stack=tt_stack)
+
+                # 构造结构化结果
+                prod_res = list(product(*product_params))
+
+                # 结果存入 res_x
+                res_x.extend(["".join(j) for j in prod_res])
+
+                # 清空 tt_stack 和 treatment
+                tt_stack = []
+                treatment = []
+
             elif tag == "exam_item":
                 items.append(x[i])
 
             elif tag == "symptom_deco":
+                deco_special_sit = 0
                 # [0, 1, 'symptom_obj', '腹部'],
                 # [2, 5, 'exam', '立位平片'],
                 # [7, 7, 'vector_seg', '：'],
@@ -1017,17 +1086,59 @@ def exam_standard(origin_targets):
                 # [36, 39, 'symptom_desc', '液气平面'],
                 # [40, 40, 'vector_seg', '，'],
                 # 样本7, 若遇到 "以左上腹部结肠内稍多", 不写入decorations
-                if i != 0:
-                    if i < len(x) - 1:
-                        if x[i+1][2] in ["symptom_deco", "symptom_desc"]:
-                            decorations.append(x[i])
+
+                # 若从当前deco开始, 到该seg结束，都没有desc的话，就不把这种deco 放入decoration
+                if "symptom_desc" not in [k[2] for k in x[i:]]:
+                    deco_special_sit = 1
+                else:
+                    if i < len(x) -1:
+
+                        # 样本33 局部deco + 气道obj + 变狭窄desc
+                        # 样本34 局部deco + 骨质part + 缺损desc
+                        # 以上33，34两个样本中的 deco局部，都是需要放入 decorations 中的
+                        if x[i+1][2] not in ["symptom_pos", "symptom_obj", "object_part"]:
+
+                            # 暂时用这个逻辑来处理样本7中的 "以左上腹部结肠内稍多"
+                            if x[i+1][2] not in ["symptom_deco", "symptom_desc"]:
+                                deco_special_sit = 2
+
+                if deco_special_sit != 1 and deco_special_sit != 2:
+                    decorations.append(x[i])
 
             elif tag == "reversed_exam_result":
                 results.append(x[i])
 
+            elif tag == "lesion":
+                # 特殊情况, 样本70中, 同一个seg下有2个lesion
+                # [87, 87, 'symptom_pos', '左'],
+                # [88, 89, 'symptom_obj', '顶叶'],
+                # [90, 92, 'object_part', '侧脑室'],
+                # [93, 95, 'object_part', '后角旁'],
+                # [97, 106, 'lesion', '片状长T1长T2信号'],
+                # [108, 109, 'exam_item', '边界'],
+                # [110, 111, 'exam_result', '清晰'],
+                # [113, 122, 'lesion', 'T2FLAIR低信号'],
+                # [123, 123, 'vector_seg', '，'],
+                if x[i] != lesion[0]:
+                    lesion.pop()
+                    lesion.append(x[i])
+
             elif tag == "lesion_desc":
+                # 特殊情况: 以下列表中的暂不拼接:
+                # 1. "其中一个";
+                # 2. 样本56中的 "其一";
+                # 3. 样本83 "较大的"
+                if value in ["其中一个", "其一", "较大的"]:
+                    continue
+
                 if len(lesion) > 0:
                     # 按lesion 和 lesion_desc 出现先后顺序排序，构造 ll_stack
+                    # 样本2
+                    # [7, 9, 'symptom_obj', '脑沟内'],
+                    # [12, 14, 'lesion_desc', '许多条'],
+                    # [15, 16, 'lesion_desc', '索状'],
+                    # [17, 21, 'lesion', '异常信号影'],
+                    # [24, 27, 'lesion_desc', '额叶明显'],
                     tmp_ll_stack = [lesion, [x[i]]]
                     tmp_ll_stack.sort(key=_get_sort_key)
                     # tmp_ll_stack:
@@ -1040,10 +1151,21 @@ def exam_standard(origin_targets):
                     ppo_stack = _build_ppo_stack(ppos=ppos, ppo_stack=ppo_stack)
 
                     # 构造结构化结果
-                    product_params = _build_sorted_product_params(exam, ppos, [x[i]],
+                    # TODO 由于文本70的特殊情况,暂时把 entity_neg加入lesion_desc拼接中
+                    # TODO 看下效果, 如果会错误拼接其他的entity_neg,则需要将其移除，另想办法
+                    # 70样本如下(其中 deco"异常"需要先人为修改成 lesion_desc)
+                    # [130, 131, 'exam', '增强'],
+                    # [133, 134, 'symptom_obj', '颅内'],
+                    # [135, 136, 'entity_neg', '未见'],
+                    # [137, 138, 'symptom_deco', '异常'],
+                    # [139, 141, 'lesion', '强化灶'],
+                    # [142, 142, 'vector_seg', '。'],
+                    product_params = _build_sorted_product_params(exam, ppos, [x[i]], entity_neg, time,
                                                                   exam_stack=exam_stack,
                                                                   ppo_stack=ppo_stack,
-                                                                  ll_stack=ll_stack)
+                                                                  ll_stack=ll_stack,
+                                                                  entity_neg_stack=entity_neg_stack,
+                                                                  time_stack=time_stack)
                     # product_params = _build_product_param(exam_stack, ppo_stack, ll_stack)
                     prod_res = list(product(*product_params))
 
@@ -1106,7 +1228,13 @@ def exam_standard(origin_targets):
                 elif i < len(x) - 1:
                     if x[i + 1][2] != tag:
                         # 将各个stack放入 itertools.product 函数所需的参数中
-                        product_params = _build_sorted_product_params(exam, ppos, items, lesion,
+                        # 由于items可能为空, 所以排序依据不用items, 而是用当前exam_result的索引, 即x[i][0]
+                        # 例子: 样本64, 遇到"7个时", 因为items是空的, 所以排序后不会输出"7个", 所以用x[i][3]= 8 来做索引:
+                        # [0, 0, 'symptom_pos', '左'],
+                        # [1, 4, 'symptom_obj', '手腕关节'],
+                        # [8, 9, 'exam_result', '7个'],
+                        # [10, 15, 'exam_item', '骨化中心发育']
+                        product_params = _build_sorted_product_params(exam, ppos, [x[i]], lesion,
                                                                       medical_events, time, treatment,
                                                                       exam_stack=exam_stack,
                                                                       ppo_stack=ppo_stack,
@@ -1128,7 +1256,7 @@ def exam_standard(origin_targets):
                     ppo_stack = []
 
             elif tag == "symptom_desc":
-                # 注意: symptom_desc是描述symptom的, 和lesion可以看作平行，所以遇到该标签, 可以不用考虑 lesion.
+                # 注意: symptom_desc用来描述symptom, 和lesion可以看作平行，故遇此标签, 可以不用考虑 lesion.
 
                 # step 1 把自己和 decorations 中的项拼接, 然后放入deco_desc列表中
                 if len(decorations) > 0:
@@ -1179,6 +1307,20 @@ def exam_standard(origin_targets):
                 # ...
                 if i < len(x) - 1:
                     if x[i + 1][2] != tag:
+                        # 特殊情况，样本70
+                        # [50, 53, 'symptom_obj', '第四脑室'],
+                        # [54, 55, 'symptom_desc', '扩大'],
+                        # [57, 63, 'symptom_deco', '与前片大致相仿'],
+                        # [64, 64, 'vector_seg', '；']
+                        if x[i+1][2] == "symptom_deco":
+                            if i == len(x) - 2:
+                                # 将倒序的deco"与前片大致相仿"也拼进来
+                                tmp_1 = deco_desc[0]
+                                tmp_2 = _connect_tag_and_value(x[i+1])
+                                deco_desc = [tmp_1 + tmp_2]
+
+                        # 以下为正常情况下的处理流程:
+
                         # 将各个stack放入 itertools.product 函数所需的参数中
                         # 注意, 由于较多时候,decorations都可能是空的，所以排序不用decOrations,而使用[x[i]]
                         # desc 中需要考虑 entity_neg
@@ -1275,7 +1417,9 @@ def exam_standard(origin_targets):
 
                         # 清空 items, ir, ppo_stack
                         results, reversed_ir, ppo_stack = [], [], []
-
+        print(" ")
+        for aaa in res_x:
+            print(aaa)
         # 统计所有结果
         output_list.extend(res_x)
 
@@ -1285,6 +1429,6 @@ def exam_standard(origin_targets):
 if __name__ == "__main__":
     sample = samples[int(sys.argv[1])]
     ans = exam_standard(sample)
-    print("\n")
-    for r in ans:
-        print(r)
+    # print("\n")
+    # for r in ans:
+    #     print(r)

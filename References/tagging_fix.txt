@@ -1,0 +1,217 @@
+"""
+注:
+1.该文件所指的样本 xxx, 可以通过以下脚本查看完整数据:
+查看标注:
+python load_data_script.py --target xxx
+查看原文本:
+python load_data_script.py --text xxx
+
+2. 按照该文件修改建议处理后, 基本都可以正常结构化拼接.
+"""
+
+
+1 样本22
+<1> 问题tag:
+[78, 81, 'symptom_desc', '异常密度'],
+[82, 82, 'symptom_desc', '影'],
+<2> 建议:
+合并为一个desc: "异常密度影"
+
+2 样本23
+<1> 问题tag:
+[95, 95, 'vector_seg', '，']
+<2> 建议: 删除该 vector_seg
+
+3 样本27
+<1> 问题tag:
+[52, 53, 'exam_item', '显影']
+<2> 建议: 是否将 exam_item 修改为 exam
+
+4 样本32
+<1> 问题tag:
+[0, 1, 'symptom_deco', '侧位'],
+<2> 建议: 是否将 deco 修改为 pos
+
+5 样本35
+<1> 问题tag:
+[111, 115, 'exam', '扫描层面内'],
+[116, 117, 'symptom_obj', '肝脏'],
+[119, 120, 'symptom_obj', '胆囊'],
+[122, 123, 'symptom_obj', '胰腺'],
+[124, 125, 'entity_neg', '未见'],
+[126, 127, 'symptom_deco', '明显'],
+[128, 129, 'symptom_desc', '异常'],
+[130, 130, 'vector_seg', '。'],
+<2> 建议: 是否将最后这3个 "未见" + "明显" + "异常" 合并标为 exam_result
+(不会影响正常结构化, 但是前面是有exam检查, 所以这里确认是否应该是 exam+exam_result结构)
+
+
+6 样本41
+<1> 问题tag:
+[51, 52, 'object_part', '粘液'],
+[53, 54, 'symptom_desc', '湖清'],
+<2> 建议: "粘液湖" 应该是一个object_part
+是否修改为:
+[51, 53, 'object_part', '粘液湖'],
+[54, 54, 'symptom_desc', '清'],
+
+7 样本43:
+<1> 问题tag:
+[8, 9, 'exam_result', '8个'],
+[10, 15, 'exam_item', '骨化中心发育'],
+<2> 建议: 修改为 reversed_exam_result/ reversed_exam_item
+
+8 样本43:
+<1> 问题tag:
+[25, 25, 'vector_seg', '，']
+<2> 建议: 删除该 vector_seg
+(43原文: 左手腕关节现已见8个骨化中心发育，尺桡骨骨骺已出现，骨龄与实际年龄基本相符，请结合临床。)
+
+9 样本44:
+<1> 问题tag:
+[28, 35, 'exam_result', '未见明显异常透亮']
+[36, 37, 'exam_item', '线影'],
+<2> 建议: 修改为 reversed_exam_result/ reversed_exam_item
+
+10 样本47:
+<1> 问题tag:
+[58, 59, 'symptom_deco', '餐后'],
+[60, 61, 'symptom_obj', '胆囊']
+<2> 建议: 餐后是否修改为 time
+
+11 样本64:
+<1> 问题tag:
+[8, 9, 'exam_result', '7个'],
+[10, 15, 'exam_item', '骨化中心发育']
+<2> 建议: 修改为 reversed_exam_result/ reversed_exam_item
+
+12 样本64:
+<1> 问题tag:
+[25, 25, 'vector_seg', '，']
+<2> 建议: 删除此 vector_seg
+
+13 样本65:
+<1> 问题tag:
+[99, 103, 'symptom_deco', '随时间延长']
+[168, 172, 'symptom_deco', '随时间延长']
+<2> 建议: 是否修改为 time 标签
+
+14 样本67:
+<1> 问题tag:
+[244, 249, 'exam', '肾小球滤过率'],
+[251, 253, 'exam', 'GFR']
+<2> 建议: 是否合并为 [244, 254, 'exam', '肾小球滤过率(GFR)']
+注: 原文本:
+"肾小球滤过率（GFR）：总GFR 100.13ml/min，左肾GFR 31.42ml/min，右肾GFR　68.71ml/min。（婴儿GFR值仅供参考）"
+
+15 样本70:
+<1> 问题tag:
+[87, 87, 'symptom_pos', '左'],
+[88, 89, 'symptom_obj', '顶叶'],
+[90, 92, 'object_part', '侧脑室'],
+[93, 95, 'object_part', '后角旁'],
+[97, 106, 'lesion', '片状长T1长T2信号'],
+[108, 109, 'exam_item', '边界'],
+[110, 111, 'exam_result', '清晰'],
+[113, 122, 'lesion', 'T2FLAIR低信号'],
+[123, 123, 'vector_seg', '，']
+<2> 建议, 如果 "T2FLAIR低信号" 也作为一个病灶，那么是否需要添加一个 lesion_desc: [124, 128, "lesion_desc", "大致同前片"]?
+原文本:
+"左顶叶侧脑室后角旁见片状长T1长T2信号，边界清晰，T2FLAIR低信号，大致同前片。"
+
+16 样本70:
+<1> 问题tag:
+[130, 131, 'exam', '增强'],
+[133, 134, 'symptom_obj', '颅内'],
+[135, 136, 'entity_neg', '未见'],
+[137, 138, 'symptom_deco', '异常'],
+[139, 141, 'lesion', '强化灶'],
+[142, 142, 'vector_seg', '。'],
+<2> [137, 138, 'symptom_deco', '异常'] 是否修改为 lesion_desc
+
+17 样本72:
+<1> 问题tag:
+[28, 28, 'vector_seg', '，']
+<2> 建议: 是否删除该 vector_Seg
+
+18 样本72:
+<1> 问题tag:
+[36, 37, 'exam_item', '显影']
+<2> 建议: 由于前文中有"exam"前位显像, 所以该标签是否应该修改成 exam_result?
+
+19 样本72:
+<1> 问题tag:
+[86, 87, 'exam_result', '明显'],
+[88, 89, 'exam_item', '显影']
+<2> 建议: 修改为 reversed_exam_result/ reversed_exam_item
+
+20 样本87:
+<1> 问题tag:
+[24, 24, 'symptom_deco', '各']
+<2> 建议: 是否修改为 symptom_pos
+
+21 样本89:
+<1> 问题tag:
+[8, 9, 'exam_result', '8个'],
+[10, 15, 'exam_item', '骨化中心发育']
+<2> 建议: 修改为 reversed_exam_result/ reversed_exam_item
+
+22 样本89:
+<1> 问题tag:
+[25, 25, 'vector_seg', '，']
+<2> 建议: 是否删除该 vector_seg
+
+23 样本93:
+<1> 问题tag:
+[32, 32, 'pathogen', '，']
+<2> 建议: 修改为 vector_seg
+
+24 样本93:
+<1> 问题tag:
+[19, 19, 'symptom_deco', '诸']
+<2> 建议: 是否修改为 symptom_pos, 因为"诸脑室" 即"左脑室"和"右脑室", "左"和"右"都是按照pos来标注的.
+
+25 样本97:
+<1> 问题tag:
+[25, 25, 'vector_seg', '，']
+<2> 建议: 删除该 vector_seg
+
+26 样本97:
+<1> 问题tag:
+[148, 150, 'symptom_pos', '腹膜后'],
+[151, 152, 'entity_neg', '未见'],
+[153, 154, 'symptom_desc', '肿大'],
+[155, 157, 'symptom_obj', '淋巴结'],
+[159, 160, 'entity_neg', '未见'],
+[161, 162, 'symptom_obj', '腹腔'],
+[163, 164, 'symptom_desc', '积液'],
+[165, 165, 'vector_seg', '。']
+
+修改前结构化拼接如下:
+$symptom_pos&腹膜后$entity_neg&未见$symptom_desc&肿大
+$entity_neg&未见$symptom_obj&腹腔$symptom_desc&积液
+
+<2> 建议:
+a. 腹膜后 修改为 obj腹膜 + pos后
+b. desc肿大 修改为 lesion_desc
+c. obj淋巴结 修改为 lesion
+修改后如下:
+[148, 149, 'symptom_obj', '腹膜'],
+[149, 150, 'symptom_pos', '后'],
+[151, 152, 'entity_neg', '未见'],
+[153, 154, 'lesion_desc', '肿大'],
+[155, 157, 'lesion', '淋巴结'],
+[159, 160, 'entity_neg', '未见'],
+[161, 162, 'symptom_obj', '腹腔'],
+[163, 164, 'symptom_desc', '积液'],
+[165, 165, 'vector_seg', '。']
+
+修改后结构化拼接如下:
+$symptom_obj&腹膜$symptom_pos&后$entity_neg&未见$lesion_desc&肿大$lesion&淋巴结
+$entity_neg&未见$symptom_obj&腹腔$symptom_desc&积液
+
+27 样本99:
+<1> 问题tag:
+[212, 215, 'reversed_exam_result', '未见阳性']
+[216, 218, 'exam_item', '结石影'] (有问题)
+<2> 建议: 将 "结石影" 修改为 reversed_exam_item

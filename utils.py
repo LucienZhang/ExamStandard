@@ -47,10 +47,18 @@ def split_target(origin_target):
             # [42, 47, 'exam_result', '约为6.5岁'],
             # [48, 48, 'vector_seg', '。'],
 
-            # 样本1 特殊情况2 遇到 "餐后扫查"时, 这种seg不分割
+            # 样本1 特殊情况2
+            # 遇到 "餐后扫查"时, 这种seg不分割
             # [2, 2, 'vector_seg', '，'],
             # [3, 6, 'exam', '餐后扫查'],
             # [7, 7, 'vector_seg', '，'],
+
+            # 样本97 特殊情况3
+            # 这种连着2个vector_seg, 那么2个都不分割
+            # [0, 1, 'symptom_obj', '腹部'],
+            # [2, 5, 'exam', '急诊扫描'],
+            # [6, 6, 'vector_seg', '，'],
+            # [18, 18, 'vector_seg', '。']
 
             if i >= 1:
                 if origin_target[i-1][2] == "exam":
@@ -59,6 +67,10 @@ def split_target(origin_target):
                             continue
                     else:
                         continue
+
+                # 样本97
+                elif origin_target[i-1][2] == "vector_seg":
+                    continue
 
             # 其他情况正常分割
             if i != 0:
@@ -100,6 +112,8 @@ def add_optional_parameters(data):
             print("\n第%d个标签\n" % n)
             for tag in data[n]["target"]:
                 print(str(tag) + ",")
+                if tag[2] == "vector_seg":
+                    print("")
 
 
 def print_segment(segment):
