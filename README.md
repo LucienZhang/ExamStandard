@@ -20,5 +20,12 @@
 ### v1, v2获取将所有项后统一放入一个stack
 ### v4 分为多个不同stack (ppo_stack, ir, exam_stack等)
 
+## v5.py
+### 新的处理方式, 和后面v6方式相同, 建议使用v6进行测试.
+
+## v6.py
+### 当前最新版本， 建议按此脚本测试.
+### python v6.py xxx (xxx可取0-99, 来源data/v6_test_data.py)
+
 # data/samples.py
 ### 测试用数据.
