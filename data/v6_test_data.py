@@ -4734,5 +4734,70 @@ samples = {
         [254, 255, 'exam_item', '显影'],
         [256, 257, 'exam_result', '欠清'],
         [258, 258, 'vector_seg', '。']
+    ],
+    100: [
+        [0, 1, 'symptom_obj', '头颅'],
+        [2, 3, 'exam_item', '外形'],
+        [5, 6, 'exam_item', '大小'],
+        [7, 8, 'exam_result', '正常'],
+        [9, 9, 'vector_seg', '，'],
+
+        [10, 14, 'symptom_obj', '颅骨内外板'],
+        [16, 17, 'symptom_obj', '板障'],
+        [18, 19, 'object_part', '骨质'],
+        [20, 21, 'symptom_desc', '完整'],
+        [23, 24, 'entity_neg', '未见'],
+        [25, 26, 'symptom_deco', '明显'],
+        [27, 28, 'object_part', '骨质'],
+        [29, 30, 'symptom_desc', '吸收'],
+        [32, 33, 'symptom_desc', '破坏'],
+        [35, 36, 'symptom_desc', '增生'],
+        [39, 39, 'vector_seg', '，'],
+
+        [40, 41, 'symptom_obj', '颅内'],
+        [42, 43, 'entity_neg', '未见'],
+        [44, 45, 'symptom_deco', '明显'],
+        [46, 47, 'symptom_deco', '异常'],
+        [48, 50, 'symptom_desc', '钙化灶'],
+        [51, 51, 'vector_seg', '。'],
+    ],
+    101: [
+        [0, 1, 'symptom_obj', '两肺'],
+        [2, 3, 'exam_item', '纹理'],
+        [4, 5, 'exam_result', '增多'],
+        [7, 8, 'exam_result', '模糊'],
+        [9, 9, 'vector_seg', '。'],
+
+        [10, 11, 'symptom_obj', '纵隔'],
+        [13, 14, 'symptom_obj', '气管'],
+        [15, 16, 'entity_neg', '未见'],
+        [17, 18, 'symptom_desc', '移位'],
+        [19, 19, 'vector_seg', '，'],
+
+        [20, 21, 'symptom_obj', '纵隔'],
+        [22, 23, 'entity_neg', '未见'],
+        [24, 25, 'symptom_desc', '增宽'],
+        [26, 26, 'vector_seg', '，'],
+
+        [27, 28, 'symptom_obj', '肺门'],
+        [29, 30, 'exam_item', '形态'],
+        [31, 32, 'exam_item', '大小'],
+        [33, 34, 'exam_item', '位置'],
+        [35, 40, 'exam_result', '未见明显异常'],
+        [41, 41, 'vector_seg', '。'],
+
+        [42, 43, 'symptom_obj', '心影'],
+        [44, 45, 'entity_neg', '未见'],
+        [46, 47, 'symptom_desc', '异常'],
+        [48, 48, 'vector_seg', '。'],
+
+        [49, 50, 'symptom_obj', '两膈'],
+        [51, 52, 'symptom_desc', '光整'],
+        [53, 53, 'vector_seg', '，'],
+
+        [54, 54, 'symptom_pos', '两'],
+        [55, 57, 'symptom_obj', '肋膈角'],
+        [58, 59, 'symptom_desc', '锐利'],
+        [60, 60, 'vector_seg', '。']
     ]
 }

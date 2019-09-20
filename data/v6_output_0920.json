@@ -106,8 +106,8 @@
             "$symptom_obj&关节$exam_item&间隙$exam_result&不窄",
             "$symptom_obj&关节$object_part&关节腔$entity_neg&未见$symptom_deco&明显$symptom_desc&积液",
             "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_deco&较右侧$symptom_desc&缩小",
-            "$symptom_pos&左侧$symptom_obj&臀大肌$exam_item&信号$exam_result&不均",
-            "$symptom_pos&左侧$symptom_obj&臀大肌$exam_item&边缘$exam_result&模糊",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$exam_item&信号$exam_result&不均$lesion&T1长T2异常信号影",
+            "$symptom_pos&左侧$symptom_obj&臀大肌$exam_item&边缘$exam_result&模糊$lesion&T1长T2异常信号影",
             "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&皮下脂肪$lesion_desc&片状长$lesion&T1长T2异常信号影",
             "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&间隙内$lesion_desc&片状长$lesion&T1长T2异常信号影",
             "$symptom_pos&左侧$symptom_obj&臀大肌$symptom_pos&外侧缘$object_part&皮下脂肪$lesion&T1长T2异常信号影$exam_item&大小$exam_result&约0.6×1.3×2.4cm",
@@ -364,7 +364,7 @@
             "$symptom_pos&双$symptom_obj&肾内$reversed_exam_result&未见明显异常$reversed_exam_item&声像",
             "$exam&CDFI$symptom_pos&双$symptom_obj&肾$exam_item&彩色血流分布$exam_result&正常",
             "$symptom_pos&双$symptom_obj&肾$exam&频谱$exam_result&未见明显异常",
-            "$symptom_pos&右$symptom_obj&上腹腔$exam_item&大小$exam_result&约3.4cm×3.0cm",
+            "$symptom_pos&右$symptom_obj&上腹腔$exam_item&大小$exam_result&约3.4cm×3.0cm$lesion&回声包块",
             "$symptom_pos&右$symptom_obj&上腹腔$lesion_desc&不均质$lesion&回声包块",
             "$symptom_pos&右$symptom_obj&上腹腔$lesion&回声包块$exam_item&界$exam_result&清",
             "$symptom_pos&右$symptom_obj&上腹腔$lesion&回声包块$exam_item&形态$exam_result&规则",
@@ -757,8 +757,8 @@
         "res": [
             "$symptom_obj&甲状腺$exam_item&显影$exam_result&清晰",
             "$symptom_obj&甲状腺$exam_item&位置$exam_result&正常",
-            "$symptom_pos&右$symptom_obj&叶$exam_item&体积$exam_result&增大",
-            "$symptom_pos&右$symptom_obj&叶$symptom_pos&内$exam_item&放射性分布$exam_result&不均匀",
+            "$symptom_pos&右$symptom_obj&叶$exam_item&体积$exam_result&增大$lesion&稀疏缺损区",
+            "$symptom_pos&右$symptom_obj&叶$symptom_pos&内$exam_item&放射性分布$exam_result&不均匀$lesion&稀疏缺损区",
             "$symptom_pos&右$symptom_obj&叶$symptom_pos&中下部$lesion_desc&一$lesion&稀疏缺损区",
             "$symptom_pos&右$symptom_obj&叶$symptom_pos&中下部$lesion_desc&放射性分布$lesion&稀疏缺损区",
             "$symptom_pos&右$symptom_obj&叶$symptom_pos&中下部$lesion&稀疏缺损区$exam_item&边界$exam_result&欠清晰",
@@ -1440,7 +1440,7 @@
         "id": 70,
         "text": "【检查所见】：与2010-12-25日片对比：左侧小脑半球体积缩小，可见条片状长T1长T2异常信号，第四脑室扩大，与前片大致相仿；原枕骨左侧内板下新月形长T1长T2信号消失。左顶叶侧脑室后角旁见片状长T1长T2信号，边界清晰，T2FLAIR低信号，大致同前片。增强示颅内未见异常强化灶。矢状位示鼻咽顶后壁增厚，相应鼻咽腔变窄；双侧扁桃体增大。余同前片。",
         "res": [
-            "$symptom_pos&左侧$symptom_obj&小脑$object_part&半球$exam_item&体积$exam_result&缩小",
+            "$symptom_pos&左侧$symptom_obj&小脑$object_part&半球$exam_item&体积$exam_result&缩小$lesion&条片状长T1长T2异常信号",
             "$symptom_obj&第四脑室$symptom_desc&扩大$symptom_deco&与前片大致相仿",
             "$symptom_obj&枕骨$object_part&左侧内板下$lesion&新月形长T1长T2信号$lesion_desc&消失",
             "$symptom_pos&左$symptom_obj&顶叶$object_part&侧脑室$lesion&片状长T1长T2信号$exam_item&边界$exam_result&清晰",
@@ -1815,7 +1815,7 @@
         "text": "【检查所见】：右上颌窦见一大小约16.8*10.3mm类圆形囊性低密度灶，CT值约37HU，左蝶窦粘膜增厚。鼻咽后壁软组织增厚，宽径约20mm。余副鼻窦清晰，窦壁未见骨质破坏。鼻中隔居中，鼻腔通畅，鼻甲未见增厚。",
         "res": [
             "$symptom_pos&右$symptom_obj&上颌窦$lesion_desc&一$lesion&低密度灶",
-            "$symptom_pos&右$symptom_obj&上颌窦$exam_item&大小$exam_result&约16.8*10.3mm",
+            "$symptom_pos&右$symptom_obj&上颌窦$exam_item&大小$exam_result&约16.8*10.3mm$lesion&低密度灶",
             "$symptom_pos&右$symptom_obj&上颌窦$lesion_desc&类圆形$lesion&低密度灶",
             "$symptom_pos&右$symptom_obj&上颌窦$lesion_desc&囊性$lesion&低密度灶",
             "$symptom_pos&右$symptom_obj&上颌窦$lesion&低密度灶$exam_item&CT值$exam_result&约37HU",
@@ -1966,6 +1966,41 @@
             "$symptom_obj&腹部$entity_neg&未见$symptom_deco&异常$symptom_desc&钙化影",
             "$symptom_pos&两$symptom_obj&肾$exam_item&轮廓$exam_result&欠清",
             "$symptom_pos&两$symptom_obj&肾$exam_item&显影$exam_result&欠清"
+        ]
+    },
+    {
+        "id": 100,
+        "text": "头颅外形、大小正常，颅骨内外板、板障骨质完整，未见明显骨质吸收、破坏、增生现象，颅内未见明显异常钙化灶。",
+        "res": [
+            "$symptom_obj&头颅$exam_item&外形$exam_result&正常",
+            "$symptom_obj&头颅$exam_item&大小$exam_result&正常",
+            "$symptom_obj&颅骨内外板$object_part&骨质$symptom_desc&完整",
+            "$symptom_obj&板障$object_part&骨质$symptom_desc&完整",
+            "$entity_neg&未见$symptom_obj&颅骨内外板$object_part&骨质$symptom_deco&明显$symptom_desc&吸收",
+            "$entity_neg&未见$symptom_obj&颅骨内外板$object_part&骨质$symptom_deco&明显$symptom_desc&破坏",
+            "$entity_neg&未见$symptom_obj&颅骨内外板$object_part&骨质$symptom_deco&明显$symptom_desc&增生",
+            "$entity_neg&未见$symptom_obj&板障$object_part&骨质$symptom_deco&明显$symptom_desc&吸收",
+            "$entity_neg&未见$symptom_obj&板障$object_part&骨质$symptom_deco&明显$symptom_desc&破坏",
+            "$entity_neg&未见$symptom_obj&板障$object_part&骨质$symptom_deco&明显$symptom_desc&增生",
+            "$symptom_obj&颅内$entity_neg&未见$symptom_deco&明显$symptom_desc&钙化灶",
+            "$symptom_obj&颅内$entity_neg&未见$symptom_deco&异常$symptom_desc&钙化灶"
+        ]
+    },
+    {
+        "id": 101,
+        "text": "两肺纹理增多、模糊。纵隔及气管未见移位，纵隔未见增宽，肺门形态大小位置未见明显异常。心影未见异常。两膈光整，两肋膈角锐利。",
+        "res": [
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&增多",
+            "$symptom_obj&两肺$exam_item&纹理$exam_result&模糊",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&气管$entity_neg&未见$symptom_desc&移位",
+            "$symptom_obj&纵隔$entity_neg&未见$symptom_desc&增宽",
+            "$symptom_obj&肺门$exam_item&形态$exam_result&未见明显异常",
+            "$symptom_obj&肺门$exam_item&大小$exam_result&未见明显异常",
+            "$symptom_obj&肺门$exam_item&位置$exam_result&未见明显异常",
+            "$symptom_obj&心影$entity_neg&未见$symptom_desc&异常",
+            "$symptom_obj&两膈$symptom_desc&光整",
+            "$symptom_pos&两$symptom_obj&肋膈角$symptom_desc&锐利"
         ]
     }
 ]

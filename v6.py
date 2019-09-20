@@ -1,10 +1,10 @@
 from itertools import product
 import sys
-# import json
+import json
 from utils import split_target
 from data.obj_rel_map import obj_rel_map
 from data.v6_test_data import samples
-# from load_data_script import data
+from load_data_script import data
 
 
 """
@@ -87,22 +87,23 @@ def _build_sorted_product_params(*args, **stacks):
                 res.append({int(list(each_stack.keys())[0]): stack_value})
     # print("res:\n%s\n" % res)
 
+    # 2019_09_20 注释: 观察发现, 以下结构中 irA 和 irB 基本都要和 lesion 拼, 所以暂时注释掉以下这部分处理
     # 如果x是 irA + lesion + irB 结构, 那么irA 单独输出, irB 才需要和 lesion 拼接
-    tmp_lesion_idx, tmp_ir_idx = None, None
-    ir_tags = ["exam_item", "exam_result", "symptom_deco",
-               "symptom_desc", "reversed_exam_result", "reversed_exam_item"]
-
-    for idx in range(len(res)):
-        rv = list(res[idx].values())[0][0]
-        rv_tag = rv[rv.index("$")+1:rv.index("&")]
-        if rv_tag == "lesion":
-            tmp_lesion_idx = idx
-        elif rv_tag in ir_tags:
-            tmp_ir_idx = idx
-
-    if tmp_ir_idx is not None and tmp_lesion_idx is not None:
-        if tmp_ir_idx < tmp_lesion_idx:
-            res.pop(tmp_lesion_idx)
+    # tmp_lesion_idx, tmp_ir_idx = None, None
+    # ir_tags = ["exam_item", "exam_result", "symptom_deco",
+    #            "symptom_desc", "reversed_exam_result", "reversed_exam_item"]
+    #
+    # for idx in range(len(res)):
+    #     rv = list(res[idx].values())[0][0]
+    #     rv_tag = rv[rv.index("$")+1:rv.index("&")]
+    #     if rv_tag == "lesion":
+    #         tmp_lesion_idx = idx
+    #     elif rv_tag in ir_tags:
+    #         tmp_ir_idx = idx
+    #
+    # if tmp_ir_idx is not None and tmp_lesion_idx is not None:
+    #     if tmp_ir_idx < tmp_lesion_idx:
+    #         res.pop(tmp_lesion_idx)
 
     res.sort(key=_get_sort_key)
     sorted_product_params = [list(r.values())[0] for r in res]
@@ -258,13 +259,19 @@ def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
                 ppo_stack.append(tmp_1)
                 ppo_stack.append(tmp_2)
 
-            # 样本24 室间隔o + 左室o + 后壁p
             elif [j[2] for j in ppos] == ["symptom_obj", "symptom_obj", "object_part"]:
                 obj_rel = _check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[0][3])
+
+                # 样本100 颅骨内外板o + 板障o + 骨质p
+                # part 和 每一个object 都拼
                 if obj_rel == 1:
-                    pass
-                    # ppo_stack.append(_connect_tag_and_value(ppos[0]))
-                    # ppo_stack.append("".join([_connect_tag_and_value(k) for k in ppos[1:]]))
+                    tmp_1 = [_connect_tag_and_value(k) for k in ppos[:-1]]
+                    tmp_2 = [_connect_tag_and_value(ppos[-1])]
+
+                    for tmp in list(product(*[tmp_1, tmp_2])):
+                        ppo_stack.append("".join(tmp))
+
+                # 样本24 室间隔o + 左室o + 后壁p
                 elif obj_rel == 2:
                     ppo_stack.append("".join([_connect_tag_and_value(k) for k in ppos]))
 
@@ -1131,7 +1138,8 @@ def exam_standard(origin_targets):
                 # 1. "其中一个";
                 # 2. 样本56中的 "其一";
                 # 3. 样本83 "较大的"
-                if value in ["其中一个", "其一", "较大的"]:
+                # 4. 样本51 "测一"
+                if value in ["其中一个", "其一", "较大的", "测一"]:
                     continue
 
                 if len(lesion) > 0:
@@ -1423,6 +1431,7 @@ def exam_standard(origin_targets):
         print(" ")
         for aaa in res_x:
             print(aaa)
+
         # 统计所有结果
         output_list.extend(res_x)
 
@@ -1433,15 +1442,17 @@ if __name__ == "__main__":
     sample = samples[int(sys.argv[1])]
     ans = exam_standard(sample)
 
-    # 以下为存储 json
+    # # 以下为存储 json
     # final_res = []
     # for d in range(len(samples)):
-    #     tmp = {}
+    #     tmp = dict()
     #     tmp["id"] = d
     #     tmp["text"] = data[d]["input"]["text"]
     #     tmp["res"] = exam_standard(samples[d])
     #     final_res.append(tmp)
     #
-    # with open("/users/hk/dev/ExamStandard/data/v6_output_0920.json", "a") as f:
-    #     fobj = json.dumps(final_res, ensure_ascii=False, indent=4)
-    #     f.write(fobj)
+    # save_file_name = "v6_output_0920.json"
+    # save_file_path = "/users/hk/dev/ExamStandard/data/"
+    # with open(save_file_path + save_file_name, "a") as f:
+    #     json_obj = json.dumps(final_res, ensure_ascii=False, indent=4)
+    #     f.write(json_obj)
