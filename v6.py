@@ -43,6 +43,7 @@ def _build_sorted_product_params(*args, **stacks):
     :return: 根据索引排好先后顺序的列表, 直接作为 itertools.product 函数的参数
     """
 
+    # stack_map中, key是每个stack名称, value是列表, 是该 stack 的排序依据标签
     stack_map = {
         "exam_stack": ["exam"],
         "ppo_stack": ["symptom_pos", "symptom_obj", "object_part"],
@@ -231,7 +232,7 @@ def _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
     该函数基于_check_ppo_situation 返回的结果, 来分析具体情况
     sit: 在函数 _check_ppo_situation 中返回的情况
     :param ppos: [[96, 97, 'symptom_obj', '中脑'], [105, 106, 'symptom_obj', '小脑']]
-    :return:
+    :return: ppo_stack
     """
 
     # 只有obj
@@ -1442,12 +1443,13 @@ if __name__ == "__main__":
     sample = samples[int(sys.argv[1])]
     ans = exam_standard(sample)
 
-    # # 以下为存储 json
+    # 以下为存储 json
     # final_res = []
     # for d in range(len(samples)):
     #     tmp = dict()
     #     tmp["id"] = d
     #     tmp["text"] = data[d]["input"]["text"]
+    #     tmp["target"] = data[d]["target"]
     #     tmp["res"] = exam_standard(samples[d])
     #     final_res.append(tmp)
     #
