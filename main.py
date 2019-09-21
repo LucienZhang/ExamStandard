@@ -1,3 +1,4 @@
+import core.utils as Utils
 from core.exam_standard import ExamStandardProcessor
 
 
@@ -15,7 +16,7 @@ def main():
     for n in range(len(data)):
         sliced_targets = esp.slice_origin_target(n)
         text = data[n]["input"]["text"]
-        # Utils.display_sliced_segments(n, sliced_targets)
+        Utils.display_sliced_segments(n, sliced_targets)
 
         for seg in sliced_targets:
             esp.process_seg_one(seg, text)
@@ -25,6 +26,7 @@ def main():
 
 if __name__ == "__main__":
     final_res = main()
+    print("最终结果:\n")
     for res_seg in final_res:
         for r in res_seg:
             print(r)

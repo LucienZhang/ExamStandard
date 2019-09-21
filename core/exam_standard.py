@@ -1,6 +1,4 @@
-from itertools import product
 import core.utils as Utils
-from core.stacks import *
 from core.logic.bu_process_seg_one import process_seg_one
 from core.init_stack import stack_dict
 

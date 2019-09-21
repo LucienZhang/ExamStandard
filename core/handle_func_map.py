@@ -1,10 +1,10 @@
-from core.logic.handle_obj import handle_obj
-from core.logic.handle_exam_result import handle_exam_result
-from core.logic.handle_lesion_desc import handle_lesion_desc
-from core.logic.handle_pos import handle_pos
-from core.logic.handle_exam_item import handle_exam_item
-from core.logic.handle_object_part import handle_obj_part
-from core.logic.handle_lesion import handle_lesion
+from core.handle_funcs.handle_obj import handle_obj
+from core.handle_funcs.handle_exam_result import handle_exam_result
+from core.handle_funcs.handle_lesion_desc import handle_lesion_desc
+from core.handle_funcs.handle_pos import handle_pos
+from core.handle_funcs.handle_exam_item import handle_exam_item
+from core.handle_funcs.handle_object_part import handle_obj_part
+from core.handle_funcs.handle_lesion import handle_lesion
 
 
 handle_func_map = {
