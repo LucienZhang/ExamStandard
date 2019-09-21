@@ -2,16 +2,9 @@ OtherFiles/
 .idea/
 __pycache__/
 .DS_Store
-v1.py
-v2.py
-v3.py
-v4.py
-v5.py
+
 
 data/v4_test_data.py
 data/v5_test_data.py
 
-# 以下几个刚开始设计的类, 等设计完成后再 checkin
-json_loader.py
-exam_standard.py
-main.py
+core/test/a.py
