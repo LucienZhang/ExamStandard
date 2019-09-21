@@ -1,5 +1,6 @@
 from core.utils import connect_tag_and_value
 from core.logic.bu_check_obj_relationship import check_obj_relationship
+from core.logic.bu_check_ppo_situation import check_ppo_situation
 
 
 def build_ppo_stack(ppos, ppo_stack):
@@ -21,7 +22,7 @@ def build_ppo_stack(ppos, ppo_stack):
 
     elif len(ppos) > 2:
         # 获得sit
-        sit = _check_ppo_situation(ppos)
+        sit = check_ppo_situation(ppos)
 
         # 根据sit，排列出ppo_stack
         ppo_stack = _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit)

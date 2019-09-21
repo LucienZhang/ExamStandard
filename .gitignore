@@ -3,8 +3,4 @@ OtherFiles/
 __pycache__/
 .DS_Store
 
-
-data/v4_test_data.py
-data/v5_test_data.py
-
 core/test/a.py

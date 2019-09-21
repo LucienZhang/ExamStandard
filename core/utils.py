@@ -1,3 +1,31 @@
+import json
+
+
+# 读取json数据
+def load_json_file(abs_file_name):
+    result = []
+    line_count = 0
+    count = 0
+
+    with open(abs_file_name, 'r', encoding='utf-8') as f:
+        for line in f:
+            line_count = line_count + 1
+            if line_count % 1000 == 0:
+                print('line --- {}'.format(line_count))
+            try:
+                dic = json.loads(line)
+                result.append(dic)
+                count = count + 1
+            except Exception as e:
+                print(e)
+                print('error line: {}'.format(line))
+
+    # print('Source file: {}'.format(abs_file_name))
+    # print('Read source file finished: total={}, valid={}\n'.format(line_count, count))
+
+    return result
+
+
 # 分割初始文本
 def slice_target(origin_target):
     idx = [0]
@@ -60,8 +88,48 @@ def slice_target(origin_target):
 
 
 # 逐个打印 seg
-def display_sliced_segments(sliced_segments):
+def display_sliced_segments(idx, sliced_segments):
+    print("\n第%d个标注:\n" % idx)
     for seg in sliced_segments:
         for s in seg:
             print(s)
         print("")
+
+
+# 检查print的时机
+def check_print_timing(exam_result_tag, origin_text):
+    """
+
+    :param exam_result_tag: [49, 50, 'exam_result', '正常']
+    :param origin_text: "肝脏大小、形态正常，表面平整光滑，实质回声尚均匀。"
+    :return: 是否是一个可以输出的时机 (True or False)
+    """
+
+    flags = [",", "，", ".", "。"]
+    can_print = False
+
+    if origin_text[exam_result_tag[1] + 1] in flags:
+        can_print = True
+
+    return can_print
+
+
+def get_sort_key(elem):
+    """
+    用途: some_list.sort(key=_get_sort_key)
+    参数: elem: 列表中的元素
+    """
+
+    if isinstance(elem, list):
+        return elem[-1][0]
+
+    elif isinstance(elem, dict):
+        return int(list(elem.keys())[0])
+
+
+def connect_tag_and_value(t):
+    """
+    输入: [53, 55, 'symptom_obj', '副鼻窦']
+    输出: "$symptom_obj&副鼻窦"
+    """
+    return "$" + t[2] + "&" + t[3]
