@@ -1,14 +1,15 @@
 from itertools import product
 import sys
-import json
-from utils import split_target
-from data.obj_rel_map import obj_rel_map
-from data.v6_test_data import samples
-from load_data_script import data
+
+sys.path.insert(0, "/users/hk/dev/ExamStandard")
+
+from core.test.utils import split_target
+from core.test.data.obj_rel_map import obj_rel_map
+from core.test.data.test_data import samples
 
 
 """
-# v6相对与v5的更新:
+# test.py 的更新:
 # 1 加入了 lesion 和 lesion_desc 的输出 (line 1136 左右);
 # 2 废弃了 _build_product_params 函数, 使用新的 _build_sorted_product_params 函数构造itertools.product所需的参数.
 # 2.1 _build_sorted_product_params 支持根据每种stack的索引，排序后进行排列组合(比如exam出现在ppos前后，可以有不同的排序效果)
