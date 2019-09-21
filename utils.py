@@ -114,9 +114,3 @@ def add_optional_parameters(data):
                 print(str(tag) + ",")
                 if tag[2] == "vector_seg":
                     print("")
-
-
-def print_segment(segment):
-    print("\n")
-    for i in segment:
-        print(i)
