@@ -178,24 +178,29 @@ samples = {
         [77, 80, 'reversed_exam_result', '未见异常'],
         [81, 83, 'reversed_exam_item', '信号影'],
         [84, 84, 'vector_seg', '，'],
+
         [85, 87, 'symptom_obj', '灰白质'],
         [88, 89, 'exam_item', '分界'],
         [90, 91, 'exam_result', '清楚'],
         [92, 92, 'vector_seg', '，'],
+
         [93, 94, 'symptom_pos', '双侧'],
         [95, 96, 'symptom_obj', '脑室'],
         [97, 98, 'symptom_desc', '对称'],
         [99, 99, 'vector_seg', '，'],
+
         [100, 103, 'symptom_obj', '中线结构'],
         [104, 104, 'entity_neg', '无'],
         [105, 106, 'symptom_deco', '明显'],
         [107, 108, 'symptom_desc', '偏移'],
         [109, 109, 'vector_seg', '，'],
+
         [110, 112, 'symptom_obj', '脑沟裂'],
         [113, 113, 'entity_neg', '无'],
         [114, 115, 'symptom_deco', '明显'],
         [116, 117, 'symptom_desc', '增宽'],
         [118, 118, 'vector_seg', '，'],
+
         [119, 122, 'symptom_obj', '脑回结构'],
         [123, 123, 'symptom_deco', '尚'],
         [124, 125, 'symptom_desc', '清楚'],

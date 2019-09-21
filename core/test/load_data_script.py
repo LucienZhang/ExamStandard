@@ -1,4 +1,8 @@
-from utils import load_file, add_optional_parameters
+import sys
+
+sys.path.append("/users/hk/dev/ExamStandard")
+
+from core.test.utils import load_file, add_optional_parameters
 
 
 # 获取数据

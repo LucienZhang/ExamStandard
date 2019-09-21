@@ -1,15 +1,13 @@
 import json
-import sys
-import getopt
 
 
 # 读取json数据
-def load_file(file_name="goldset.json"):
+def load_json_file(abs_file_name):
     result = []
     line_count = 0
     count = 0
-    print('Source file: {}'.format(file_name))
-    with open(file_name, 'r', encoding='utf-8') as f:
+
+    with open(abs_file_name, 'r', encoding='utf-8') as f:
         for line in f:
             line_count = line_count + 1
             if line_count % 1000 == 0:
@@ -21,13 +19,15 @@ def load_file(file_name="goldset.json"):
             except Exception as e:
                 print(e)
                 print('error line: {}'.format(line))
-    print('Read source file finished: total={}, valid={}\n'.format(line_count, count))
+
+    # print('Source file: {}'.format(abs_file_name))
+    # print('Read source file finished: total={}, valid={}\n'.format(line_count, count))
 
     return result
 
 
 # 分割初始文本
-def split_target(origin_target):
+def slice_target(origin_target):
     idx = [0]
     for i in range(len(origin_target)):
         if origin_target[i][2] == "vector_seg":
@@ -78,7 +78,7 @@ def split_target(origin_target):
 
     res = []
     for j in range(len(idx) - 1):
-        res.append(origin_target[idx[j]:idx[j+1]])
+        res.append(origin_target[idx[j]:idx[j + 1]])
     for k in res:
         for m in k:
             if m[2] == "vector_seg":
@@ -87,36 +87,49 @@ def split_target(origin_target):
     return res
 
 
-def add_optional_parameters(data):
-    # 函数所需的参数: data 是加载的初始数据
-    # -h --help
-    # --text= 输出第x个初始文本
-    # --target= 输出第x个标签
-    opts, args = getopt.getopt(sys.argv[1:], "-h-o:", ["help", "json=", "csv=",
-                                                       "text=", "target=", "output="])
-
-    for opt_name, opt_value in opts:
-        if opt_name in ("-h", "--help"):
-            print(r'''Optional parameters:
-            python load_data_script.py --text <n>  // Print n-th text
-            python load_data_script.py --target <n>  // Print n-th target
-            ''')
-            exit()
-
-        elif opt_name in ("--text",):
-            n = int(opt_value)
-            print("\n第%d个文本\n" % n)
-            print(data[n]["input"]["text"])
-        elif opt_name in ("--target",):
-            n = int(opt_value)
-            print("\n第%d个标签\n" % n)
-            for tag in data[n]["target"]:
-                print(str(tag) + ",")
-                if tag[2] == "vector_seg":
-                    print("")
+# 逐个打印 seg
+def display_sliced_segments(idx, sliced_segments):
+    print("\n第%d个标注:\n" % idx)
+    for seg in sliced_segments:
+        for s in seg:
+            print(s)
+        print("")
 
 
-def print_segment(segment):
-    print("\n")
-    for i in segment:
-        print(i)
+# 检查print的时机
+def check_print_timing(exam_result_tag, origin_text):
+    """
+
+    :param exam_result_tag: [49, 50, 'exam_result', '正常']
+    :param origin_text: "肝脏大小、形态正常，表面平整光滑，实质回声尚均匀。"
+    :return: 是否是一个可以输出的时机 (True or False)
+    """
+
+    flags = [",", "，", ".", "。"]
+    can_print = False
+
+    if origin_text[exam_result_tag[1] + 1] in flags:
+        can_print = True
+
+    return can_print
+
+
+def get_sort_key(elem):
+    """
+    用途: some_list.sort(key=_get_sort_key)
+    参数: elem: 列表中的元素
+    """
+
+    if isinstance(elem, list):
+        return elem[-1][0]
+
+    elif isinstance(elem, dict):
+        return int(list(elem.keys())[0])
+
+
+def connect_tag_and_value(t):
+    """
+    输入: [53, 55, 'symptom_obj', '副鼻窦']
+    输出: "$symptom_obj&副鼻窦"
+    """
+    return "$" + t[2] + "&" + t[3]
