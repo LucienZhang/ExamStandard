@@ -1,6 +1,7 @@
 from core.utils import connect_tag_and_value
 from core.logic.bu_check_obj_relationship import check_obj_relationship
 from core.logic.bu_check_ppo_situation import check_ppo_situation
+from core.logic.bu_build_ppo_stack_by_ppo_situation import build_ppo_stack_by_ppo_situation
 
 
 def build_ppo_stack(ppos, ppo_stack):
@@ -9,8 +10,6 @@ def build_ppo_stack(ppos, ppo_stack):
 
     # 5种情况 o+o, o + part/pos, pos/part + o (肯定有o)
     elif len(ppos) == 2:
-        # 只有o+o需要判断2者关系(并列/从属/没关系)
-        # 先来的obj是other_obj, 后来的是self_obj
         if ppos[0][2] == "symptom_obj" and ppos[1][2] == "symptom_obj":
             obj_rel = check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[0][3])
             if obj_rel == 1:
@@ -25,6 +24,6 @@ def build_ppo_stack(ppos, ppo_stack):
         sit = check_ppo_situation(ppos)
 
         # 根据sit，排列出ppo_stack
-        ppo_stack = _build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit)
+        ppo_stack = build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit)
 
     return ppo_stack

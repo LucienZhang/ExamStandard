@@ -1,7 +1,7 @@
 from core.logic.bu_check_obj_relationship import check_obj_relationship
 
 
-def handle_obj(seg, ppos, i):
+def handle_obj(seg, res_seg, i, stack):
     obj_special_sit = 0
     # 这个特殊情况是为了 "腹腔obj" + "扫查exam"这种结构, 因为在exam处会讲腹腔和扫查拼到一起，所以这里obj就pass即可
     if i == 0:
@@ -12,10 +12,10 @@ def handle_obj(seg, ppos, i):
     elif i != 0:
         # [] + obj + xxx
         if seg[i - 1][2] not in ["symptom_obj", "symptom_pos", "object_part"]:
-            if len(ppos) > 0:
-                if "symptom_obj" in [j[2] for j in ppos]:
+            if len(stack["ppos"]) > 0:
+                if "symptom_obj" in [j[2] for j in stack["ppos"]]:
                     # 先找到ppos中的obj
-                    for k in ppos:
+                    for k in stack["ppos"]:
                         if k[2] == "symptom_obj":
                             other_obj = k[3]
                             break
@@ -27,11 +27,11 @@ def handle_obj(seg, ppos, i):
                         obj_special_sit = 1
 
     if obj_special_sit == 1:
-        ppos = list()
+        stack["ppos"] = list()
 
-    ppos.append(seg[i])
+    stack["ppos"].append(seg[i])
 
     if obj_special_sit == 2:
-        ppos.pop()
+        stack["ppos"].pop()
 
-    return ppos
+    return res_seg, stack

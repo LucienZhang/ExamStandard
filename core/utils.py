@@ -133,3 +133,21 @@ def connect_tag_and_value(t):
     输出: "$symptom_obj&副鼻窦"
     """
     return "$" + t[2] + "&" + t[3]
+
+
+# 将所有结果 all_result 存储为 json
+def save_all_result_to_json(data, all_result, result_save_path, result_save_name):
+    abs_file_name = result_save_path + result_save_name
+    save_file = []
+
+    for idx in range(len(data)):
+        tmp = dict()
+        tmp["id"] = idx
+        tmp["text"] = data[idx]["input"]["text"]
+        tmp["result"] = all_result[idx]
+
+        save_file.append(tmp)
+
+    with open(abs_file_name, "w") as f:
+        f_obj = json.dumps(save_file, ensure_ascii=False, indent=4)
+        f.write(f_obj)
