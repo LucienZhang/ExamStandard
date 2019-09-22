@@ -49,9 +49,9 @@ class ExamStandardProcessor(object):
         self.res_segments.append(self.res_seg)
         self.res_seg = []
 
-    def put_output_list_to_all_result(self, data_idx):
+    def put_res_segments_to_res_all(self, data_idx):
         """
-        该方法用来将100个样本中的每一个结果 output_list，汇总到总结果 all_result 中
+        该方法用来将100个样本中的每一个结果 res_segments，汇总到总结果 res_all 中
         :param data_idx: 该参数的取值范围, 就是 source_json_file 中的样本数量(100左右)
         """
 
@@ -61,5 +61,5 @@ class ExamStandardProcessor(object):
 
         self.res_segments = []
 
-    def save_all_result_to_json(self, result_save_path, result_save_name):
+    def save_res_all_to_json(self, result_save_path, result_save_name):
         Utils.save_all_result_to_json(self.data, self.res_all, result_save_path, result_save_name)
