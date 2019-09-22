@@ -20,10 +20,10 @@ def main():
         for seg in sliced_targets:
             esp.process_seg_one(seg, text)
 
-        esp.put_output_list_to_all_result(n)
+        esp.put_res_segments_to_res_all(n)
 
     # 3 save all 100 results to json
-    esp.save_all_result_to_json(result_save_path, result_save_name)
+    esp.save_res_all_to_json(result_save_path, result_save_name)
 
 
 if __name__ == "__main__":
