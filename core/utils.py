@@ -102,7 +102,9 @@ def check_exam_result_build_timing(seg, i):
     检查exam_result 输出的时机
     :param seg: 一段seg
     :param i: 当前标签索引
-    :return: True or False
+    :return: True or False, 其中:
+            timing: 是否可以开始拼接
+            clean_ppo_stack: 是否在拼接完成后清空 ppo_stack
     """
 
     timing = False
@@ -121,7 +123,7 @@ def check_exam_result_build_timing(seg, i):
 
 def get_sort_key(elem):
     """
-    用途: some_list.sort(key=_get_sort_key)
+    用途: some_list.sort(key=get_sort_key)
     参数: elem: 列表中的元素
     """
 
@@ -140,8 +142,8 @@ def connect_tag_and_value(t):
     return "$" + t[2] + "&" + t[3]
 
 
-# 将所有结果 all_result 存储为 json
-def save_all_result_to_json(data, all_result, result_save_path, result_save_name):
+# 将所有结果 res_all 存储为 json
+def save_res_all_to_json(data, res_all, result_save_path, result_save_name):
     abs_file_name = result_save_path + result_save_name
     save_file = []
 
@@ -149,7 +151,7 @@ def save_all_result_to_json(data, all_result, result_save_path, result_save_name
         tmp = dict()
         tmp["id"] = idx
         tmp["text"] = data[idx]["input"]["text"]
-        tmp["result"] = all_result[idx]
+        tmp["result"] = res_all[idx]
 
         save_file.append(tmp)
 
