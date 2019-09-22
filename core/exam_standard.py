@@ -31,6 +31,11 @@ class ExamStandardProcessor(object):
         return data
 
     def slice_origin_target(self, idx):
+        """
+        :param idx: main.py 中的 n
+        :return: 切分好的 segments = [seg1, seg2, seg3]
+        """
+        
         sliced_targets = Utils.slice_target(self.data[idx]["target"])
 
         return sliced_targets
