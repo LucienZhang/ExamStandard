@@ -1,6 +1,6 @@
 import core.utils as Utils
 from core.logic.bu_process_seg_one import process_seg_one
-from core.init_stack import stack_dict
+from core.init_stack import init_stack
 
 
 class ExamStandardProcessor(object):
@@ -38,7 +38,8 @@ class ExamStandardProcessor(object):
         :return: res_seg: 用来存储该seg中所有拼接好的结果
         """
 
-        self.res_seg = process_seg_one(seg, text, res_seg=self.res_seg, stack=stack_dict)
+        stack = init_stack()
+        self.res_seg = process_seg_one(seg, text, res_seg=self.res_seg, stack=stack)
 
         self.output_list.append(self.res_seg)
         self.res_seg = []

@@ -12,9 +12,12 @@ stack_key_list = [
 ]
 
 
-stack_dict = dict()
-for key in stack_key_list:
-    stack_dict[key] = []
+def init_stack():
+    stack_dict = dict()
+    for key in stack_key_list:
+        stack_dict[key] = []
+
+    return stack_dict
 
 
 # ppos, ppo_stack = [], []
