@@ -4,3 +4,4 @@ __pycache__/
 .DS_Store
 
 core/test/a.py
+core/stack.py
