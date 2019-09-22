@@ -31,35 +31,6 @@ def slice_target(origin_target):
     idx = [0]
     for i in range(len(origin_target)):
         if origin_target[i][2] == "vector_seg":
-
-            # 特殊情况1 , 当遇到 "左手腕" + "正位片" + vector_seg 时，这种seg不分割
-            # [6, 6, 'symptom_pos', '左'],
-            # [7, 7, 'symptom_obj', '手'],
-            # [9, 9, 'symptom_obj', '腕'],
-            # [11, 13, 'exam', '正位片'],
-            # [24, 24, 'vector_seg', '，'],
-            # [25, 26, 'symptom_obj', '尺骨'],
-            # [27, 28, 'object_part', '茎突'],
-            # [29, 30, 'symptom_deco', '开始'],
-            # [31, 32, 'symptom_desc', '形成'],
-            # [33, 33, 'vector_seg', '，'],
-            # [40, 41, 'exam', '骨龄'],
-            # [42, 47, 'exam_result', '约为6.5岁'],
-            # [48, 48, 'vector_seg', '。'],
-
-            # 样本1 特殊情况2
-            # 遇到 "餐后扫查"时, 这种seg不分割
-            # [2, 2, 'vector_seg', '，'],
-            # [3, 6, 'exam', '餐后扫查'],
-            # [7, 7, 'vector_seg', '，'],
-
-            # 样本97 特殊情况3
-            # 这种连着2个vector_seg, 那么2个都不分割
-            # [0, 1, 'symptom_obj', '腹部'],
-            # [2, 5, 'exam', '急诊扫描'],
-            # [6, 6, 'vector_seg', '，'],
-            # [18, 18, 'vector_seg', '。']
-
             if i >= 1:
                 if origin_target[i-1][2] == "exam":
                     if i >= 2:
@@ -96,10 +67,9 @@ def display_sliced_segments(idx, sliced_segments):
         print("")
 
 
-#
-def check_exam_result_build_timing(seg, i):
+def check_build_timing(seg, i):
     """
-    检查exam_result 输出的时机
+    检查exam_result, symptom_desc, lesion_desc, treatment_desc, reversed_exam_item 等输出的时机
     :param seg: 一段seg
     :param i: 当前标签索引
     :return: True or False, 其中:
@@ -110,13 +80,17 @@ def check_exam_result_build_timing(seg, i):
     timing = False
     clean_ppo_stack = False
 
-    if i == len(seg) - 1:
-        timing = True
+    if seg[i][2] in ["lesion_desc", "treatment_desc"]:
+        timing, clean_ppo_stack = True, True
 
-    elif i < len(seg) - 1:
-        clean_ppo_stack = True
-        if seg[i + 1][2] != seg[i][2]:
+    else:
+        if i == len(seg) - 1:
             timing = True
+
+        elif i < len(seg) - 1:
+            clean_ppo_stack = True
+            if seg[i + 1][2] != seg[i][2]:
+                timing = True
 
     return timing, clean_ppo_stack
 

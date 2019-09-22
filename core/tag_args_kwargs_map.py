@@ -16,7 +16,8 @@ args_kwargs_map = {
     "results": "reversed_ir",
     "symptom_desc": "deco_desc",
     "entity_neg": "entity_neg_stack",
-    "lesion_desc": "ll_stack"
+    "lesion_desc": "ll_stack",
+    "treatment_desc": "tt_stack"
 }
 
 # 该map定义了在遇到不同的标签时(exam_result/symptom_desc等), 在调用 build_sorted_product_params 时,
@@ -25,7 +26,8 @@ tag_args_kwargs_map = {
     "exam_result": ["exam", "ppos", "exam_result", "lesion", "medical_events", "time", "treatment"],
     "reversed_exam_item": ["exam", "ppos", "results", "lesion", "medical_events", "time"],
     "symptom_desc": ["exam", "ppos", "symptom_desc", "entity_neg", "time"],
-    "lesion_desc": ["exam", "ppos", "entity_neg", "lesion_desc", "time"]
+    "lesion_desc": ["exam", "ppos", "entity_neg", "lesion_desc", "time"],
+    "treatment_desc": ["treatment_desc"]
 }
 
 

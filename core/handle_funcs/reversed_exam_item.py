@@ -1,8 +1,5 @@
-from itertools import product
-from core.utils import connect_tag_and_value, check_exam_result_build_timing
-from core.logic.bu_build_ppo_stack import build_ppo_stack
-from core.logic.bu_build_sorted_product_params import build_sorted_product_params
-from core.tag_args_kwargs_map import get_args_kwargs_for_build_prod_param_func
+from core.utils import connect_tag_and_value
+from core.logic.bu_build_work_flow import build_work_flow
 
 
 def handle_reversed_exam_item(seg, res_seg, i, stack):
@@ -13,25 +10,10 @@ def handle_reversed_exam_item(seg, res_seg, i, stack):
     else:
         stack["reversed_ir"].append(connect_tag_and_value(seg[i]))
 
-    # step 2 将 ppos 中的项, 按照不同情况拼接后，放入ppo_stack中
-    stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"], ppo_stack=stack["ppo_stack"])
+    res_seg, stack = build_work_flow(seg, res_seg, i, stack)
 
-    # step 3 若 timing 为 True, 则可以开始流程
-    timing, clean_ppo_stack = check_exam_result_build_timing(seg, i)
-
-    if timing:
-        args, kwargs = get_args_kwargs_for_build_prod_param_func(seg[i][2], stack)
-        product_params = build_sorted_product_params(*args, **kwargs)
-
-        prod_res = list(product(*product_params))
-
-        res_seg.extend(["".join(j) for j in prod_res])
-
-        stack["items"] = []
-        stack["ir"] = []
-
-    if clean_ppo_stack:
-        stack["ppo_stack"] = []
+    stack["items"] = []
+    stack["ir"] = []
 
     return res_seg, stack
 
