@@ -8,7 +8,7 @@ stack_key_list = [
     "exam", "exam_stack",
     "time", "time_stack",
     "medical_events", "medical_events_stack",
-    "treatment", "treatment_stack", "treatment_desc_stack"
+    "treatment", "treatment_stack", "tt_stack"
 ]
 
 

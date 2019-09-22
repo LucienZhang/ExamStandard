@@ -17,6 +17,7 @@ class ExamStandardProcessor(object):
         self.res_seg = []
         self.data = []
         self.output_list = []
+        self.all_result = []
 
     def load_json_file(self):
         abs_file_path = self.file_path + self.file_name
@@ -43,3 +44,13 @@ class ExamStandardProcessor(object):
 
         self.output_list.append(self.res_seg)
         self.res_seg = []
+
+    def put_output_list_to_all_result(self, data_idx):
+        self.all_result.append(
+            {data_idx: self.output_list}
+        )
+
+        self.output_list = []
+
+    def save_to_json(self, result_save_path, result_save_name):
+        Utils.save_all_result_to_json(self.data, self.all_result, result_save_path, result_save_name)
