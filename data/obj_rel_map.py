@@ -1,5 +1,5 @@
 """
-_check_obj_relationship 函数会使用此map
+check_obj_relationship 函数会使用此 map
 
 1 并列, 2从属(
 其中 "name"为子，即函数中的self_obj;
