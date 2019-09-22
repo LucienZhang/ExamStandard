@@ -14,7 +14,7 @@ def build_work_flow(seg, res_seg, i, stack):
     :param stack: stack = {"ppos": [], "ppo_stack": [], "lesion_stack": [], ...}
     :return: itertools.product 拼接的结果
     """
-    
+
     # step 1 将ppos中的项, 按照不同情况拼接后，放入ppo_stack中
     stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"], ppo_stack=stack["ppo_stack"])
 
