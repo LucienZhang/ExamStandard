@@ -3,6 +3,7 @@ from core.logic.bu_check_obj_relationship import check_obj_relationship
 from core.logic.bu_check_ppo_situation import check_ppo_situation
 from core.logic.bu_build_ppo_stack_by_ppo_situation import build_ppo_stack_by_ppo_situation
 
+
 def build_ppo_stack(ppos, ppo_stack):
     if len(ppos) == 1:
         ppo_stack.append(connect_tag_and_value(ppos[0]))
