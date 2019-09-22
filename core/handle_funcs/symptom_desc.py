@@ -20,15 +20,12 @@ def handle_symptom_desc(seg, res_seg, i, stack):
     else:
         stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"], ppo_stack=stack["ppo_stack"])
 
-    print("遇到desc:", seg[i])
     # step 3 若 timing 为 True, 则可以开始流程
     timing, clean_ppo_stack = check_exam_result_build_timing(seg, i)
 
     if timing:
-        print("timing:", seg[i], "deco_desc:", stack["deco_desc"])
         stack["symptom_desc"] = [seg[i]]
         args, kwargs = get_args_kwargs_for_build_prod_param_func(seg[i][2], stack)
-        print("kwargs:", kwargs)
         product_params = build_sorted_product_params(*args, **kwargs)
 
         prod_res = list(product(*product_params))
