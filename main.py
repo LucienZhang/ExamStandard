@@ -11,7 +11,7 @@ def main():
     # 1 load source json file
     data = esp.load_source_json_file()
 
-    # 2 run
+    # 2 start run
     for n in range(len(data)):
         sliced_targets = esp.slice_origin_target(n)
         text = data[n]["input"]["text"]
