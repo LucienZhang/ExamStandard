@@ -18,16 +18,3 @@ def init_stack():
         stack_dict[key] = []
 
     return stack_dict
-
-
-# ppos, ppo_stack = [], []
-# items, decorations = [], []
-# results, reversed_ir = [], []
-# ir, deco_desc = [], []
-# medical_events, medical_events_stack = [], []
-# treatment, treatment_stack, tt_stack = [], [], []
-# exam, exam_stack = [], []
-# time, time_stack = [], []
-# entity_neg, entity_neg_stack = [], []
-# lesion = []
-# lesion_stack = []

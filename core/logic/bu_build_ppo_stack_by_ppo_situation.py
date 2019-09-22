@@ -5,8 +5,8 @@ from core.logic.bu_check_obj_relationship import check_obj_relationship
 
 def build_ppo_stack_by_ppo_situation(ppos, ppo_stack, sit):
     """
-    该函数基于_check_ppo_situation 返回的结果, 来分析具体情况
-    sit: 在函数 _check_ppo_situation 中返回的情况
+    该函数基于 check_ppo_situation 返回的结果, 分析具体情况
+    sit: 在函数 check_ppo_situation 中返回的情况
     :param ppos: [[96, 97, 'symptom_obj', '中脑'], [105, 106, 'symptom_obj', '小脑']]
     :return: ppo_stack
     """
