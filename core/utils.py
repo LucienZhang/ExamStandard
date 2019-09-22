@@ -96,22 +96,27 @@ def display_sliced_segments(idx, sliced_segments):
         print("")
 
 
-# 检查print的时机
-def check_print_timing(exam_result_tag, origin_text):
+#
+def check_exam_result_build_timing(seg, i):
+    """
+    检查exam_result 输出的时机
+    :param seg: 一段seg
+    :param i: 当前标签索引
+    :return: True or False
     """
 
-    :param exam_result_tag: [49, 50, 'exam_result', '正常']
-    :param origin_text: "肝脏大小、形态正常，表面平整光滑，实质回声尚均匀。"
-    :return: 是否是一个可以输出的时机 (True or False)
-    """
+    timing = False
+    clean_ppo_stack = False
 
-    flags = [",", "，", ".", "。"]
-    can_print = False
+    if i == len(seg) - 1:
+        timing = True
 
-    if origin_text[exam_result_tag[1] + 1] in flags:
-        can_print = True
+    elif i < len(seg) - 1:
+        clean_ppo_stack = True
+        if seg[i + 1][2] != seg[i][2]:
+            timing = True
 
-    return can_print
+    return timing, clean_ppo_stack
 
 
 def get_sort_key(elem):
