@@ -1,16 +1,15 @@
 import core.utils as Utils
 from core.exam_standard import ExamStandardProcessor
 
-from config import json_file_path, json_file_name, result_save_path, result_save_name
+from config import source_json_file_path, source_json_file_name, result_save_path, result_save_name
 
 
 def main():
     # 实例化
-    esp = ExamStandardProcessor(json_file_path, json_file_name)
+    esp = ExamStandardProcessor(source_json_file_path, source_json_file_name)
 
-    # 1 读取json文件
-    data = esp.load_json_file()
-    # print(esp.data)
+    # 1 load source json file
+    data = esp.load_source_json_file()
 
     # 2 run
     for n in range(len(data)):
@@ -23,11 +22,9 @@ def main():
 
         esp.put_output_list_to_all_result(n)
 
-    # 3 save to json
-    esp.save_to_json(result_save_path, result_save_name)
-
-    return esp.all_result
+    # 3 save all 100 results to json
+    esp.save_all_result_to_json(result_save_path, result_save_name)
 
 
 if __name__ == "__main__":
-    final_res = main()
+    main()

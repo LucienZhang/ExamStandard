@@ -1,8 +1,8 @@
 from datetime import datetime
 
 # 作为输入的json文件路径
-json_file_path = "/users/hk/dev/ExamStandard/data/"
-json_file_name = "goldset_93.json"
+source_json_file_path = "/users/hk/dev/ExamStandard/data/"
+source_json_file_name = "goldset_93.json"
 
 # 存储结果的json文件路径
 result_save_path = "/users/hk/dev/ExamStandard/data/"
