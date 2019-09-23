@@ -1,4 +1,4 @@
-from core.utils import connect_tag_and_value
+from core.utils import connect
 from core.handle_func_map import handle_func_map
 
 
@@ -6,7 +6,7 @@ def process_seg_one(seg, text, res_seg, stack):
 
     for j in seg:
         if j[2] == "lesion":
-            stack["lesion_stack"].append(connect_tag_and_value(j))
+            stack["lesion_stack"].append(connect(j))
             break
 
     for i in range(len(seg)):
