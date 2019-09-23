@@ -1,5 +1,5 @@
 from core.logic.bu_check_obj_relationship import check_obj_relationship
-from core.utils import connect_tag_and_value
+from core.utils import connect
 from itertools import product
 
 
@@ -8,7 +8,7 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
     if ppos[0][2] == "symptom_obj":
         # 样本11 鼻咽顶o + 后部pos + 软组织part
         if [j[2] for j in ppos] == ["symptom_obj", "symptom_pos", "object_part"]:
-            ppo_stack.append("".join([connect_tag_and_value(k) for k in ppos]))
+            ppo_stack.append("".join([connect(k) for k in ppos]))
 
         elif [j[2] for j in ppos] == ["symptom_obj", "symptom_pos", "symptom_pos", "object_part"]:
             for k in ppos:
@@ -17,16 +17,16 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                         tmp_1 = list(product(*[ppos[1:3], [ppos[-1]]]))
                         tmp_2 = []
                         for tmp in tmp_1:
-                            tmp_2.append("".join([connect_tag_and_value(k) for k in tmp]))
+                            tmp_2.append("".join([connect(k) for k in tmp]))
 
-                        tmp_3 = [connect_tag_and_value(ppos[0])]
+                        tmp_3 = [connect(ppos[0])]
                         tmp_final = list(product(*[tmp_3, tmp_2]))
 
                         for tmp in tmp_final:
                             ppo_stack.append("".join([k for k in tmp]))
 
                     elif k[3] == "盲肠":
-                        ppo_stack.append("".join([connect_tag_and_value(k) for k in ppos]))
+                        ppo_stack.append("".join([connect(k) for k in ppos]))
 
         # 2种情况 样本15种两个part之间没有"和"或者"及"连接; 样本85两个part之间有"及"连接
         elif [j[2] for j in ppos] == ["symptom_obj", "object_part", "symptom_pos", "object_part"]:
@@ -34,7 +34,7 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                 if ppos[k][2] == "symptom_obj":
                     # 15 原文 "枕骨隆突周围软组织局限性瘤性突起。" (没有"和、及"连接词)
                     if ppos[k][3] == "枕骨":
-                        ppo_stack.append("".join([connect_tag_and_value(m) for m in ppos]))
+                        ppo_stack.append("".join([connect(m) for m in ppos]))
 
                     # 86 原文 "关节囊及周围软组织无明显肿胀及异常密度影。" (有"及"连接词)
                     # 85 原文 "椎体(o)骨质(part)未见骨质增生或破坏，双侧(pos)骶孔(part)对称." (有逗号"，"分隔)
@@ -44,12 +44,12 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                             if ppos[m][2] == "object_part":
                                 if m > 0:
                                     if ppos[m - 1][2] == "symptom_pos":
-                                        tmp_1 = "".join([connect_tag_and_value(n) for n in ppos[m - 1:m + 1]])
+                                        tmp_1 = "".join([connect(n) for n in ppos[m - 1:m + 1]])
                                         tmp_part_list.append(tmp_1)
                                     else:
-                                        tmp_part_list.append(connect_tag_and_value(ppos[m]))
+                                        tmp_part_list.append(connect(ppos[m]))
 
-                        tmp_2 = [connect_tag_and_value(ppos[k])]
+                        tmp_2 = [connect(ppos[k])]
                         tmp_final = list(product(*[tmp_2, tmp_part_list]))
                         for tmp in tmp_final:
                             ppo_stack.append("".join(tmp))
@@ -76,7 +76,7 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
 
             # step2 将拼好的结果放入 ppo_stack
             for tmp in tmp_total:
-                ppo_stack.append("".join([connect_tag_and_value(m) for m in tmp]))
+                ppo_stack.append("".join([connect(m) for m in tmp]))
 
     # 开头是 pos
     elif ppos[0][2] == "symptom_pos":
@@ -88,8 +88,8 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                 # 样本46 双pos + 肾o + 实质part + 集合系统part + []
                 if "symptom_pos" not in [j[2] for j in ppos[2:]]:
                     # tmp_1 是 (pos+obj), tmp_2 是 每一个part
-                    tmp_1 = ["".join([connect_tag_and_value(k) for k in ppos[:2]])]
-                    tmp_2 = [connect_tag_and_value(k) for k in ppos[2:]]
+                    tmp_1 = ["".join([connect(k) for k in ppos[:2]])]
+                    tmp_2 = [connect(k) for k in ppos[2:]]
 
                     # 将 (pos+obj) 和 part 拼接, 放入 ppo_stack
                     for m in list(product(*[tmp_1, tmp_2])):
@@ -98,22 +98,22 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                 # 样本2 左侧pos + 臀大肌obj + 外侧缘pos + 皮下脂肪part
                 elif "symptom_pos" in [j[2] for j in ppos[2:]]:
                     # tmp_1 是 (pos+obj), tmp_2 是 每一个part
-                    tmp_1 = ["".join([connect_tag_and_value(k) for k in ppos[:2]])]
+                    tmp_1 = ["".join([connect(k) for k in ppos[:2]])]
 
                     # 需要判断part前是否有pos，若有，则拼一起pos+part
                     tmp_2 = []
                     tmp_pos = None
                     for k in range(2, len(ppos)):
                         if ppos[k][2] == "symptom_pos":
-                            tmp_pos = connect_tag_and_value(ppos[k])
+                            tmp_pos = connect(ppos[k])
                         elif ppos[k][2] == "object_part":
                             # 左侧 + 臀大肌 + 外侧缘 + 皮下脂肪
                             # 左侧 + 臀大肌 + 外侧缘 + 间隙内
                             if tmp_pos is not None:
-                                tmp_2.append(tmp_pos + connect_tag_and_value(ppos[k]))
+                                tmp_2.append(tmp_pos + connect(ppos[k]))
                             # 左侧+ 臀大肌 + 皮肤
                             else:
-                                tmp_2.append(connect_tag_and_value(ppos[k]))
+                                tmp_2.append(connect(ppos[k]))
 
                     # 将 (pos+obj) 和 part 拼接, 放入 ppo_stack
                     for m in list(product(*[tmp_1, tmp_2])):
@@ -129,19 +129,19 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                         for k in range(len(ppos)):
                             if ppos[k][2] == "symptom_obj":
                                 tmp = list()
-                                tmp.append(connect_tag_and_value(ppos[k]))
+                                tmp.append(connect(ppos[k]))
 
                                 if ppos[k - 1][2] == "symptom_pos":
-                                    tmp.insert(0, connect_tag_and_value(ppos[k - 1]))
+                                    tmp.insert(0, connect(ppos[k - 1]))
 
                                     if k < len(ppos) - 1:
                                         if ppos[k + 1][2] == "object_part":
-                                            tmp.append(connect_tag_and_value(ppos[k + 1]))
+                                            tmp.append(connect(ppos[k + 1]))
 
                                 elif ppos[k - 1][2] != "symptom_pos":
                                     if k < len(ppos) - 1:
                                         if ppos[k + 1][2] == "object_part":
-                                            tmp.append(connect_tag_and_value(ppos[k + 1]))
+                                            tmp.append(connect(ppos[k + 1]))
 
                                 ppo_stack.append("".join(tmp))
 
@@ -153,11 +153,11 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                         tmp_pos, tmp_obj, tmp_part = [], [], []
                         pos_obj = list()
 
-                        tmp_pos.append(connect_tag_and_value(ppos[0]))
+                        tmp_pos.append(connect(ppos[0]))
                         for k in range(1, len(ppos)):
                             # step 1 将obj和前面的pos拼接，放入pos_obj中
                             if ppos[k][2] == "symptom_obj":
-                                tmp_obj.append(connect_tag_and_value(ppos[k]))
+                                tmp_obj.append(connect(ppos[k]))
 
                                 if k < len(ppos) - 1:
                                     if ppos[k + 1][2] != "symptom_obj":
@@ -177,7 +177,7 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
 
                             # step 2 找出所有part放入 tmp_part, 并和pos_obj拼接，最后结果放入pos_obj_part
                             elif ppos[k][2] == "object_part":
-                                tmp_part.append(connect_tag_and_value(ppos[k]))
+                                tmp_part.append(connect(ppos[k]))
 
                                 if k == len(ppos) - 1:
                                     tmp_pos_obj_part = list(product(*[pos_obj, tmp_part]))
@@ -193,11 +193,11 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                         tmp_pos, tmp_obj, tmp_part = [], [], []
                         pos_obj = list()
 
-                        tmp_pos.append(connect_tag_and_value(ppos[0]))
+                        tmp_pos.append(connect(ppos[0]))
                         for k in range(1, len(ppos)):
                             # step 1 将obj和前面的pos拼接，放入pos_obj中
                             if ppos[k][2] == "symptom_obj":
-                                tmp_obj.append(connect_tag_and_value(ppos[k]))
+                                tmp_obj.append(connect(ppos[k]))
 
                                 if k < len(ppos) - 1:
                                     if ppos[k + 1][2] != "symptom_obj":
@@ -216,10 +216,10 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                             # step 2 找出所有part放入 tmp_part, 并和pos_obj拼接，最后结果放入pos_obj_part
                             elif ppos[k][2] == "object_part":
                                 if ppos[k - 1][2] == "symptom_pos":
-                                    tmp_part.append(connect_tag_and_value(ppos[k - 1]) +
-                                                    connect_tag_and_value(ppos[k]))
+                                    tmp_part.append(connect(ppos[k - 1]) +
+                                                    connect(ppos[k]))
                                 else:
-                                    tmp_part.append(connect_tag_and_value(ppos[k]))
+                                    tmp_part.append(connect(ppos[k]))
 
                                 if k == len(ppos) - 1:
                                     tmp_pos_obj_part = list(product(*[pos_obj, tmp_part]))
@@ -233,19 +233,19 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                         for k in range(len(ppos)):
                             if ppos[k][2] == "symptom_obj":
                                 tmp = list()
-                                tmp.append(connect_tag_and_value(ppos[k]))
+                                tmp.append(connect(ppos[k]))
 
                                 if ppos[k - 1][2] == "symptom_pos":
-                                    tmp.insert(0, connect_tag_and_value(ppos[k - 1]))
+                                    tmp.insert(0, connect(ppos[k - 1]))
 
                                     if k < len(ppos) - 1:
                                         if ppos[k + 1][2] == "object_part":
-                                            tmp.append(connect_tag_and_value(ppos[k + 1]))
+                                            tmp.append(connect(ppos[k + 1]))
 
                                 elif ppos[k - 1][2] != "symptom_pos":
                                     if k < len(ppos) - 1:
                                         if ppos[k + 1][2] == "object_part":
-                                            tmp.append(connect_tag_and_value(ppos[k + 1]))
+                                            tmp.append(connect(ppos[k + 1]))
 
                                 ppo_stack.append("".join(tmp))
 
@@ -261,14 +261,14 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
                         for k in range(len(ppos)):
                             # step 1 将 pos+obj拼好
                             if ppos[k][2] == "symptom_pos":
-                                tmp_pos = connect_tag_and_value(ppos[k])
+                                tmp_pos = connect(ppos[k])
                             elif ppos[k][2] == "symptom_obj":
                                 tmp = list()
-                                tmp.append(connect_tag_and_value(ppos[k]))
+                                tmp.append(connect(ppos[k]))
 
                                 if k > 0:
                                     if ppos[k - 1][2] == "symptom_pos":
-                                        tmp.insert(0, connect_tag_and_value(ppos[k - 1]))
+                                        tmp.insert(0, connect(ppos[k - 1]))
                                         lucky_obj = ppos[k]
 
                                     else:
@@ -286,7 +286,7 @@ def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
 
                             # step 2 将最后的 part 放入 part 列表
                             elif ppos[k][2] == "object_part":
-                                part.append(connect_tag_and_value(ppos[k]))
+                                part.append(connect(ppos[k]))
 
                             # step 3 将 pos_obj 和 part 做 itertools.product
                             for tmp in list(product(*[pos_obj, part])):
