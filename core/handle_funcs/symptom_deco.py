@@ -1,3 +1,6 @@
+from core.utils import connect
+
+
 def handle_symptom_deco(seg, res_seg, i, stack):
     deco_special_sit = 0
 
@@ -10,6 +13,6 @@ def handle_symptom_deco(seg, res_seg, i, stack):
                     deco_special_sit = 2
 
     if deco_special_sit not in [1, 2]:
-        stack["decorations"].append(seg[i])
+        stack["symptom_deco_stack"].append(connect(seg[i]))
 
     return res_seg, stack
