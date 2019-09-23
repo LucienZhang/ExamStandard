@@ -20,7 +20,7 @@ tag_args_map = {
 }
 
 
-def get_args_for_build_prod_param_func(tag, stack):
+def get_product_params_func_args(tag, stack):
     args = [stack[key] for key in tag_args_map[tag]]
 
     return args

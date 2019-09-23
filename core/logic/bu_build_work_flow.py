@@ -1,7 +1,7 @@
 from itertools import product
 from core.utils import connect
 from core.logic.bu_build_ppo_stack import build_ppo_stack
-from core.tag_args_map import get_args_for_build_prod_param_func
+from core.logic.bu_get_product_params_func_args import get_product_params_func_args
 from core.logic.bu_build_sorted_product_params import build_sorted_product_params
 
 
@@ -22,7 +22,7 @@ def build_work_flow(seg, res_seg, i, stack):
     stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"])
 
     # 构造 product_param
-    args = get_args_for_build_prod_param_func(seg[i][2], stack)
+    args = get_product_params_func_args(seg[i][2], stack)
     product_params = build_sorted_product_params(*args)
 
     # 构造结构化结果
