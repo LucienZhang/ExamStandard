@@ -72,27 +72,23 @@ def check_build_timing(seg, i):
     检查exam_result, symptom_desc, lesion_desc, treatment_desc, reversed_exam_item 等输出的时机
     :param seg: 一段seg
     :param i: 当前标签索引
-    :return: True or False, 其中:
-            timing: 是否可以开始拼接
-            clean_ppo_stack: 是否在拼接完成后清空 ppo_stack
+    :return: True(拼接) or False(不拼接)
     """
 
     timing = False
-    clean_ppo_stack = False
 
     if seg[i][2] in ["lesion_desc", "treatment_desc"]:
-        timing, clean_ppo_stack = True, True
+        timing = True
 
     else:
         if i == len(seg) - 1:
             timing = True
 
         elif i < len(seg) - 1:
-            clean_ppo_stack = True
             if seg[i + 1][2] != seg[i][2]:
                 timing = True
 
-    return timing, clean_ppo_stack
+    return timing
 
 
 def get_sort_key(elem):
