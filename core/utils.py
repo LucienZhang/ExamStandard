@@ -102,7 +102,12 @@ def get_sort_key(elem):
 
 
 def connect(t):
-    connected_str = "#" + str(t[0]) + "$" + str(t[1]) + "&" + t[2] + "*" + t[3]
+    connected_str = ""
+
+    try:
+        connected_str = "#" + str(t[0]) + "$" + str(t[1]) + "&" + str(t[2]) + "*" + str(t[3])
+    except IndexError:
+        print("出现问题的seg: ", t, t[0])
 
     return connected_str
 
