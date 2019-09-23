@@ -96,16 +96,9 @@ def check_build_timing(seg, i):
 
 
 def get_sort_key(elem):
-    """
-    用途: some_list.sort(key=get_sort_key)
-    参数: elem: 列表中的元素
-    """
-
-    if isinstance(elem, list):
-        return elem[-1][0]
-
-    elif isinstance(elem, dict):
-        return int(list(elem.keys())[0])
+    if isinstance(elem[0], str):
+        # elem = "#0$1&symptom_obj*肾"
+        return int(elem[0][elem[0].index("$")+1:elem[0].index("&")])
 
 
 def connect(t):
