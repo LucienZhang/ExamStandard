@@ -108,6 +108,12 @@ def get_sort_key(elem):
         return int(list(elem.keys())[0])
 
 
+def connect(t):
+    connected_str = "#" + str(t[0]) + "$" + str(t[1]) + "&" + t[2] + "*" + t[3]
+
+    return connected_str
+
+
 def connect_tag_and_value(t):
     """
     输入: [53, 55, 'symptom_obj', '副鼻窦']
