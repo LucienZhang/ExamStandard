@@ -3,9 +3,7 @@ OtherFiles/
 __pycache__/
 .DS_Store
 
-core/test/a.py
-core/test/b.py
-core/test/c.py
+core/test/
 core/stack.py
 
 data/test.json
