@@ -5,6 +5,7 @@ __pycache__/
 
 core/test/a.py
 core/test/b.py
+core/test/c.py
 core/stack.py
 
 data/test.json
