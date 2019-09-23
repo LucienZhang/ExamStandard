@@ -1,8 +1,8 @@
-from core.utils import connect_tag_and_value
+from core.utils import connect
 
 
 def handle_exam(seg, res_seg, i, stack):
-    stack["exam"] = [seg[i]]
+    stack["exam"] = [connect(seg[i])]
     exam_special_sit = 0
 
     if i == 1:
@@ -13,10 +13,9 @@ def handle_exam(seg, res_seg, i, stack):
         exam_special_sit = 1
 
     if exam_special_sit == 1:
-        stack["exam_stack"] = [connect_tag_and_value(seg[i - 1]) +
-                               connect_tag_and_value(seg[i])]
+        stack["exam_stack"] = [connect(seg[i - 1]) + connect(seg[i])]
 
     else:
-        stack["exam_stack"] = [connect_tag_and_value(seg[i])]
+        stack["exam_stack"] = [connect(seg[i])]
 
     return res_seg, stack
