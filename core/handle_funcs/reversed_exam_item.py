@@ -7,8 +7,9 @@ def handle_reversed_exam_item(seg, res_seg, i, stack):
 
     res_seg, stack = build_work_flow(seg, res_seg, i, stack)
 
-    stack["items"] = []
-    stack["ir"] = []
+    # 判断何时清空变量
+    stack["reversed_exam_result_stack"] = []
+    stack["reversed_exam_item_stack"] = []
 
     return res_seg, stack
 
