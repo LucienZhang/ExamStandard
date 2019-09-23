@@ -1,4 +1,4 @@
-import core.utils as Utils
+from core.utils import display_sliced_segments
 from core.exam_standard import ExamStandardProcessor
 
 from config import source_json_file_path, source_json_file_name, result_save_path, result_save_name
@@ -15,7 +15,7 @@ def main():
     for n in range(len(data)):
         sliced_targets = esp.slice_origin_target(n)
         text = data[n]["input"]["text"]
-        Utils.display_sliced_segments(n, sliced_targets)
+        # display_sliced_segments(n, sliced_targets)
 
         for seg in sliced_targets:
             esp.process_seg_one(seg, text)
