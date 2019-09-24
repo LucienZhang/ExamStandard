@@ -4,7 +4,7 @@ import sys
 sys.path.insert(0, "/users/hk/dev/ExamStandard")
 
 from core.test.utils import split_target
-from core.test.data.obj_rel_map import obj_rel_map
+from data.obj_rel_map import obj_rel_map
 from core.test.data.test_data import samples
 
 
