@@ -5,7 +5,7 @@ sys.path.insert(0, "/users/hk/dev/ExamStandard")
 
 from core.test.utils import split_target
 from data.obj_rel_map import obj_rel_map
-from core.test.data.test_data import samples
+from core.test.test_data import samples
 
 
 """
