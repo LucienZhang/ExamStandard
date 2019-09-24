@@ -35,4 +35,6 @@ def build_work_flow(seg, text, res_seg, i, stack):
     # 清空 ppo_stack
     stack["ppo_stack"] = []
 
+    # TODO 在原文本遇到逗号，句号等断句时，才输出
+
     return res_seg, stack
