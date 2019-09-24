@@ -2,7 +2,8 @@ from core.utils import connect
 from core.handle_func_map import handle_func_map
 
 
-def process_seg_one(seg, text, res_seg, stack):
+def process_seg_one(seg, text, stack):
+    res_seg = []
 
     for j in seg:
         if j[2] == "lesion":

@@ -2,23 +2,24 @@ from core.exam_standard import ExamStandardProcessor
 
 
 def exam_standard_job_func(cfg):
-
-    # 读取cfg
-    source_json_file_path = cfg["source_json_file_path"]
-    source_json_file_name = cfg["source_json_file_name"]
-
     # 实例化
-    esp = ExamStandardProcessor(source_json_file_path, source_json_file_name)
+    esp = ExamStandardProcessor(cfg["source_json_file_path"], cfg["source_json_file_name"])
 
-    # 1 load source json file
-    data = esp.load_source_json_file()
+    # load source json file
+    source_data = esp.load_source_json_file()
 
-    # 2 start run
-    for n in range(len(data)):
-        sliced_targets = esp.slice_origin_target(n)
-        text = data[n]["input"]["text"]
+    res_all = []
+    # run
+    for source_data_idx in range(len(source_data)):
+        res_segments = esp.run(source_data, source_data_idx)
+        res_all.append(
+            {source_data_idx: res_segments}
+        )
 
-        for seg in sliced_targets:
-            esp.process_seg_one(seg, text)
-
-        esp.put_res_segments_to_res_all(n)
+    for res in res_all:
+        for k, v in res.items():
+            print(k)
+            for vone in v:
+                print(vone)
+            print("\n")
+    return res_all

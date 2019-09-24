@@ -6,65 +6,67 @@ from core.init_stack import init_stack
 class ExamStandardProcessor(object):
     """
     结构化拼接类.
-    输入 source_json_file_path/name: 输入源json文件, 包含原检查报告和标注结果
-    输出 all_result: 结构化拼接出的结果
+    输入 source_json_file_path/name: 输入源json文件, 包含原检查报告text 和标注结果targets.
 
-    self.res_all: 100个样本结果的总和, 即所有 res_segments 之和
-    self.res_segments: 1个样本中所有seg的结果总和, 即所有 res_seg 之和
-    self.res_seg: 1个seg中所有结果之和
-    self.data: load_source_json获得的初始数据, 需要传递到 process_seg_one函数中
+    res_all: 100个样本结果的总和, 即所有 res_segments 之和
+    res_segments: 1个样本中所有seg的结果总和, 即所有 res_seg 之和
+    res_seg: 1个seg中所有结果之和
+    source_json_data: load_source_json获得的初始数据
     """
 
     def __init__(self, file_path, file_name):
         self.file_path = file_path
         self.file_name = file_name
-        self.data = []
-        self.res_seg = []
-        self.res_segments = []
-        self.res_all = []
+        self.source_data = []
 
     def load_source_json_file(self):
         abs_file_path = self.file_path + self.file_name
-        data = Utils.load_json_file(abs_file_path)
-        self.data = data
+        source_data = Utils.load_json_file(abs_file_path)
+        self.source_data = source_data
 
-        return data
+        return source_data
 
-    def slice_origin_target(self, idx):
+    @staticmethod
+    def _slice_origin_target(source_data, idx):
         """
-        :param idx: main.py 中的 n
+        :param idx: source_json_data中样本的索引
+        :param source_data: 即 source_json_data
         :return: 切分好的 segments = [seg1, seg2, seg3]
         """
 
-        sliced_targets = Utils.slice_target(self.data[idx]["target"])
+        sliced_targets = Utils.slice_target(source_data[idx]["target"])
 
         return sliced_targets
 
-    def process_seg_one(self, seg, text):
+    @staticmethod
+    def _process_seg_one(seg, text):
         """
-        该函数用来处理每一个子 seg
+        该函数用来处理 segment 中的每一个子 seg
         :param seg: slice_targets 中的 每一个子seg
         :param text: 检查报告的 原文本
         :return: res_seg: 用来存储该seg中所有拼接好的结果
         """
 
         stack = init_stack()
-        self.res_seg = process_seg_one(seg, text, self.res_seg, stack)
+        res_seg = process_seg_one(seg, text, stack)
 
-        self.res_segments.append(self.res_seg)
-        self.res_seg = []
+        return res_seg
 
-    def put_res_segments_to_res_all(self, data_idx):
+    def run(self, source_data, idx):
         """
-        该方法用来将100个样本中的每一个 res_segments 汇总到总结果 res_all 中
-        :param data_idx: 该参数的取值范围, 就是 source_json_file 中的样本数量(100左右)
+        主函数, 处理 source_data 中的每一个样本(即每一个segments)
+        :param idx: source_data 的第 idx 个样本
+        :param source_data: 即source_json_data
+        :return: res_segments
         """
 
-        self.res_all.append(
-            {data_idx: self.res_segments}
-        )
+        segments = self._slice_origin_target(source_data, idx)
+        text = source_data[idx]["input"]["text"]
 
-        self.res_segments = []
+        res_segments = []
+        for seg in segments:
+            res_seg = self._process_seg_one(seg, text)
+            res_segments.extend(res_seg)
+            res_seg = []
 
-    def save_res_all_to_json(self, result_save_path, result_save_name):
-        Utils.save_res_all_to_json(self.data, self.res_all, result_save_path, result_save_name)
+        return res_segments
