@@ -92,16 +92,17 @@ def check_build_timing(seg, i):
 
 
 def get_sort_key(elem):
-    if isinstance(elem[0], str):
+    print("elem[0]: ", elem)
+    if isinstance(elem[-1], str):
         # elem = "#0$1&symptom_obj*肾"
-        return int(elem[0][elem[0].index("$")+1:elem[0].index("&")])
+        return int(elem[-1][elem[-1].index("$")+1:elem[-1].index("&")])
 
 
 def connect(t):
     connected_str = ""
 
     try:
-        connected_str = "#" + str(t[0]) + "$" + str(t[1]) + "&" + str(t[2]) + "*" + str(t[3])
+        connected_str = "#" + str(t[0]) + "$" + str(t[1]) + "&" + str(t[2]) + "*" + str(t[3]) + "^"
     except IndexError:
         print("出现问题的seg: ", t, t[0])
 
