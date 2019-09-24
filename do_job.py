@@ -17,6 +17,7 @@ def do_job(cfg):
         job_cfg = cfg.cfgMap[job]
         job_maps[job](job_cfg)
         print('{} finished'.format(job))
+
     return
 
 
