@@ -3,7 +3,6 @@ OtherFiles/
 __pycache__/
 .DS_Store
 
-core/test/
 core/stack.py
 
 data/test.json
