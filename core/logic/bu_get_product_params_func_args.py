@@ -11,7 +11,8 @@ tag_args_map = {
     "reversed_exam_item": ["exam_stack", "ppo_stack", "reversed_exam_item_stack", "reversed_exam_result_stack",
                            "lesion_stack", "medical_events_stack", "time_stack"],
 
-    "symptom_desc": ["exam_stack", "ppo_stack", "symptom_desc_stack", "entity_neg_stack", "time_stack"],
+    "symptom_desc": ["exam_stack", "ppo_stack", "symptom_deco_stack", "symptom_desc_stack",
+                     "entity_neg_stack", "time_stack"],
 
     "lesion_desc": ["exam_stack", "ppo_stack", "entity_neg_stack",
                     "lesion_stack", "lesion_desc_stack", "time_stack"],

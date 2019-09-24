@@ -1,3 +1,3 @@
-def handle_pathogen(seg, res_seg, i, stack):
+def handle_pathogen(seg, text, res_seg, i, stack):
 
     return res_seg, stack

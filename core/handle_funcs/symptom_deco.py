@@ -1,7 +1,7 @@
 from core.utils import connect
 
 
-def handle_symptom_deco(seg, res_seg, i, stack):
+def handle_symptom_deco(seg, text, res_seg, i, stack):
     deco_special_sit = 0
 
     if "symptom_desc" not in [k[2] for k in seg[i:]]:

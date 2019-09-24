@@ -1,4 +1,4 @@
-def handle_obj_part(seg, res_seg, i, stack):
+def handle_obj_part(seg, text, res_seg, i, stack):
     part_special_sit = 0
 
     if i != 0:

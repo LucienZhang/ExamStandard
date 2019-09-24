@@ -1,7 +1,7 @@
 from core.utils import connect
 
 
-def handle_exam(seg, res_seg, i, stack):
+def handle_exam(seg, text, res_seg, i, stack):
     stack["exam"] = [connect(seg[i])]
     exam_special_sit = 0
 

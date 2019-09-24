@@ -1,4 +1,4 @@
-def handle_pos(seg, res_seg, i, stack):
+def handle_pos(seg, text, res_seg, i, stack):
     if i == 0:
         stack["ppos"].append(seg[i])
 

@@ -11,6 +11,6 @@ def process_seg_one(seg, text, stack):
             break
 
     for i in range(len(seg)):
-        res_seg, stack = handle_func_map[seg[i][2]](seg, res_seg, i, stack)
+        res_seg, stack = handle_func_map[seg[i][2]](seg, text, res_seg, i, stack)
 
     return res_seg

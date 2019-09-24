@@ -16,10 +16,4 @@ def exam_standard_job_func(cfg):
             {source_data_idx: res_segments}
         )
 
-    for res in res_all:
-        for k, v in res.items():
-            print(k)
-            for vone in v:
-                print(vone)
-            print("\n")
     return res_all
