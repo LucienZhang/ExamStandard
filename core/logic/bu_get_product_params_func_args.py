@@ -5,22 +5,22 @@
 """
 
 tag_args_map = {
-    "exam_result": ["exam_stack", "ppo_stack", "exam_item_stack", "exam_result_stack",
-                    "lesion_stack", "medical_events_stack", "time_stack", "treatment_stack"],
+    "exam_result": ["exam", "ppo_stack", "exam_item", "exam_result",
+                    "lesion", "medical_events", "time", "treatment"],
 
-    "reversed_exam_item": ["exam_stack", "ppo_stack", "reversed_exam_item_stack", "reversed_exam_result_stack",
-                           "lesion_stack", "medical_events_stack", "time_stack"],
+    "reversed_exam_item": ["exam", "ppo_stack", "reversed_exam_item", "reversed_exam_result",
+                           "lesion", "medical_events", "time"],
 
-    "symptom_desc": ["exam_stack", "ppo_stack", "symptom_deco_stack", "symptom_desc_stack",
-                     "entity_neg_stack", "time_stack"],
+    "symptom_desc": ["exam", "ppo_stack", "symptom_deco", "symptom_desc",
+                     "entity_neg", "time"],
 
-    "lesion_desc": ["exam_stack", "ppo_stack", "entity_neg_stack",
-                    "lesion_stack", "lesion_desc_stack", "time_stack"],
+    "lesion_desc": ["exam", "ppo_stack", "entity_neg",
+                    "lesion", "lesion_desc", "time"],
 
-    "treatment_desc": ["treatment_stack", "treatment_desc_stack"],
+    "treatment_desc": ["treatment", "treatment_desc"],
 
-    "lesion": ["exam_stack", "ppo_stack", "entity_neg_stack", "exam_item_stack", "exam_result_stack",
-               "lesion_stack", "lesion_desc_stack", "time_stack"]
+    "lesion": ["exam", "ppo_stack", "entity_neg", "exam_item", "exam_result",
+               "lesion", "lesion_desc", "time"]
 }
 
 

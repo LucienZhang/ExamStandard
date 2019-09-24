@@ -7,6 +7,6 @@ def handle_symptom_desc(seg, text, res_seg, i, stack):
     # 清变量
     if i < len(seg) - 1:
         if seg[i+1] != seg[i][2]:
-            stack["symptom_deco_stack"] = []
+            stack["symptom_deco"] = []
 
     return res_seg, stack

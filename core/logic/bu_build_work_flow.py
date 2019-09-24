@@ -35,7 +35,7 @@ def build_work_flow(seg, text, res_seg, i, stack):
     # # 清空 ppo_stack
     # stack["ppo_stack"] = []
 
-    stack["%s_stack" % seg[i][2]].append(connect(seg[i]))
+    stack[seg[i][2]].append(connect(seg[i]))
 
     if text[seg[i][1] + 1] in [",", ".", "，", "。", "、"]:
         stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"])
@@ -49,6 +49,6 @@ def build_work_flow(seg, text, res_seg, i, stack):
             res_seg.append(prod_res_One)
 
         stack["ppo_stack"] = []
-        stack["%s_stack" % seg[i][2]] = []
+        stack[seg[i][2]] = []
 
     return res_seg, stack

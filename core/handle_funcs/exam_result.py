@@ -6,6 +6,6 @@ def handle_exam_result(seg, text, res_seg, i, stack):
 
     if i < len(seg) - 1:
         if seg[i+1][2] != seg[i][2]:
-            stack["exam_item_stack"] = []
+            stack["exam_item"] = []
 
     return res_seg, stack
