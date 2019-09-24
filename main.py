@@ -1,10 +1,16 @@
-from core.utils import display_sliced_segments
 from core.exam_standard import ExamStandardProcessor
-
-from config import source_json_file_path, source_json_file_name, result_save_path, result_save_name
+from datetime import datetime
 
 
 def main():
+    # 输入的 json 源文件路径
+    source_json_file_path = "/users/hk/dev/ExamStandard/data/"
+    source_json_file_name = "goldset_93.json"
+
+    # 存储结果的 json 文件路径
+    result_save_path = "/users/hk/dev/ExamStandard/data/"
+    result_save_name = "result_%s.json" % datetime.now().strftime('%y-%m-%d_%I:%M:%S__%p')
+
     # 实例化
     esp = ExamStandardProcessor(source_json_file_path, source_json_file_name)
 
@@ -15,7 +21,6 @@ def main():
     for n in range(len(data)):
         sliced_targets = esp.slice_origin_target(n)
         text = data[n]["input"]["text"]
-        # display_sliced_segments(n, sliced_targets)
 
         for seg in sliced_targets:
             esp.process_seg_one(seg, text)
