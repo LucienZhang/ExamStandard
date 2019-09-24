@@ -1,21 +1,15 @@
 from core.exam_standard import ExamStandardProcessor
 from datetime import datetime
 from core.utils import save_res_all_to_json
+from init_source_json_data import source_data
 
 
 def main():
-    # 输入的 json 源文件路径
-    source_json_file_path = "/users/hk/dev/ExamStandard/data/"
-    source_json_file_name = "goldset_93.json"
-
     # 实例化
-    esp = ExamStandardProcessor(source_json_file_path, source_json_file_name)
+    esp = ExamStandardProcessor()
 
-    # load source json file
-    source_data = esp.load_source_json_file()
-
-    res_all = []
     # run
+    res_all = []
     for source_data_idx in range(len(source_data)):
         res_segments = esp.run(source_data, source_data_idx)
         res_all.append(

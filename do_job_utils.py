@@ -1,6 +1,7 @@
 import os
 from configparser import ConfigParser
 from optparse import OptionParser
+from core.utils import load_json_file
 
 
 def parse_args():
@@ -42,22 +43,3 @@ class Config:
             self.cfgMap[section] = _props
 
         return self.cfgMap
-
-
-class FileLineIterator(object):
-    def __init__(self, filePath, encoding='utf-8'):
-        fd = open(filePath, encoding=encoding)
-        self.fd = fd
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        line = self.fd.readline()
-        if line == '':
-            raise StopIteration
-        return line
-
-    def destroy(self):
-        if self.fd:
-            self.fd.close()

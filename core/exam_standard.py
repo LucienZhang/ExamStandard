@@ -14,17 +14,8 @@ class ExamStandardProcessor(object):
     source_json_data: load_source_json获得的初始数据
     """
 
-    def __init__(self, file_path, file_name):
-        self.file_path = file_path
-        self.file_name = file_name
-        self.source_data = []
-
-    def load_source_json_file(self):
-        abs_file_path = self.file_path + self.file_name
-        source_data = Utils.load_json_file(abs_file_path)
-        self.source_data = source_data
-
-        return source_data
+    def __init__(self):
+        return
 
     @staticmethod
     def _slice_origin_target(source_data, idx):
