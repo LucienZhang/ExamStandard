@@ -7,6 +7,8 @@ from core.test.utils import split_target
 from data.obj_rel_map import obj_rel_map
 from core.test.test_data import samples
 
+# test_v2.py 可以 git checkout v1_2019_09_23_Monday
+
 
 """
 # test.py 的更新:
