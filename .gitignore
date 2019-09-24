@@ -6,3 +6,4 @@ __pycache__/
 core/stack.py
 
 data/test.json
+data/result*
