@@ -6,7 +6,7 @@ from core.utils import save_res_all_to_json
 def main():
     # 输入的 json 源文件路径
     source_json_file_path = "/users/hk/dev/ExamStandard/data/"
-    source_json_file_name = "test.json"
+    source_json_file_name = "goldset_93.json"
 
     # 实例化
     esp = ExamStandardProcessor(source_json_file_path, source_json_file_name)

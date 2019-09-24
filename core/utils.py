@@ -67,30 +67,6 @@ def display_sliced_segments(idx, sliced_segments):
         print("")
 
 
-def check_build_timing(seg, i):
-    """
-    检查exam_result, symptom_desc, lesion_desc, treatment_desc, reversed_exam_item 等输出的时机
-    :param seg: 一段seg
-    :param i: 当前标签索引
-    :return: True(拼接) or False(不拼接)
-    """
-
-    timing = False
-
-    if seg[i][2] in ["lesion_desc", "treatment_desc"]:
-        timing = True
-
-    else:
-        if i == len(seg) - 1:
-            timing = True
-
-        elif i < len(seg) - 1:
-            if seg[i + 1][2] != seg[i][2]:
-                timing = True
-
-    return timing
-
-
 def get_sort_key(elem):
     if isinstance(elem[-1], str):
         # elem = "#0$1&symptom_obj*肾"
@@ -109,12 +85,16 @@ def connect(t):
     return connected_str
 
 
-def connect_tag_and_value(t):
-    """
-    输入: [53, 55, 'symptom_obj', '副鼻窦']
-    输出: "$symptom_obj&副鼻窦"
-    """
-    return "$" + t[2] + "&" + t[3]
+def check_build_timing(seg, text, i):
+    can_build = True
+    tag = seg[i][2]
+
+    # symptom_desc 和 treatment_desc 默认 True
+    if tag in ["exam_result", "lesion", "lesion_desc", "reversed_exam_item"]:
+        if text[seg[i][1] + 1] not in [",", "，", ".", "。", ";", "；", "("]:
+            can_build = False
+
+    return can_build
 
 
 # 将所有结果 res_all 存储为 json
