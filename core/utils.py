@@ -92,9 +92,9 @@ def check_build_timing(seg, i):
 
 
 def get_sort_key(elem):
-    print("elem[0]: ", elem)
     if isinstance(elem[-1], str):
         # elem = "#0$1&symptom_obj*肾"
+
         return int(elem[-1][elem[-1].index("$")+1:elem[-1].index("&")])
 
 
