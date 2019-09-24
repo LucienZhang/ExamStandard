@@ -5,7 +5,7 @@ from core.logic.bu_get_product_params_func_args import get_product_params_func_a
 from core.logic.bu_build_sorted_product_params import build_sorted_product_params
 
 
-def build_work_flow(seg, res_seg, i, stack):
+def build_work_flow(seg, text, res_seg, i, stack):
     """
     遇到 exam_result, reversed_exam_item, lesion_desc, symptom_desc, treatment_desc 时调用
     :param seg: 子seg
