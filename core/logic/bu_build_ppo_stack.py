@@ -22,7 +22,7 @@ def build_ppo_stack(ppos):
             ppo_stack.append(connect(ppos[0]) + connect(ppos[1]))
 
     elif len(ppos) > 2:
-        # 获得sit
+        # 获得situation
         sit = check_ppo_situation(ppos)
 
         # 根据sit，排列出ppo_stack
