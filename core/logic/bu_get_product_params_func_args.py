@@ -17,7 +17,10 @@ tag_args_map = {
     "lesion_desc": ["exam_stack", "ppo_stack", "entity_neg_stack",
                     "lesion_stack", "lesion_desc_stack", "time_stack"],
 
-    "treatment_desc": ["treatment_stack", "treatment_desc_stack"]
+    "treatment_desc": ["treatment_stack", "treatment_desc_stack"],
+
+    "lesion": ["exam_stack", "ppo_stack", "entity_neg_stack", "exam_item_stack", "exam_result_stack",
+               "lesion_stack", "lesion_desc_stack", "time_stack"]
 }
 
 

@@ -15,26 +15,45 @@ def build_work_flow(seg, text, res_seg, i, stack):
     :return: itertools.product 拼接的结果
     """
 
-    # 入栈
-    stack["%s_stack" % seg[i][2]] = [connect(seg[i])]
-
-    # 拼接 ppo_stack
-    stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"])
-
-    # 构造 product_param
-    args = get_product_params_func_args(seg[i][2], stack)
-    product_params = build_sorted_product_params(*args)
-
-    # 构造结构化结果
-    prod_res = list(product(*product_params))
-
-    # 结果存入 res_x
-    for prod_res_One in prod_res:
-        res_seg.append(prod_res_One)
-
-    # 清空 ppo_stack
-    stack["ppo_stack"] = []
+    # # 入栈
+    # stack["%s_stack" % seg[i][2]] = [connect(seg[i])]
+    #
+    # # 拼接 ppo_stack
+    # stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"])
+    #
+    # # 构造 product_param
+    # args = get_product_params_func_args(seg[i][2], stack)
+    # product_params = build_sorted_product_params(*args)
+    #
+    # # 构造结构化结果
+    # prod_res = list(product(*product_params))
+    #
+    # # 结果存入 res_x
+    # for prod_res_One in prod_res:
+    #     res_seg.append(prod_res_One)
+    #
+    # # 清空 ppo_stack
+    # stack["ppo_stack"] = []
 
     # TODO 在原文本遇到逗号，句号等断句时，才输出
+    stack["%s_stack" % seg[i][2]].append(connect(seg[i]))
+
+    if text[seg[i][1] + 1] in [",", ".", "，", "。", "、"]:
+        print("输出:%s" % seg[i])
+        print("开始: %s" %  stack["%s_stack" % seg[i][2]])
+        stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"])
+
+        args = get_product_params_func_args(seg[i][2], stack)
+        product_params = build_sorted_product_params(*args)
+
+        prod_res = list(product(*product_params))
+
+        for prod_res_One in prod_res:
+            res_seg.append(prod_res_One)
+
+        stack["ppo_stack"] = []
+        stack["%s_stack" % seg[i][2]] = []
+
+        print("输出完成, 清空stack: %s" %  stack["%s_stack" % seg[i][2]])
 
     return res_seg, stack

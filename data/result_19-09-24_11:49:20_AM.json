@@ -1,0 +1,114 @@
+[
+    {
+        "result": {
+            "0": [
+                [
+                    "#0$1&symptom_pos*双侧#2$4&symptom_obj*乳腺区#5$6&object_part*皮下",
+                    "#7$8&lesion_desc*可见",
+                    "#10$13&lesion*低回声区"
+                ],
+                [
+                    "#0$1&symptom_pos*双侧#2$4&symptom_obj*乳腺区#5$6&object_part*皮下",
+                    "#9$9&lesion_desc*稍",
+                    "#10$13&lesion*低回声区"
+                ],
+                [
+                    "#0$1&symptom_pos*双侧#2$4&symptom_obj*乳腺区#5$6&object_part*皮下",
+                    "#15$16&exam_item*范围",
+                    "#19$29&exam_result*约28×4mm（右侧）"
+                ],
+                [
+                    "#0$1&symptom_pos*双侧#2$4&symptom_obj*乳腺区#5$6&object_part*皮下",
+                    "#15$16&exam_item*范围",
+                    "#31$40&exam_result*33×5mm（左侧）"
+                ]
+            ]
+        },
+        "text": "双侧乳腺区皮下可见稍低回声区，范围分别约28×4mm（右侧）、33×5mm（左侧）。",
+        "id": 0
+    },
+    {
+        "result": {
+            "1": [
+                [
+                    "#0$1&symptom_obj*双肺",
+                    "#2$3&exam_item*纹理",
+                    "#4$5&exam_result*增多"
+                ],
+                [
+                    "#0$1&symptom_obj*双肺",
+                    "#2$3&exam_item*纹理",
+                    "#7$9&exam_result*稍模糊"
+                ],
+                [
+                    "#0$1&symptom_obj*双肺",
+                    "#11$12&entity_neg*未见",
+                    "#13$15&symptom_desc*结节影"
+                ],
+                [
+                    "#0$1&symptom_obj*双肺",
+                    "#11$12&entity_neg*未见",
+                    "#17$19&symptom_desc*斑片影"
+                ],
+                [
+                    "#21$22&symptom_obj*肺门",
+                    "#23$24&exam_item*结构",
+                    "#25$26&exam_result*正常"
+                ],
+                [
+                    "#28$29&symptom_obj*气管",
+                    "#34$35&exam_item*走行",
+                    "#36$37&exam_result*正常"
+                ],
+                [
+                    "#31$33&symptom_obj*支气管",
+                    "#34$35&exam_item*走行",
+                    "#36$37&exam_result*正常"
+                ],
+                [
+                    "#28$29&symptom_obj*气管",
+                    "#34$35&exam_item*走行",
+                    "#39$44&exam_result*无狭窄或扩张"
+                ],
+                [
+                    "#31$33&symptom_obj*支气管",
+                    "#34$35&exam_item*走行",
+                    "#39$44&exam_result*无狭窄或扩张"
+                ],
+                [
+                    "#46$47&symptom_obj*纵隔",
+                    "#48$49&exam_item*结构",
+                    "#50$52&exam_result*无偏移"
+                ],
+                [
+                    "#46$47&symptom_obj*纵隔#54$54&symptom_pos*内",
+                    "#55$56&entity_neg*未见",
+                    "#57$58&symptom_deco*明显",
+                    "#59$63&symptom_desc*肿大淋巴结"
+                ],
+                [
+                    "#65$66&symptom_obj*胸腺",
+                    "#67$67&exam_item*影",
+                    "#69$70&exam_result*可见"
+                ],
+                [
+                    "#72$73&symptom_pos*双侧#74$75&symptom_obj*胸膜",
+                    "#76$76&entity_neg*无",
+                    "#77$78&symptom_desc*增厚"
+                ],
+                [
+                    "#80$81&symptom_obj*胸腔",
+                    "#82$83&entity_neg*未见",
+                    "#84$85&symptom_desc*积液"
+                ],
+                [
+                    "#87$88&symptom_pos*双侧#89$90&symptom_obj*腋下",
+                    "#92$93&symptom_deco*多发",
+                    "#94$98&symptom_desc*肿大淋巴结"
+                ]
+            ]
+        },
+        "text": "双肺纹理增多、稍模糊，未见结节影或斑片影，肺门结构正常，气管及支气管走行正常，无狭窄或扩张，纵隔结构无偏移，内未见明显肿大淋巴结，胸腺影仍可见。双侧胸膜无增厚，胸腔未见积液。双侧腋下见多发肿大淋巴结。",
+        "id": 1
+    }
+]
