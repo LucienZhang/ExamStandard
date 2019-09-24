@@ -17,7 +17,7 @@ def build_work_flow(seg, text, res_seg, i, stack):
 
     stack[seg[i][2]].append(connect(seg[i]))
 
-    if text[seg[i][1] + 1] in [",", ".", "，", "。", "、"]:
+    if text[seg[i][1] + 1] in [",", "，", ".", "。", ";", "；", "("]:
         stack["ppo_stack"] = build_ppo_stack(ppos=stack["ppos"])
 
         args = get_product_params_func_args(seg[i][2], stack)
@@ -29,6 +29,8 @@ def build_work_flow(seg, text, res_seg, i, stack):
             res_seg.append(prod_res_One)
 
         stack["ppo_stack"] = []
-        stack[seg[i][2]] = []
+
+        if seg[i][2] != "lesion":
+            stack[seg[i][2]] = []
 
     return res_seg, stack

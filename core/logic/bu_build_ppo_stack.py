@@ -10,7 +10,7 @@ def build_ppo_stack(ppos):
     if len(ppos) == 1:
         ppo_stack.append(connect(ppos[0]))
 
-    # 5种情况 o+o, o + part/pos, pos/part + o (肯定有o)
+    # o+o 情况需要判断关系, 其他情况按顺序放入ppo_stack
     elif len(ppos) == 2:
         if [j[2] for j in ppos] == ["symptom_obj", "symptom_obj"]:
             obj_rel = check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[0][3])
