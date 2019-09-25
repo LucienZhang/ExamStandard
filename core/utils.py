@@ -25,7 +25,7 @@ def load_json_file(abs_file_name):
 
 
 # 分割初始文本
-def slice_target(origin_target, text):
+def slice_target(origin_target):
     # origin_target 初始的标注
     # text: 原文本, "肾大小正常, 形态光整..."
 
