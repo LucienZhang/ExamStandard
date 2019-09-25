@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 
 # 读取json数据
@@ -106,17 +107,19 @@ def check_build_timing(seg, text, i):
 
 
 # 将所有结果 res_all 存储为 json
-def save_res_all_to_json(data, res_all, result_save_path, result_save_name):
+def save_res_all_to_json(data, res_all, result_save_path):
+    result_save_name = "result_%s.json" % datetime.now().strftime('%y-%m-%d_%I:%M:%S_%p')
     abs_file_name = result_save_path + result_save_name
+
     save_file = []
-
     for idx in range(len(data)):
-        tmp = dict()
-        tmp["id"] = idx
-        tmp["text"] = data[idx]["input"]["text"]
-        tmp["result"] = res_all[idx]
-
-        save_file.append(tmp)
+        save_file.append(
+            {
+                "id": idx,
+                "text": data[idx]["input"]["text"],
+                "res": res_all[idx]
+            }
+        )
 
     with open(abs_file_name, "w") as f:
         f_obj = json.dumps(save_file, ensure_ascii=False, indent=4)

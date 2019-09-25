@@ -14,27 +14,25 @@ class ExamStandardProcessor(object):
     source_json_data: load_source_json获得的初始数据
     """
 
-    def __init__(self):
-        return
+    def __init__(self, config):
+        self.config = config
 
-    @staticmethod
-    def _slice_origin_target(source_data, idx):
+    def _slice_origin_target(self, source_data_one):
         """
-        :param idx: source_json_data中样本的索引
-        :param source_data: 即 source_json_data
-        :return: 切分好的 segments = [seg1, seg2, seg3]
+        :param source_data_one: 即 source_json_data 每一个样本
+        source_data_one = {"input":{"text":"双肾大小正常，形态清晰...", "target": [[0,1,obj,双肾],[..],[..]]}
+        :return: 切分好的 sliced_targets = [seg1, seg2, seg3]
         """
 
-        sliced_targets = Utils.slice_target(source_data[idx]["target"])
+        sliced_targets = Utils.slice_target(source_data_one["target"])
 
         return sliced_targets
 
-    @staticmethod
-    def _process_seg_one(seg, text):
+    def _process_seg_one(self, seg, text):
         """
         该函数用来处理 segment 中的每一个子 seg
         :param seg: slice_targets 中的 每一个子seg
-        :param text: 检查报告的 原文本
+        :param text: 检查报告的 原文本: "双肾大小正常，形态清晰..."
         :return: res_seg: 用来存储该seg中所有拼接好的结果
         """
 
@@ -43,16 +41,15 @@ class ExamStandardProcessor(object):
 
         return res_seg
 
-    def run(self, source_data, idx):
+    def run(self, source_data_one):
         """
         主函数, 处理 source_data 中的每一个样本(即每一个segments)
-        :param idx: source_data 的第 idx 个样本
-        :param source_data: 即source_json_data
+        :param source_data_one: 即一个 source_data 中的样本
         :return: res_segments
         """
 
-        segments = self._slice_origin_target(source_data, idx)
-        text = source_data[idx]["input"]["text"]
+        segments = self._slice_origin_target(source_data_one)
+        text = source_data_one["input"]["text"]
 
         res_segments = []
         for seg in segments:
