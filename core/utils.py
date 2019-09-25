@@ -25,7 +25,10 @@ def load_json_file(abs_file_name):
 
 
 # 分割初始文本
-def slice_target(origin_target):
+def slice_target(origin_target, text):
+    # origin_target 初始的标注
+    # text: 原文本, "肾大小正常, 形态光整..."
+
     idx = [0]
     for i in range(len(origin_target)):
         if origin_target[i][2] != "vector_seg":
@@ -97,7 +100,7 @@ def get_sort_key(elem):
             start_idx = i
             break
 
-    return elem[-1][start_idx+1:end_idx]
+    return int(elem[-1][start_idx+1:end_idx])
 
 
 def connect(t):
@@ -112,13 +115,28 @@ def connect(t):
 
 
 def check_build_timing(seg, text, i):
+    # text = "肾大小正常, 表面光滑...."
+    # seg = [[0,1,obj,肾], [2,4,exam_item,大小], [5,7,exam_result,正常], ...]
+    # i 是 seg 的索引, seg[i] = [5,7,exam_result,正常]
+    # seg[i][1] = 7
+
     can_build = True
-    tag = seg[i][2]
+    tag_type = seg[i][2]
+    check_list = [",", "，", ".", "。", ";", "；"]
 
     # symptom_desc 和 treatment_desc 默认 True
-    if tag in ["exam_result", "lesion", "lesion_desc", "reversed_exam_item"]:
-        if text[seg[i][1] + 1] not in [",", "，", ".", "。", ";", "；", "("]:
-            can_build = False
+    if tag_type in ["exam_result", "lesion", "lesion_desc", "reversed_exam_item"]:
+        if i < len(seg) - 1:
+            cnt = 0
+            for build_flag in check_list:
+                if build_flag in text[seg[i][1]:seg[i + 1][0]]:
+                    break
+
+                else:
+                    cnt += 1
+
+            if cnt == len(check_list):
+                can_build = False
 
     return can_build
 
