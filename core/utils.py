@@ -68,10 +68,18 @@ def display_sliced_segments(idx, sliced_segments):
 
 
 def get_sort_key(elem):
-    if isinstance(elem[-1], str):
-        # elem = "#0$1&symptom_obj*肾"
+    start_idx = None
+    end_idx = None
+    
+    # elem = ["#0$1&symptom_obj*肾"]
+    for i in range(len(elem[-1]) - 1, -1, -1):
+        if elem[-1][i] == "&":
+            end_idx = i
+        elif elem[-1][i] == "$":
+            start_idx = i
+            break
 
-        return int(elem[-1][elem[-1].index("$")+1:elem[-1].index("&")])
+    return elem[-1][start_idx+1:end_idx]
 
 
 def connect(t):
