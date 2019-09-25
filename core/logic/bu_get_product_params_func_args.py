@@ -6,7 +6,7 @@
 
 tag_args_map = {
     "exam_result": ["exam", "ppo_stack", "exam_item", "exam_result",
-                    "lesion", "medical_events", "time", "treatment"],
+                    "lesion", "medical_events", "time", "treatment", "symptom_deco"],
 
     "reversed_exam_item": ["exam", "ppo_stack", "reversed_exam_item", "reversed_exam_result",
                            "lesion", "medical_events", "time"],
