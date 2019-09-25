@@ -12,7 +12,7 @@ def build_work_flow(seg, text, res_seg, i, stack):
     :param res_seg: 存储该seg的结果
     :param i: 当前标签在seg中的索引
     :param stack: stack = {"ppos": [..], "ppo_stack": [..], "lesion": [..], "exam_item": [..], ...}
-    :return: itertools.product 拼接的结果
+    :return: res_seg: itertools.product 拼接的结果
     """
 
     stack[seg[i][2]].append(connect(seg[i]))
