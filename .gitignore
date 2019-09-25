@@ -2,3 +2,11 @@ OtherFiles/
 .idea/
 __pycache__/
 .DS_Store
+
+core/stack.py
+
+core/test/get_special.py
+core/test/string_to_list_func.py
+
+data/test.json
+data/result*

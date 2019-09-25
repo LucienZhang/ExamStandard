@@ -6,59 +6,55 @@ from core.init_stack import init_stack
 class ExamStandardProcessor(object):
     """
     结构化拼接类.
-    输入 source_json_file_path/name: 输入源json文件, 包含原检查报告和标注结果
-    输出 all_result: 结构化拼接出的结果
-    self.all_result: 100个样本结果的总和, 即所有 output_list 之和
-    self.output_list: 1个样本中所有seg的结果总和, 即所有 res_seg 之和
-    self.res_seg: 1个seg中所有结果之和
-    self.data: load_source_json获得的初始数据, 需要传递到 process_seg_one函数中
+    输入 source_json_file_path/name: 输入源json文件, 包含原检查报告text 和标注结果targets.
+
+    res_all: 100个样本结果的总和, 即所有 res_segments 之和
+    res_segments: 1个样本中所有seg的结果总和, 即所有 res_seg 之和
+    res_seg: 1个seg中所有结果之和
+    source_json_data: load_source_json获得的初始数据
     """
 
-    def __init__(self, file_path, file_name):
-        self.file_path = file_path
-        self.file_name = file_name
-        self.res_seg = []
-        self.data = []
-        self.output_list = []
-        self.all_result = []
+    def __init__(self, config):
+        self.config = config
 
-    def load_source_json_file(self):
-        abs_file_path = self.file_path + self.file_name
-        data = Utils.load_json_file(abs_file_path)
-        self.data = data
+    def _slice_origin_target(self, source_data_one):
+        """
+        :param source_data_one: 即 source_json_data 每一个样本
+        source_data_one = {"input":{"text":"双肾大小正常，形态清晰...", "target": [[0,1,obj,双肾],[..],[..]]}
+        :return: 切分好的 sliced_targets = [seg1, seg2, seg3]
+        """
 
-        return data
-
-    def slice_origin_target(self, idx):
-        sliced_targets = Utils.slice_target(self.data[idx]["target"])
+        sliced_targets = Utils.slice_target(source_data_one["target"])
 
         return sliced_targets
 
-    def process_seg_one(self, seg, text):
+    def _process_seg_one(self, seg, text):
         """
-        该函数用来处理每一个子 seg
+        该函数用来处理 segment 中的每一个子 seg
         :param seg: slice_targets 中的 每一个子seg
-        :param text: 检查报告的 原文本
+        :param text: 检查报告的 原文本: "双肾大小正常，形态清晰..."
         :return: res_seg: 用来存储该seg中所有拼接好的结果
         """
 
         stack = init_stack()
-        self.res_seg = process_seg_one(seg, text, res_seg=self.res_seg, stack=stack)
+        res_seg = process_seg_one(seg, text, stack)
 
-        self.output_list.append(self.res_seg)
-        self.res_seg = []
+        return res_seg
 
-    def put_output_list_to_all_result(self, data_idx):
+    def run(self, source_data_one):
         """
-        该方法用来将100个样本中的每一个结果 output_list，汇总到总结果 all_result 中
-        :param data_idx: 该参数的取值范围, 就是 source_json_file 中的样本数量(100左右)
+        主函数, 处理 source_data 中的每一个样本(即每一个segments)
+        :param source_data_one: 即一个 source_data 中的样本
+        :return: res_segments
         """
 
-        self.all_result.append(
-            {data_idx: self.output_list}
-        )
+        segments = self._slice_origin_target(source_data_one)
+        text = source_data_one["input"]["text"]
 
-        self.output_list = []
+        res_segments = []
+        for seg in segments:
+            res_seg = self._process_seg_one(seg, text)
+            res_segments.extend(res_seg)
+            res_seg = []
 
-    def save_all_result_to_json(self, result_save_path, result_save_name):
-        Utils.save_all_result_to_json(self.data, self.all_result, result_save_path, result_save_name)
+        return res_segments

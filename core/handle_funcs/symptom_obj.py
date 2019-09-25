@@ -1,7 +1,7 @@
 from core.logic.bu_check_obj_relationship import check_obj_relationship
 
 
-def handle_obj(seg, res_seg, i, stack):
+def handle_obj(seg, text, res_seg, i, stack):
     obj_special_sit = 0
     # 这个特殊情况是为了 "腹腔obj" + "扫查exam"这种结构, 因为在exam处会讲腹腔和扫查拼到一起，所以这里obj就pass即可
     if i == 0:

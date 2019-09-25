@@ -1,8 +1,7 @@
-from core.utils import connect_tag_and_value
+from core.utils import connect
 
 
-def handle_medical_events(seg, res_seg, i, stack):
-    stack["medical_events"] = [seg[i]]
-    stack["medical_events_stack"] = [connect_tag_and_value(seg[i])]
+def handle_medical_events(seg, text, res_seg, i, stack):
+    stack[seg[i][2]] = [connect(seg[i])]
 
     return res_seg, stack

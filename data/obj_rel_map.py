@@ -1,5 +1,5 @@
 """
-_check_obj_relationship 函数会使用此map
+check_obj_relationship 函数会使用此 map
 
 1 并列, 2从属(
 其中 "name"为子，即函数中的self_obj;
@@ -52,11 +52,12 @@ obj_rel_map = [
             "2": []
         }
     },
+    # 样本0 原文 血及软组织
     {
         "name": "血",
         "rel": {
-            "1": [],
-            "2": ["软组织"]
+            "1": ["软组织"],
+            "2": []
         }
     },
     {

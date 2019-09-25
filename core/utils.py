@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 
 # 读取json数据
@@ -20,61 +21,52 @@ def load_json_file(abs_file_name):
                 print(e)
                 print('error line: {}'.format(line))
 
-    # print('Source file: {}'.format(abs_file_name))
-    # print('Read source file finished: total={}, valid={}\n'.format(line_count, count))
-
     return result
 
 
 # 分割初始文本
 def slice_target(origin_target):
+    # origin_target 初始的标注
+    # text: 原文本, "肾大小正常, 形态光整..."
+
     idx = [0]
     for i in range(len(origin_target)):
-        if origin_target[i][2] == "vector_seg":
+        if origin_target[i][2] != "vector_seg":
+            continue
 
-            # 特殊情况1 , 当遇到 "左手腕" + "正位片" + vector_seg 时，这种seg不分割
-            # [6, 6, 'symptom_pos', '左'],
-            # [7, 7, 'symptom_obj', '手'],
-            # [9, 9, 'symptom_obj', '腕'],
-            # [11, 13, 'exam', '正位片'],
-            # [24, 24, 'vector_seg', '，'],
-            # [25, 26, 'symptom_obj', '尺骨'],
-            # [27, 28, 'object_part', '茎突'],
-            # [29, 30, 'symptom_deco', '开始'],
-            # [31, 32, 'symptom_desc', '形成'],
-            # [33, 33, 'vector_seg', '，'],
-            # [40, 41, 'exam', '骨龄'],
-            # [42, 47, 'exam_result', '约为6.5岁'],
-            # [48, 48, 'vector_seg', '。'],
+        if i == 0:
+            continue
 
-            # 样本1 特殊情况2
-            # 遇到 "餐后扫查"时, 这种seg不分割
-            # [2, 2, 'vector_seg', '，'],
-            # [3, 6, 'exam', '餐后扫查'],
-            # [7, 7, 'vector_seg', '，'],
+        if i >= 1:
+            if origin_target[i - 1][2] == "exam":
+                if i >= 2:
+                    # 原文本: 根据标准左手、腕的正位片，与女孩骨龄标准对比，尺骨茎突开始形成，该女孩的实际骨龄约为 6.5 岁。
+                    # 遇到"正位片"则不切分
+                    # [6, 6, 'symptom_pos', '左'],
+                    # [7, 7, 'symptom_obj', '手'],
+                    # [9, 9, 'symptom_obj', '腕'],
+                    # [11, 13, 'exam', '正位片'],
+                    # [24, 24, 'vector_seg', '，']
+                    if origin_target[i-2][2] == "symptom_obj" or origin_target[i-2][2] == "vector_seg":
+                        continue
+                else:
+                    # i = 1
+                    # 原文: "急诊，餐后扫查，肠气干扰明显，图像质量欠佳: ...."
+                    # [3, 6, 'exam', '餐后扫查'],
+                    # [7, 7, 'vector_seg', '，'],
+                    continue
 
-            # 样本97 特殊情况3
-            # 这种连着2个vector_seg, 那么2个都不分割
+            # 连续2个vector_seg, 2个都不分割
+            # 原文: ""腹部急诊扫描，胃肠道未准备，大致观察。"
             # [0, 1, 'symptom_obj', '腹部'],
             # [2, 5, 'exam', '急诊扫描'],
             # [6, 6, 'vector_seg', '，'],
             # [18, 18, 'vector_seg', '。']
-
-            if i >= 1:
-                if origin_target[i-1][2] == "exam":
-                    if i >= 2:
-                        if origin_target[i-2][2] == "symptom_obj" or origin_target[i-2][2] == "vector_seg":
-                            continue
-                    else:
-                        continue
-
-                # 样本97
-                elif origin_target[i-1][2] == "vector_seg":
-                    continue
+            elif origin_target[i - 1][2] == "vector_seg":
+                continue
 
             # 其他情况正常分割
-            if i != 0:
-                idx.append(i)
+            idx.append(i)
 
     res = []
     for j in range(len(idx) - 1):
@@ -96,57 +88,73 @@ def display_sliced_segments(idx, sliced_segments):
         print("")
 
 
-# 检查print的时机
-def check_print_timing(exam_result_tag, origin_text):
-    """
-
-    :param exam_result_tag: [49, 50, 'exam_result', '正常']
-    :param origin_text: "肝脏大小、形态正常，表面平整光滑，实质回声尚均匀。"
-    :return: 是否是一个可以输出的时机 (True or False)
-    """
-
-    flags = [",", "，", ".", "。"]
-    can_print = False
-
-    if origin_text[exam_result_tag[1] + 1] in flags:
-        can_print = True
-
-    return can_print
-
-
 def get_sort_key(elem):
-    """
-    用途: some_list.sort(key=_get_sort_key)
-    参数: elem: 列表中的元素
-    """
+    start_idx = None
+    end_idx = None
+    
+    # elem = ["#0$1&symptom_obj*肾"]
+    for i in range(len(elem[-1]) - 1, -1, -1):
+        if elem[-1][i] == "&":
+            end_idx = i
+        elif elem[-1][i] == "$":
+            start_idx = i
+            break
 
-    if isinstance(elem, list):
-        return elem[-1][0]
-
-    elif isinstance(elem, dict):
-        return int(list(elem.keys())[0])
-
-
-def connect_tag_and_value(t):
-    """
-    输入: [53, 55, 'symptom_obj', '副鼻窦']
-    输出: "$symptom_obj&副鼻窦"
-    """
-    return "$" + t[2] + "&" + t[3]
+    return int(elem[-1][start_idx+1:end_idx])
 
 
-# 将所有结果 all_result 存储为 json
-def save_all_result_to_json(data, all_result, result_save_path, result_save_name):
+def connect(t):
+    connected_str = ""
+
+    try:
+        connected_str = "#" + str(t[0]) + "$" + str(t[1]) + "&" + str(t[2]) + "*" + str(t[3]) + "^"
+    except IndexError:
+        print("出现问题的seg: ", t, t[0])
+
+    return connected_str
+
+
+def check_build_timing(seg, text, i):
+    # text = "肾大小正常, 表面光滑...."
+    # seg = [[0,1,obj,肾], [2,4,exam_item,大小], [5,7,exam_result,正常], ...]
+    # i 是 seg 的索引, seg[i] = [5,7,exam_result,正常]
+    # seg[i][1] = 7
+
+    can_build = True
+    tag_type = seg[i][2]
+    check_list = [",", "，", ".", "。", ";", "；"]
+
+    # symptom_desc 和 treatment_desc 默认 True
+    if tag_type in ["exam_result", "lesion", "lesion_desc", "reversed_exam_item"]:
+        if i < len(seg) - 1:
+            cnt = 0
+            for build_flag in check_list:
+                if build_flag in text[seg[i][1]:seg[i + 1][0]]:
+                    break
+
+                else:
+                    cnt += 1
+
+            if cnt == len(check_list):
+                can_build = False
+
+    return can_build
+
+
+# 将所有结果 res_all 存储为 json
+def save_res_all_to_json(data, res_all, result_save_path):
+    result_save_name = "result_%s.json" % datetime.now().strftime('%y-%m-%d_%I:%M:%S_%p')
     abs_file_name = result_save_path + result_save_name
+
     save_file = []
-
     for idx in range(len(data)):
-        tmp = dict()
-        tmp["id"] = idx
-        tmp["text"] = data[idx]["input"]["text"]
-        tmp["result"] = all_result[idx]
-
-        save_file.append(tmp)
+        save_file.append(
+            {
+                "id": idx,
+                "text": data[idx]["input"]["text"],
+                "res": res_all[idx]
+            }
+        )
 
     with open(abs_file_name, "w") as f:
         f_obj = json.dumps(save_file, ensure_ascii=False, indent=4)

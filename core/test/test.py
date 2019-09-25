@@ -4,8 +4,10 @@ import sys
 sys.path.insert(0, "/users/hk/dev/ExamStandard")
 
 from core.test.utils import split_target
-from core.test.data.obj_rel_map import obj_rel_map
-from core.test.data.test_data import samples
+from data.obj_rel_map import obj_rel_map
+from core.test.test_data import samples
+
+# test_v2.py 可以 git checkout v1_2019_09_23_Monday
 
 
 """

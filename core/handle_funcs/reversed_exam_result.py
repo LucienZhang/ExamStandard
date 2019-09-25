@@ -1,4 +1,7 @@
-def handle_reversed_exam_result(seg, res_seg, i ,stack):
-    stack["results"].append(seg[i])
+from core.utils import connect
+
+
+def handle_reversed_exam_result(seg, text, res_seg, i, stack):
+    stack[seg[i][2]].append(connect(seg[i]))
 
     return res_seg, stack
