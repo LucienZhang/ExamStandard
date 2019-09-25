@@ -5,7 +5,9 @@ def handle_exam_result(seg, text, res_seg, i, stack):
     res_seg, stack = build_work_flow(seg, text, res_seg, i, stack)
 
     if i < len(seg) - 1:
-        if seg[i+1][2] != seg[i][2]:
+        # if seg[i+1][2] != seg[i][2]:
+        if text[seg[i][1]+1] in ["，", "。", "；", ",", ".", ";"]:
             stack["exam_item"] = []
+            stack["symptom_deco"] = []
 
     return res_seg, stack
