@@ -9,5 +9,6 @@ def handle_symptom_desc(seg, text, res_seg, i, stack):
     if i < len(seg) - 1:
         if seg[i+1] != seg[i][2]:
             stack["symptom_deco"] = []
+            stack["entity_neg"] = []
 
     return res_seg, stack
