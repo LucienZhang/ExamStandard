@@ -21,9 +21,6 @@ def load_json_file(abs_file_name):
                 print(e)
                 print('error line: {}'.format(line))
 
-    # print('Source file: {}'.format(abs_file_name))
-    # print('Read source file finished: total={}, valid={}\n'.format(line_count, count))
-
     return result
 
 
@@ -31,22 +28,42 @@ def load_json_file(abs_file_name):
 def slice_target(origin_target):
     idx = [0]
     for i in range(len(origin_target)):
-        if origin_target[i][2] == "vector_seg":
-            if i >= 1:
-                if origin_target[i-1][2] == "exam":
-                    if i >= 2:
-                        if origin_target[i-2][2] == "symptom_obj" or origin_target[i-2][2] == "vector_seg":
-                            continue
-                    else:
-                        continue
+        if origin_target[i][2] != "vector_seg":
+            continue
 
-                # 样本97
-                elif origin_target[i-1][2] == "vector_seg":
+        if i == 0:
+            continue
+
+        if i >= 1:
+            if origin_target[i - 1][2] == "exam":
+                if i >= 2:
+                    # 原文本: 根据标准左手、腕的正位片，与女孩骨龄标准对比，尺骨茎突开始形成，该女孩的实际骨龄约为 6.5 岁。
+                    # 遇到"正位片"则不切分
+                    # [6, 6, 'symptom_pos', '左'],
+                    # [7, 7, 'symptom_obj', '手'],
+                    # [9, 9, 'symptom_obj', '腕'],
+                    # [11, 13, 'exam', '正位片'],
+                    # [24, 24, 'vector_seg', '，']
+                    if origin_target[i-2][2] == "symptom_obj" or origin_target[i-2][2] == "vector_seg":
+                        continue
+                else:
+                    # i = 1
+                    # 原文: "急诊，餐后扫查，肠气干扰明显，图像质量欠佳: ...."
+                    # [3, 6, 'exam', '餐后扫查'],
+                    # [7, 7, 'vector_seg', '，'],
                     continue
 
+            # 连续2个vector_seg, 2个都不分割
+            # 原文: ""腹部急诊扫描，胃肠道未准备，大致观察。"
+            # [0, 1, 'symptom_obj', '腹部'],
+            # [2, 5, 'exam', '急诊扫描'],
+            # [6, 6, 'vector_seg', '，'],
+            # [18, 18, 'vector_seg', '。']
+            elif origin_target[i - 1][2] == "vector_seg":
+                continue
+
             # 其他情况正常分割
-            if i != 0:
-                idx.append(i)
+            idx.append(i)
 
     res = []
     for j in range(len(idx) - 1):
