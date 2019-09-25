@@ -9,11 +9,11 @@ def handle_pos(seg, text, res_seg, i, stack):
         else:
             if seg[i + 1][2] in ["symptom_obj", "symptom_pos", "object_part"]:
                 if seg[i + 1][2] == "symptom_obj":
-                    ppos = list()
-                    ppos.append(seg[i])
+                    stack["ppos"] = list()
+                    stack["ppos"].append(seg[i])
 
                 elif seg[i + 1][2] == "symptom_pos":
-                    pass
+                    stack["ppos"].append(seg[i])
 
                 elif seg[i + 1][2] == "object_part":
                     if len(stack["ppos"]) > 0:
