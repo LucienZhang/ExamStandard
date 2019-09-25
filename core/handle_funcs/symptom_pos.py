@@ -14,8 +14,7 @@ def handle_pos(seg, text, res_seg, i, stack):
                         3.1 若是 --> 3.1.a 若是obj: 清空ppos, 再入栈;
                                     3.1.b 若是pos: 目前没有这种情况，理论上直接入栈;
                                     3.1.c 若是part: 根据ppos情况处理
-
-
+                        3.2 若不是 --> 则自己是一个孤伶伶的独立的pos --> 看ppos情况处理
     """
 
     if i == 0:
