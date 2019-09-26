@@ -3,7 +3,7 @@ from core.utils import connect
 from itertools import product
 
 
-def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack):
+def build_ppo_stack_by_pos_part_obj(ppos, ppo_stack, text):
     # 开头是 obj
     if ppos[0][2] == "symptom_obj":
         # 样本11 鼻咽顶o + 后部pos + 软组织part
