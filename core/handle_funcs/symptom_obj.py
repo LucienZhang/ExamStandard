@@ -9,16 +9,17 @@ def handle_obj(seg, text, res_seg, i, stack):
     判断流程：
     1 i 是否为0
         1.1 i==0 --> 直接入栈 (即A)
-        1.2 i>0:
+        1.2 i>0: (即 B C D E)
 
             2 前一项是否为pos/obj/part
                 2.1 若是 --> 直接入栈 (即 C 或 E)
-                2.2 若不是: (B或者D)
+                2.2 若不是: (B 或者 D)
 
                     3 stack["ppos"]中是否有obj
                         3.1 若有 --> 2者判断关系
                             3.1.a 若并列 --> 将栈清空 (即A和C并列, 则将stack中的A移除，再将C放入)
     """
+
     # step 1 定义初始 case
     case = "Normal"
 
