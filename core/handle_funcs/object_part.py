@@ -1,5 +1,5 @@
 # 功能函数 1
-def slice_sub_seg_between_current_object_part_and_next_comma(seg, text, i,):
+def slice_sub_seg_between_current_object_part_and_next_comma(seg, text, i):
     """
     该函数用来从seg中，截取一段sub_seg，这段sub_seg开始是当前seg[i], 结束是从text找到离当前seg[i]最近的一个标点符号
     作用: 看一下如果这段sub_seg中有 symptom_obj, 那么说明腔内要和这个obj绑定，所以stack["ppos"]中的obj就要出栈
