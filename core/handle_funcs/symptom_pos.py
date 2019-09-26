@@ -1,6 +1,5 @@
 def handle_pos(seg, text, res_seg, i, stack):
     """
-    由于pos又要和obj拼，又要和object_part拼，所以判断会多一些.
     示例结构:
     (A...,) (BC...,) (D...)
 
@@ -20,14 +19,19 @@ def handle_pos(seg, text, res_seg, i, stack):
                         3.2 若不是 (即D) --> 则自己是一个孤伶伶的独立的pos --> 看ppos情况处理
     """
 
+    # 1.1
     if i == 0:
         stack["ppos"].append(seg[i])
 
+    # 1.2
     else:
+        # 2.1
         if seg[i - 1][2] in ["symptom_obj", "symptom_pos", "object_part"]:
             stack["ppos"].append(seg[i])
 
+        # 2.2
         else:
+            # 3.1
             if seg[i + 1][2] in ["symptom_obj", "symptom_pos", "object_part"]:
 
                 # "双肾(obj)灌注峰同时到达，左(当前pos)肾(obj)峰值较右肾略低。"
@@ -66,7 +70,7 @@ def handle_pos(seg, text, res_seg, i, stack):
                         elif stack["ppos"][-1][2] == "symptom_obj":
                             stack["ppos"].append(seg[i])
 
-            # 这种情况, 等于前项也不是ppo, 后项也不是ppo, 就是一个孤零零的独立的 pos
+            # 3.2 这种情况, 等于前项也不是ppo, 后项也不是ppo, 就是一个孤零零的独立的 pos
             elif seg[i + 1][2] not in ["symptom_obj", "symptom_pos", "object_part"]:
                 if len(stack["ppos"]) > 0:
 
