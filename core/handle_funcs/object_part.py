@@ -2,13 +2,15 @@
 def slice_sub_seg_between_current_object_part_and_next_comma(seg, text, i):
     """
     该函数用来从seg中，截取一段sub_seg，这段sub_seg开始是当前seg[i], 结束是从text找到离当前seg[i]最近的一个标点符号
-    作用: 看一下如果这段sub_seg中有 symptom_obj, 那么说明腔内要和这个obj绑定，所以stack["ppos"]中的obj就要出栈
+    作用: 如果这段 sub_seg 中有 symptom_obj 项, 那么说明, 当前的 "腔内" 要和这个obj绑定，所以stack["ppos"]中的obj"膀胱"就要出栈.
 
     示例:
     原文text = "膀胱壁无异常增厚，腔内未见异常密度，大小正常。"
     当前seg[i] 是 [9, 10, "object_part", "腔内"]
+    stack["ppos"] = [obj膀胱, part壁]
 
     :return: sub_seg = [[object_part, 腔内], [reversed_result, 未见异常], [reversed_item, 密度]]
+    因为sub_seg中没有symptom_obj, 所以 part"腔内" 只能和 stack["ppos"] 中的 "膀胱" 绑定，所以膀胱不用出栈.
     """
 
     # current_text_idx = 10, text_stop_idx = 10
