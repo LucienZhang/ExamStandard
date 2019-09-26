@@ -1,5 +1,6 @@
 from itertools import product
-from core.logic.bu_check_obj_relationship import check_obj_relationship
+from core.logic.build_ppo_stack_funcs.obj import check_obj_relationship_v2
+# from core.logic.bu_check_obj_relationship import check_obj_relationship
 from core.utils import connect
 
 
@@ -27,16 +28,28 @@ def build_ppo_stack_by_part_obj(ppos, ppo_stack, text):
             ppo_stack.append(tmp_2)
 
         elif [j[2] for j in ppos] == ["symptom_obj", "symptom_obj", "object_part"]:
-            obj_rel = check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[0][3])
-            # 样本100 颅骨内外板o + 板障o + 骨质p
-            # part 和 每一个object 都拼
-            if obj_rel == 1:
+            # obj_rel = check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[0][3])
+            # # 样本100 颅骨内外板o + 板障o + 骨质p
+            # # part 和 每一个object 都拼
+            # if obj_rel == 1:
+            #     tmp_1 = [connect(k) for k in ppos[:-1]]
+            #     tmp_2 = [connect(ppos[-1])]
+            #     for tmp in list(product(*[tmp_1, tmp_2])):
+            #         ppo_stack.append("".join(tmp))
+            # # 样本24 室间隔o + 左室o + 后壁p
+            # elif obj_rel == 2:
+            #     ppo_stack.append("".join([connect(k) for k in ppos]))
+
+            # 试用 v2 判断关系 (2019_09_26 下午5:00 修改)
+            is_parallel = check_obj_relationship_v2(current_obj=ppos[0], next_obj=ppos[1], text=text)
+            if is_parallel:
                 tmp_1 = [connect(k) for k in ppos[:-1]]
                 tmp_2 = [connect(ppos[-1])]
                 for tmp in list(product(*[tmp_1, tmp_2])):
                     ppo_stack.append("".join(tmp))
+
             # 样本24 室间隔o + 左室o + 后壁p
-            elif obj_rel == 2:
+            else:
                 ppo_stack.append("".join([connect(k) for k in ppos]))
 
         # 样本41 十二指肠o + 球部p + 降部p
@@ -58,16 +71,24 @@ def build_ppo_stack_by_part_obj(ppos, ppo_stack, text):
 
         # 样本79 余p + 脑池o + 脑室o
         elif [j[2] for j in ppos] == ["object_part", "symptom_obj", "symptom_obj"]:
-            # 判断2个obj的关系
-            obj_rel = check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[2][3])
+            # # 判断2个obj的关系
+            # obj_rel = check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[2][3])
+            #
+            # if obj_rel == 1:
+            #     # tmp_list = [(["part", "余"], ["obj","脑池"]), (["part", "余"], ["obj","脑室"])]
+            #     tmp_list = list(product(*[[ppos[0]], ppos[1:]]))
+            #     for tmp in tmp_list:
+            #         ppo_stack.append("".join([connect(k) for k in tmp]))
+            #
+            # elif obj_rel == 2:
+            #     ppo_stack.append("".join([connect(k) for k in ppos]))
 
-            if obj_rel == 1:
-                # tmp_list = [(["part", "余"], ["obj","脑池"]), (["part", "余"], ["obj","脑室"])]
-                tmp_list = list(product(*[[ppos[0]], ppos[1:]]))
-                for tmp in tmp_list:
-                    ppo_stack.append("".join([connect(k) for k in tmp]))
-
-            elif obj_rel == 2:
-                ppo_stack.append("".join([connect(k) for k in ppos]))
+            # 试用 v2 判断关系 (2019_09_26 下午5:00 修改)
+            is_parallel = check_obj_relationship_v2(current_obj=ppos[0], next_obj=ppos[1], text=text)
+            if is_parallel:
+                tmp_1 = [connect(k) for k in ppos[:-1]]
+                tmp_2 = [connect(ppos[-1])]
+                for tmp in list(product(*[tmp_1, tmp_2])):
+                    ppo_stack.append("".join(tmp))
 
     return ppo_stack
