@@ -3,7 +3,7 @@ from core.logic.bu_check_obj_relationship import check_obj_relationship
 from core.utils import connect
 
 
-def build_ppo_stack_by_part_obj(ppos, ppo_stack):
+def build_ppo_stack_by_part_obj(ppos, ppo_stack, text):
     # 开头是obj
     if ppos[0][2] == "symptom_obj":
         # 样本22 气管 + 1-3级 + 支气管
