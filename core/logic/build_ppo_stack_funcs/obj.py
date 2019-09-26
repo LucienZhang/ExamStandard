@@ -2,6 +2,8 @@
 from core.utils import connect
 
 
+# 功能函数 1
+# [objA, objB], 那么调用该函数，单独判断一次A和B的关系即可
 def check_obj_relationship_v2(current_obj, next_obj, text):
     """
     text_start_idx 和 text_end_idx: 从text原文本中切出一段字符串，判断这段字符串中是否有"、"，"及"，"和"等等连接词.
@@ -19,6 +21,45 @@ def check_obj_relationship_v2(current_obj, next_obj, text):
             break
 
     return is_parallel
+
+
+# 功能函数 2
+# [objA, objB, objC, objD], 那么调用该函数, 循环判断AB关系，BC关系, CD关系
+# text = "小脑脑干及垂体、肾脏肾盏未见明显异常。"
+# 那么tmp_ppo_stack = [
+#                       [[0, 1, 'symptom_obj', '小脑'], [2, 3, 'symptom_obj', '脑干']],
+#                       [[5, 6, 'symptom_obj', '垂体']],
+#                       [[8, 9, 'symptom_obj', '肾脏'], [10, 11, 'symptom_obj', '肾盏']]
+#                     ]
+def check_obj_rel_for_many_objs(sub_obj_list, text):
+    # step 1 定义初始变量
+    slice_start_idx = 0
+    slice_end_idx = 1
+
+    raw_obj_list = []
+
+    # step 2 obj两两查看关系，根据不同的关系，按照规则放入 tmp_ppo_stack
+    for idx in range(len(sub_obj_list) - 1):
+        is_parallel = check_obj_relationship_v2(current_obj=sub_obj_list[idx],
+                                                next_obj=sub_obj_list[idx + 1],
+                                                text=text)
+
+        if is_parallel:
+            raw_obj_list.append(sub_obj_list[slice_start_idx:slice_end_idx])
+
+            slice_start_idx = slice_end_idx
+            slice_end_idx += 1
+
+            if idx == len(sub_obj_list) - 2:
+                raw_obj_list.append([sub_obj_list[idx + 1]])
+
+        else:
+            slice_end_idx += 1
+
+            if idx == len(sub_obj_list) - 2:
+                raw_obj_list.append(sub_obj_list[slice_start_idx:slice_end_idx])
+
+    return raw_obj_list
 
 
 def build_ppo_stack_by_obj(ppos, ppo_stack, text):
@@ -52,35 +93,37 @@ def build_ppo_stack_by_obj(ppos, ppo_stack, text):
     4. ppos_idx: ppos的索引
     """
 
-    # step 1 定义初始变量
-    slice_start_idx = 0
-    slice_end_idx = 1
+    # # step 1 定义初始变量
+    # slice_start_idx = 0
+    # slice_end_idx = 1
+    #
+    # tmp_ppo_stack = []
+    #
+    # # step 2 obj两两查看关系，根据不同的关系，按照规则放入 tmp_ppo_stack
+    # for ppos_idx in range(len(ppos) - 1):
+    #     is_parallel = check_obj_relationship_v2(current_obj=ppos[ppos_idx],
+    #                                             next_obj=ppos[ppos_idx + 1],
+    #                                             text=text)
+    #
+    #     if is_parallel:
+    #         tmp_ppo_stack.append(ppos[slice_start_idx:slice_end_idx])
+    #
+    #         slice_start_idx = slice_end_idx
+    #         slice_end_idx += 1
+    #
+    #         if ppos_idx == len(ppos) - 2:
+    #             tmp_ppo_stack.append([ppos[ppos_idx + 1]])
+    #
+    #     else:
+    #         slice_end_idx += 1
+    #
+    #         if ppos_idx == len(ppos) - 2:
+    #             tmp_ppo_stack.append(ppos[slice_start_idx:slice_end_idx])
 
-    tmp_ppo_stack = []
-
-    # step 2 obj两两查看关系，根据不同的关系，按照规则放入 tmp_ppo_stack
-    for ppos_idx in range(len(ppos) - 1):
-        is_parallel = check_obj_relationship_v2(current_obj=ppos[ppos_idx],
-                                                next_obj=ppos[ppos_idx + 1],
-                                                text=text)
-
-        if is_parallel:
-            tmp_ppo_stack.append(ppos[slice_start_idx:slice_end_idx])
-
-            slice_start_idx = slice_end_idx
-            slice_end_idx += 1
-
-            if ppos_idx == len(ppos) - 2:
-                tmp_ppo_stack.append([ppos[ppos_idx + 1]])
-
-        else:
-            slice_end_idx += 1
-
-            if ppos_idx == len(ppos) - 2:
-                tmp_ppo_stack.append(ppos[slice_start_idx:slice_end_idx])
+    raw_obj_list = check_obj_rel_for_many_objs(sub_obj_list=ppos, text=text)
 
     # step 3 统一将 tmp_ppo_stack 中的结果，格式化放入到最终返回的 ppo_stack
-    for tmp in tmp_ppo_stack:
+    for tmp in raw_obj_list:
         ppo_stack.append("".join([connect(t) for t in tmp]))
 
     return ppo_stack

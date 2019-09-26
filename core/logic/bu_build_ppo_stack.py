@@ -1,5 +1,6 @@
 from core.utils import connect
-from core.logic.bu_check_obj_relationship import check_obj_relationship
+from core.logic.build_ppo_stack_funcs.obj import check_obj_relationship_v2
+# from core.logic.bu_check_obj_relationship import check_obj_relationship
 from core.logic.bu_check_ppo_situation import check_ppo_situation
 from core.logic.bu_build_ppo_stack_by_ppo_situation import build_ppo_stack_by_ppo_situation
 
@@ -20,8 +21,10 @@ def build_ppo_stack(ppos, text):
 
         # 如果ppos中是 obj + obj 情况, 需要判断关系
         if [j[2] for j in ppos] == ["symptom_obj", "symptom_obj"]:
-            obj_rel = check_obj_relationship(self_obj=ppos[1][3], other_obj=ppos[0][3])
-            if obj_rel == 1:
+            # 2019_9_26 下午更新
+            # 试用 v2 函数判断关系 (2个obj之间是否有顿号，和，及 这类关键词)
+            is_parallel = check_obj_relationship_v2(current_obj=ppos[0], next_obj=ppos[1], text=text)
+            if is_parallel:
                 ppo_stack = [connect(j) for j in ppos]
             else:
                 ppo_stack.append(connect(ppos[0]) + connect(ppos[1]))
