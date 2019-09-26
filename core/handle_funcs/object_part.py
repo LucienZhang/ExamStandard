@@ -1,9 +1,31 @@
 def handle_obj_part(seg, text, res_seg, i, stack):
     """
     pop_up_count_from_ppos: 需要从 stack["ppos"] 中出栈的项的数量
+
+    示例结构:
+    part_x...., obj_A ....., obj_B part_y ...., part_z ....
+
+    判断流程
+    1 i 是否为 0
+        1.1 i==0 --> 入栈 (即 part_x)
+        1.2 i>0:
+
+            2 前一项是否为 pos/obj/part
+                2.1 是 --> 入栈 (part_y)
+                2.2 若不是:
+
+                    3 倒序查看stack["ppos"], 统计 pop_up_count_from_ppos 的值
+                        3.a 遇到part
+                        3.b 遇到obj
+                        3.c 遇到pos
     """
 
     # step 1 定义初始变量 pop_up_count_from_ppos
+
+    # 举例: 比如 stack["ppos"] = [obj肾脏, part皮质],
+    # pop_up_count_from_ppos = 1, 那么最后切片之后的 stack["ppos"]就是:
+    # [obj肾脏]
+    # 等于是让 part"皮质" 出栈
     pop_up_count_from_ppos = 0
 
     # step 2 倒序遍历stack[ppos], 统计 pop_up_count_from_ppos 值
