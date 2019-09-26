@@ -7,6 +7,7 @@ core/stack.py
 
 core/test/get_special.py
 core/test/string_to_list_func.py
+core/test/test_build_ppo_stack_by_obj.py
 
 data/test.json
 data/result*
