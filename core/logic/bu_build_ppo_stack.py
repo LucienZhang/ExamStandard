@@ -4,8 +4,9 @@ from core.logic.bu_check_ppo_situation import check_ppo_situation
 from core.logic.bu_build_ppo_stack_by_ppo_situation import build_ppo_stack_by_ppo_situation
 
 
-def build_ppo_stack(ppos):
+def build_ppo_stack(ppos, text):
     """
+    :param text: 原文本, "双肾大小正常,...."
     :param ppos: 即 stack["ppos"] = [[110, 110, 'symptom_pos', '双'], [111, 111, 'symptom_obj', '肾']]
     :return: ppo_stack: 即 stack["ppo_stack"] = ["#110$110&symptom_pos*双^#111$111&symptom_obj*肾^"]
     """
@@ -34,7 +35,7 @@ def build_ppo_stack(ppos):
         situation = check_ppo_situation(ppos)
 
         # 根据sit，排列出ppo_stack
-        ppo_stack = build_ppo_stack_by_ppo_situation(ppos, situation)
+        ppo_stack = build_ppo_stack_by_ppo_situation(ppos, situation, text)
 
     return ppo_stack
 
