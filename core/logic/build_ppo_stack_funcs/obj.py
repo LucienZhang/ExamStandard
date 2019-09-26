@@ -65,5 +65,5 @@ def build_ppo_stack_by_obj(ppos, ppo_stack, text):
         ppo_stack.append("".join([connect(t) for t in tmp]))
 
     # ppo_stack = ['#167$171&symptom_obj*肝内外胆管^', '#173$174&symptom_obj*胆囊^', '#176$177&symptom_obj*肠道^']
-    
+
     return ppo_stack
