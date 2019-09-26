@@ -33,7 +33,6 @@ def handle_pos(seg, text, res_seg, i, stack):
                 # "双肾(obj)灌注峰同时到达，左(当前pos)肾(obj)峰值较右肾略低。"
                 # 由于当前pos左，要和后面的obj"肾"绑定，所以之前的ppos不需要，清空
                 if seg[i + 1][2] == "symptom_obj":
-                    case = "Popup_All"
                     stack["ppos"] = list()
                     stack["ppos"].append(seg[i])
 
@@ -41,7 +40,6 @@ def handle_pos(seg, text, res_seg, i, stack):
                 # 但理论上, 应该是 "肝(obj)大小正常, 左(pos1)右(当前pos2)肾(obj)形态正常"
                 # 这种情况, 将当前pos2也直接放入 stack["ppos"] 即可
                 elif seg[i + 1][2] == "symptom_pos":
-                    case = "Normal"
                     stack["ppos"].append(seg[i])
 
                 # "左侧臀大肌(obj)较右侧缩小，信号不均，边缘模糊，且外侧缘(**当前pos**)皮下脂肪(part)间隙内可见片状长T1长T2异常信号影.."
