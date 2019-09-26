@@ -7,9 +7,21 @@ from core.utils import connect
 def build_ppo_stack_by_part_obj(ppos, ppo_stack, text):
     """
     :param ppos: [[127, 129, 'symptom_obj', '室间隔'], [131, 132, 'symptom_obj', '左室'], [133, 134, 'object_part', '后壁']]
-    :param ppo_stack:
-    :param text:
-    :return:
+
+    流程
+    1. ppos[0] 是 obj还是part
+        1.1 obj --> 4种情况:
+            1.1.a obj+part+obj
+            1.1.b obj+part+obj+part
+            1.1.c obj+...(n个)obj + part(最后一个)
+            1.1.d obj(首个) + part + ...(n个)part
+
+        1.2 part --> 3种情况:
+            1.2.a part + obj + part
+            1.2.b part + part + obj (特殊, 邻近+诸+骨)
+            1.2.c part(首个) + n个obj
+
+    :return: ppo_stack
     """
 
     # 开头是obj
